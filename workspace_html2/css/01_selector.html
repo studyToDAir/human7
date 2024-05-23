@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        /* 전체 선택 */
+        * {
+            color: red;
+        }
+
+        /* html tag로 선택 */
+        p {
+            border: 1px solid red;
+        }
+
+        /* id 값으로 선택 */
+        #p1 {
+            background-color: yellow;
+        }
+
+        /* class가 가지고 있는 값으로 선택*/
+        .content {
+            color: blue;
+        }
+
+        .textGreen {
+            color: green;
+        }
+
+        .textBig {
+            font-size: 30px;
+        }
+
+        #content {
+            background-color: pink;
+        }
+
+        .b1 {
+            border: 1px solid blue;
+        }
+
+        /* 속성이 있는 것만 선택 */
+        [href] {
+            color: black;
+        }
+
+        [href="#p2"] {
+            color: blue;
+        }
+
+        /* 속성과 값이 일치하는 것을 선택 */
+        [title=그냥2] {
+            color: green;
+        }
+
+        [class|="textBig"] {}
+
+        /* CSS 주석 */
+
+
+        /*
+        [id=td_1]를 축약한게 #td_1
+        */
+
+
+        /*
+        [id=td_1]{
+            border: 1px solid red;
+        }
+        .textBig
+        [class~=textBig]
+        */
+
+        /* 이렇게 쓰면 반복하는걸 너무 많이 써야 하니까
+        #td_1 {
+            border: 1px solid red;
+        }
+        #td_2 {
+            border: 1px solid red;
+        }
+        */
+        /* ,를 이용해서 여러개에 같은 내용을 적용할 수 있다 */
+        #td_1,
+        [id^=td_],
+        thead>tr {
+            border: 1px solid red;
+        }
+
+        /* td_로 시작하는 id 속성을 가진 tag를 선택 */
+        [id^=td_] {
+            border: 1px solid red;
+        }
+
+        /* _id로 끝나는 id 속성을 가진 tag를 선택 */
+        [id$=_id] {
+            border: 1px solid blue;
+        }
+
+        /* div의 자식의 자식의...에서 모든 td를 선택 */
+        div td {
+            color: blue;
+        }
+
+        /* thead의 바로 아래 자식 중 tr을 선택 */
+        thead>tr {
+            height: 50px;
+        }
+
+        #mouse {
+            border: 1px solid red;
+        }
+
+        /* id 값이 mouse인 것에 마우스가 올라가면 css가 적용 됨 */
+        #mouse:hover {
+            background-color: yellow;
+            border: 3px solid blue;
+        }
+
+        /* +는 바로 다음 형제 요소 선택 */
+        input[type=radio]:checked+span {
+            color: blue;
+        }
+
+        /* 
+            몇번째 자식을 선택할 수 있고
+            2n-1은 홀수 번째를 뜻함(n은 숫자를 의미, 2*n에 1을 빼면 무조건 홀수)
+        */
+        #odd tr:nth-child(2n-1) {
+            background-color: lime;
+        }
+
+        /* id값이 odd인 것의 자손 중 tr들에서 class에 head값이 "없는" 것만 선택 */
+        #odd tr:not(.head) {
+            height: 50px;
+        }
+    </style>
+</head>
+
+<body class="b1">
+    <h1 title="연습" id="content">CSS 연습</h1>
+    <p id="p1" class="content textGreen">
+        css도 재미있게 배워봅시다<br>
+        밖에 있는 p
+    </p>
+    <div>
+        <p id="p2" class="content textBig">
+            <!-- <p id="p2" class="textBig content"> -->
+            div안에 있는 p
+        </p>
+    </div>
+
+    <a href="#p1">p1으로 스크롤</a><br>
+    <a title="그냥2">그냥 a</a><br>
+    <a href="#p2">p2으로 스크롤</a><br>
+
+    <table>
+        <tr>
+            <td id="td_1">첫번째</td>
+        </tr>
+        <tr>
+            <td id="td_2">두번째</td>
+        </tr>
+    </table>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <td id="1_id">첫번째</td>
+                </tr>
+            </thead>
+            <tr>
+                <td id="2_id">두번째</td>
+            </tr>
+        </table>
+    </div>
+
+    <hr>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <td id="1_id">첫번째</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td id="2_id">두번째</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <input type="chekcbox"> <strong>커피</strong>
+
+    <div id="mouse">
+        hover
+    </div>
+
+    <input type="radio" name="토핑"> <span>올리브</span>
+    <input type="radio" name="토핑" checked> <span>치즈</span>
+    <input type="radio" name="토핑"> <span>페페로니</span>
+    <input type="radio" name="토핑"> <span>감자</span>
+
+    <table id="odd" border="1">
+        <tr class="head">
+            <td>글제목</td>
+            <td>작성자</td>
+        </tr>
+        <tr>
+            <td>글제목</td>
+            <td>작성자</td>
+        </tr>
+        <tr>
+            <td>글제목</td>
+            <td>작성자</td>
+        </tr>
+        <tr>
+            <td>글제목</td>
+            <td>작성자</td>
+        </tr>
+        <tr>
+            <td>글제목</td>
+            <td>작성자</td>
+        </tr>
+        <tr>
+            <td>글제목</td>
+            <td>작성자</td>
+        </tr>
+    </table>
+
+</body>
+
+</html>

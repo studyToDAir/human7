@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        action : 보낼곳, 안쓰면 지금 페이지
+        method : 보내는 방식 get, post, 안쓰면 get
+    -->
+    <form action="" method="get">
+        button: <input type="button" value="버튼"><br>
+        checkbox :
+        <input type="checkbox" value="1" checked="checked"> 김밥
+        <input type="checkbox" value="2"> 라면<br>
+        <!-- 중요치 않음 -->
+        <input type="color"> <input type="date"> <br>
+        file : <input type="file"><br>
+        <input type="hidden" value="60">
+        <input type="number"><br>
+        password : <input type="password" name="pw"><br>
+        radio :
+        <input type="radio" name="gender" value="male"> 남자
+        <input type="radio" name="gender"> 여자
+        <input type="radio" name="gender" checked> 비공개<br>
+        text : <input type="text"><br>
+        reset : <input type="reset"><input type="reset" value="다시작성"><br>
+        submit : <input type="submit"> <input type="submit" value="회원가입">
+    </form>
+
+    <hr>
+    <form action="https://search.naver.com/search.naver" method="get">
+        <input type="text" name="query" placeholder="검색어를 입력해주세요">
+        <input type="submit" value="네이버 검색">
+    </form>
+    <form action="https://www.google.com/search" method="get" target="_blank">
+        <input type="text" name="q" value="휴먼교육센터" readonly="readonly">
+        <input type="submit" value="구글 검색">
+    </form>
+    <!-- form 안에 form이 있으면 동작이 이상해진다 -->
+
+    <form>
+        <select name="dinner" disabled>
+            <option value="1">일식</option>
+            <option value="2">한식</option>
+            <option value="3">양식</option>
+            <option value="4" selected="selected">분식</option>
+        </select>
+        <input type="submit" value="선택">
+    </form>
+
+
+    <form>
+        <textarea name="textarea" rows="10" cols="30" readonly>미리 
+            
+            
+            
+            완성</textarea>
+        <input type="submit" value="선택">
+    </form>
+
+</body>
+
+</html>

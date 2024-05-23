@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        /*
+            좌우 전체 너비를 가진다
+            그래서 새로운줄에 표시된다
+            예를들어 한 줄이 모두 내 땅이고 너비만큼의 건물이 있는 것처럼
+            너비가 전체 크기보다 작은 경우 나머지 공간에 정렬할 수 있다
+        */
+        .block {
+            width: 200px;
+            border: 1px solid red;
+            margin: 0 auto;
+        }
+        /*
+            딱 내 컨텐츠만큼의 너비를 가진다
+        */
+        .inline {
+            border: 1px solid red;
+            
+            /* inline은 width, height 적용 안됨 */
+            width: 200px;
+            height: 200px;
+
+            /* 좌우는 되지만 위아래는 적용 안됨 */
+            margin: 50px;
+
+            /* 좌우는 되지만 위아래는 적용 안됨. 단, border는 밀어짐 */
+            /* padding: 30px; */
+        }
+
+        .bg_blue {
+            background-color: blue;
+            color: white;
+        }
+
+    
+        .parent > div {
+            border: 1px dotted rgb(0,0, 255);
+            width: 400px;
+            height: 200px;
+
+            /* inline에 block의 장점인 부피감을 더한 것 */
+            display: inline-block;
+
+            /* inline, inline-block에만 적용 됨 */
+            vertical-align: top;
+        }
+
+        div.parent #c2 {
+            height: 400px;
+        }
+
+        .parent {
+            border: 1px dotted #ff00FF;
+            width: 500px;
+        }
+
+        #c1 {
+            /* 화면에 안보임 */
+            /* display: none; */
+            /* visibility: hidden; */
+            opacity: 1
+        }
+        #c1:hover {
+            background-color: red;
+            opacity: 0;
+        }
+
+        .fake_div{
+            border: 1px dotted #ff00FF;
+            display: inline;
+        }
+    </style>
+
+</head>
+<body>
+    <p class="block">
+        첫번째 p
+    </p>
+    <p class="block">
+        두번째 p
+    </p>
+    <a href="#a" class="inline">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet dolor aut provident, pariatur ducimus dicta eum facere corrupti voluptate ex obcaecati quod! Quis saepe, quas at ducimus beatae nostrum et.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet dolor aut provident, pariatur ducimus dicta eum facere corrupti voluptate ex obcaecati quod! Quis saepe, quas at ducimus beatae nostrum et.
+    </a>
+    <a href="#a" class="inline">
+        두번째 a
+    </a>
+    <br>
+    <span class="bg_blue">첫번째 span</span>
+    <span class="bg_blue">두번째 span</span>
+    <br>
+    <span class="bg_blue">첫번째 span</span><span class="bg_blue">두번째 span</span>
+    
+    <hr>
+
+    <div class="parent">
+        <div id="c1">목록1</div>
+        <div id="c2">
+            목록2<br>
+            목록2에 대한 설명
+        </div>
+    </div>
+
+    <div class="fake_div">div이었던거</div>
+    <div class="fake_div">div이었던거</div>
+
+</body>
+</html>

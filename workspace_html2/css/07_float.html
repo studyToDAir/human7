@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            border: 1px solid red;
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+        }
+
+        /*
+            float
+            요소를 inline-block으로 취급한다
+            float 전용 층(layer)에 표시한다
+            들어갈 곳이 없다면 inline처럼 다음줄에 표시된다
+            아래에 원래 있던 글씨는 float요소를 피해서 표시된다
+        */
+        .fl1, 
+        .fl2 {
+            border: 1px solid blue;
+            float: left;
+        }
+
+        .fr1, .fr2 {
+            float: right;
+        }
+
+        .d1 {
+            border: 1px solid red;
+            float: left;
+        }
+        .d2 {
+            border: 1px solid blue;
+        }
+
+        /*
+            부모에게 after를 이용해서 float한 자식들의 정보를 원래 층으로 전달한다
+            div를 놓고 clear를 줄 수 있지만 의미없는 div를 놓지 않기 위해서 after를 사용함
+        */
+        .clearfix:after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        .cate {
+            border: 1px solid blue;
+            width: 200px;
+            float: left;
+        }
+        .cart {
+            float: right;
+        }
+        .coupang {
+            text-align: center;
+        }
+        .logo {
+            width: 200px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container clearfix">
+        <!-- Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero similique, officia sint est dolor quo quos, laborum aliquid hic ducimus autem atque minima deleniti! Fugit quidem dolor omnis dolorem dolorum. -->
+        <div class="box fl1">1</div>
+        <div class="box fl2">2</div>
+        <div class="box fr1">3</div>
+        <div class="box fr2">4</div>
+    </div>
+
+
+    <!-- <div class="d1">d1 float left;</div>
+    <div class="d2">d2</div> -->
+
+    <div class="clearfix">
+        <div class="d1">d1 float left;</div>
+    </div>
+    <div class="d2">d2</div>
+
+    <div style="background-color: red; height: 50px;">
+
+    </div>
+
+    <div class="clearfix coupang">
+        <div class="cate">카테고리</div>
+        <div class="logo">쿠팡 로고</div>
+        <div class="cart">장바구니</div>
+    </div>
+
+    <div class="d1">TEST</div>
+    <!-- 이미지도 float을 피해서 나온다 -->
+    <div class="d2">
+        <img src="https://via.placeholder.com/150x150.png">
+    </div>
+</body>
+</html>

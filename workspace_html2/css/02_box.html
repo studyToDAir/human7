@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- 
+        css를 적용하는 방법 
+        1. style tag 이용
+        2. link tag 이용
+            <link rel="stylesheet" href="경로와 파일명">
+            참고 
+                절대경로는 "/"나 "http"로 시작하는 경우
+                상대경로는 그 외, 내 위치를 기준으로 달라짐
+            참고2
+                .은 내 폴더
+                ..은 부모 폴더
+        3. inline으로 적용 (tag에 직접 쓴다)
+    -->
+    <link rel="stylesheet" href="assets/css/box.css">
+
+</head>
+<body>
+    <div class="first">
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus fuga doloremque, saepe esse quis at cum. Consequatur incidunt tempora quasi praesentium quae in repellendus sequi? Earum corporis quo porro nobis!
+    </div>
+    <div class="second">
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus fuga doloremque, saepe esse quis at cum. Consequatur incidunt tempora quasi praesentium quae in repellendus sequi? Earum corporis quo porro nobis!
+    </div>
+    <div class="third">
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus fuga doloremque, saepe esse quis at cum. Consequatur incidunt tempora quasi praesentium quae in repellendus sequi? Earum corporis quo porro nobis!
+    </div>
+    <div class="fourth">
+        <img src="https://d2u3dcdbebyaiu.cloudfront.net/uploads/atch_img/602/38682dc6d9a2ab8e0ce3e109835bed28_res.jpeg">
+    </div>
+
+    <div class="talk right">
+        오저치고?
+    </div>
+    <div class="talk left">
+        ㅇㅇ
+    </div>
+
+    <div id="p">
+        <div id="c1">
+            자식1
+        </div>
+        마진 병합 : 위 요소의 아랫마진과 아래 요소의 윗마진이 병합되는 현상(이 글을 주석처리하면 병합됨)
+        <div id="c2">
+            자식2
+        </div>
+    </div>
+
+    <div class="box content">
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequatur nesciunt, debitis officia, incidunt non saepe assumenda eos, quam facilis repudiandae voluptas dolore optio voluptatibus! Sit deserunt deleniti necessitatibus voluptatibus velit?
+    </div>
+    <div class="box border">
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequatur nesciunt, debitis officia, incidunt non saepe assumenda eos, quam facilis repudiandae voluptas dolore optio voluptatibus! Sit deserunt deleniti necessitatibus voluptatibus velit?
+    </div>
+
+    <div style="border: 1px solid red; padding-left: 50px;">
+        직접 적는 css 연습
+    </div>
+</body>
+</html>

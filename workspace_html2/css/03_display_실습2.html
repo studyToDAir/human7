@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .wrapper {
+            border: 1px solid red;
+            width: 70%;
+            margin: 0 auto;
+            white-space: nowrap;
+        }
+        .item {
+            border: 1px solid black;
+            width: 300px;
+            display: inline-block;
+        }
+        .item img {
+            /* width: 300px; */
+            width: 100%;
+        }
+        .item div:not(.image) {
+            margin: 20px;
+        }
+    </style>
+
+</head>
+<body>
+    <!-- 전체를 감싸는 div -->
+    <div class="wrapper">
+        <!-- 타이틀 영역 -->
+        <div>
+            <h1>Extraordinary rooms with elegant, yet a rustic atmosphere</h1>
+        </div>
+
+        <!-- 메인 컨텐츠 -->
+        <div>
+            <div class="item">
+                <div class="image">
+                    <img src="https://assets.nicepagecdn.com/d2cc3eaa/88834/images/34.jpg">
+                </div>
+                <div>Apartment with Amazing Park View</div>
+                <div>$45</div>
+                <div>VIEW</div>
+            </div>
+            <div class="item">
+                <div class="image">
+                    <img src="https://assets.nicepagecdn.com/d2cc3eaa/88834/images/34.jpg">
+                </div>
+                <div>Apartment with Amazing Park View</div>
+                <div>$45</div>
+                <div>VIEW</div>
+            </div>
+            <div class="item">
+                <div class="image">
+                    <img src="https://assets.nicepagecdn.com/d2cc3eaa/88834/images/34.jpg">
+                </div>
+                <div>Apartment with Amazing Park View</div>
+                <div>$45</div>
+                <div>VIEW</div>
+            </div>
+        </div>
+
+        <!-- footer -->
+        <div>Images from </div>
+    </div>
+</body>
+</html>

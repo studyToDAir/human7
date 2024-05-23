@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .wrap {
+            /* border: 1px solid red; */
+
+            /* width: 1000px; */
+            width: 90%;
+            margin: 0 auto;
+
+            font-size: 0;
+
+            /* 배경색은 사이즈 조절이 안되서 실패 */
+            /* background-color: #e4d2c0;
+            background-size: 200px 200px ; */
+        }
+
+        .wrap .section {
+            /* border: 1px solid blue; */
+
+            font-size: 16px;
+
+            display: inline-block;
+            box-sizing: border-box;
+            width: 50%;
+
+            vertical-align: top;
+        }
+        .wrap .section.left {
+            text-align: right;
+        }
+
+        .wrap .section img {
+            width: 100%;
+        }
+        .wrap .section .half {
+            width: 50%;
+            display: inline-block;
+        }
+        .wrap .section .text {
+            background-color: #292d33;
+            color: #fff;
+            font-size: 40px;
+            padding: 50px 30px;
+        }
+        .wrap .section > div {
+            margin: 10px;
+        }
+
+        .band {
+            border: 1px solid red;
+
+            /* width: 200px; */
+            width: 20%;
+            height: 700px;
+            /* height: 100%; */
+            background-color: #e4d2c0;
+
+            position: absolute;
+            top: 0;
+            left: 41%;
+
+            z-index: -1;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <!-- 왼쪽 -->
+        <div class="section left">
+            <div>
+                <img src="https://images01.nicepage.com/c461c07a441a5d220e8feb1a/4583c5e5778759d5bf354095/dfggdf-min.jpg">
+            </div>
+            <div class="half">
+                <img src="https://images01.nicepage.com/c461c07a441a5d220e8feb1a/ea6de3a355c35c3fb5e2e8fb/gfgg.jpg">
+            </div>
+        </div>
+        <div class="section">
+            <!-- 오른쪽 덩어리 -->
+            <div class="half">
+                <img src="https://images01.nicepage.com/c461c07a441a5d220e8feb1a/fe2b4f4f73b2545cb746601b/spirituality-religion-hands-folded-prayer-holy-bible-church-concept-faith_1150-148781.jpg">
+            </div>
+            <div class="text">
+                We believe a community of diversity and acceptance starts in a safe and inclusive place of worship.
+            </div>
+        </div>
+        <div class="band">
+    
+        </div>
+    </div>
+
+</body>
+</html>

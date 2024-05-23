@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .gray {
+            color: gray;
+        }
+        .thumb {
+            width: 100px;
+            border-radius: 10px;
+            border: 1px groove rgb(201, 201, 201);
+        }
+        .thumb:hover {
+            width: 110px;
+        }
+        table {
+            border-collapse: collapse;
+        }
+        table, td {
+            border-right: 1px solid red;
+            /* border: 1px solid red; */
+        }
+        .up {
+            margin: 0 5px;
+            border: 1px solid red;
+            padding: 0px 5px;
+            color: red;
+        }
+
+        strong.up2::before{
+            content: "UP";
+            margin: 0 5px;
+            border: 1px solid red;
+            padding: 0px 5px;
+            color: red;
+        }
+
+        td.title {
+            height: 20px;
+        }
+        /* .name {
+            height: 40px;
+        } */
+        .blank {
+            height: 20px;
+        }
+
+        .right {
+            /*
+            padding은 -값 안됨 : border 밖으로 벗어날 수 없어서
+            padding-left: -500px;
+            */
+            padding-left: 100px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 방법 1 : table, 세줄에 두칸, 왼쪽칸 병합 -->
+    <table>
+        <tr>
+            <td rowspan="4">
+                <img class="thumb" alt="여성 케릭터가 뒤를 돌아보며 엄지척" src="https://image-comic.pstatic.net/user_contents_data/challenge_comic/2023/06/27/332092/upload_7090134976656716596_202x164.jpeg">
+            </td>
+            <td class="title"><span class="up">UP</span><strong>육아의 계절</strong></td>
+            <td rowspan="4" class="right">
+                <img class="thumb" src="https://image-comic.pstatic.net/user_contents_data/challenge_comic/2020/02/03/312881/thumbnail_202x1644a1ff785_5bae_4dfe_a1ae_53e3528d0836_00003656.JPEG">
+            </td>
+            <td class="title"><strong>아빠는 N살</strong></td>
+        </tr>
+        <tr>
+            <!-- <td>21</td> -->
+            <td class="name">십짱생</td>
+            <!-- <td>23</td> -->
+            <td class="name ">유영근</td>
+        </tr>
+        <tr>
+            <!-- <td></td> -->
+            <td class="blank"></td>
+            <!-- <td></td> -->
+            <td class="blank"></td>
+        </tr>
+        <tr>
+            <!-- <td>31</td> -->
+            <td class="gray">별점
+                9.68
+                조회수
+                82만</td>
+            <!-- <td>33</td> -->
+            <td class="gray ">별점
+                9.90
+                조회수
+                5,231만</td>
+        </tr>
+        <tr>
+            <td rowspan="3">
+                <img class="thumb" alt="여성 케릭터가 뒤를 돌아보며 엄지척" src="https://image-comic.pstatic.net/user_contents_data/challenge_comic/2023/06/27/332092/upload_7090134976656716596_202x164.jpeg">
+            </td>
+            <td class="title"><strong class="up2">육아의 계절</strong></td>
+            <td rowspan="3" class="right">
+                <img class="thumb" src="https://image-comic.pstatic.net/user_contents_data/challenge_comic/2020/02/03/312881/thumbnail_202x1644a1ff785_5bae_4dfe_a1ae_53e3528d0836_00003656.JPEG">
+            </td>
+            <td class="title"><strong>아빠는 N살</strong></td>
+        </tr>
+        <tr>
+            <!-- <td>21</td> -->
+            <td>십짱생</td>
+            <!-- <td>23</td> -->
+            <td>유영근</td>
+        </tr>
+        <tr>
+            <!-- <td>31</td> -->
+            <td class="gray">별점
+                9.68
+                조회수
+                82만</td>
+            <!-- <td>33</td> -->
+            <td class="gray">별점
+                9.90
+                조회수
+                5,231만</td>
+        </tr>
+        <tr>
+            <td rowspan="3">
+                <img class="thumb" alt="여성 케릭터가 뒤를 돌아보며 엄지척" src="https://image-comic.pstatic.net/user_contents_data/challenge_comic/2023/06/27/332092/upload_7090134976656716596_202x164.jpeg">
+            </td>
+            <td class="title"><strong>육아의 계절</strong></td>
+            <td rowspan="3" class="right">
+                <img class="thumb" src="https://image-comic.pstatic.net/user_contents_data/challenge_comic/2020/02/03/312881/thumbnail_202x1644a1ff785_5bae_4dfe_a1ae_53e3528d0836_00003656.JPEG">
+            </td>
+            <td class="title"><strong>아빠는 N살</strong></td>
+        </tr>
+        <tr>
+            <!-- <td>21</td> -->
+            <td>십짱생</td>
+            <!-- <td>23</td> -->
+            <td>유영근</td>
+        </tr>
+        <tr>
+            <!-- <td>31</td> -->
+            <td class="gray">별점
+                9.68
+                조회수
+                82만</td>
+            <!-- <td>33</td> -->
+            <td class="gray">별점
+                9.90
+                조회수
+                5,231만</td>
+        </tr>
+    </table>
+
+    <!-- 방법 2 : table, 한줄에 두칸, 오른쪽 칸에 table(세줄에 한칸) -->
+    <table border="1">
+        <tr>
+            <td>11</td>
+            <td>
+                <table border="1">
+                    <tr>
+                        <td>2-1</td>
+                    </tr>
+                    <tr>
+                        <td>2-2</td>
+                    </tr>
+                    <tr>
+                        <td>2-3</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

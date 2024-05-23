@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <!--
+            1. http:// 또는 https://로 시작하는 경우
+            - 주소 전체를 바꿈
+
+            2. /로 시작하는 경우
+            - 서버는 유지하고 모든 주소를 바꿈
+
+            3. 그 외의 경우
+            - 맨 마지막 / 이후의 주소를 바꿈
+
+            절대주소 : 1, 2
+            상대주소 : 3
+        -->
+
+
+        <a id="top" href="http://naver.com">네이버</a>
+        <br>
+        <a href="http://google.com" target="_blank">구글 새창으로</a>
+        <br>
+        <a href="/hello.html">hello.html</a>
+        <br>
+        <a href="#2nd">둘째문단으로 바로가기</a>
+
+        <p style="height: 1000px;">
+            첫문단 1000px
+        </p>
+        <p id="2nd" style="height: 1000px;">
+            둘째문단
+        </p>
+        <a href="#top">맨 위로 가기</a>
+        <!-- TODO: tel -->
+        전화번호 : <a href="tel:01020467051">010-2046-7051</a>
+
+
+    </body>
+</html>

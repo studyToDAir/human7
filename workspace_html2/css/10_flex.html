@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .flex-container { /*부모에게 적용하는 속성*/
+            border: 1px solid green;
+            height: 300px;
+            /* width: 500px; */
+
+            /* inline-block으로 flex 적용 */
+            /* display: inline-flex; */
+
+            /* block으로 flex 적용 */
+            /* 
+                그냥 flex만 적용할 경우
+                기본적으로 item을 inline-block으로 만들고 부모의 높이만큼 늘려줌
+            */
+            display: flex;
+
+            /* main축 기본값 : 왼쪽에서 오른쪽으로 흐름 */
+            /* flex-derection: row */
+            /* main축을 오른쪽에 왼쪽으로 흐르게 변경 */
+            /* flex-direction: row-reverse; */
+            /* main축을 교차축으로 변경해서 위에서 아래로 흐르게 */
+            /* flex-direction: column; */
+            /* flex-direction: column-reverse; */
+
+            /* 한줄에 모든 item을 표시하려고 노력 */
+            /* flex-wrap: nowrap; */
+            /* 넘치는 경우 inline-block처럼 다음줄에 표시 */
+            /* flex-wrap: wrap; */
+            /* 
+                크로스축의 방향을 바꾼다
+                아래에서 위방향으로 표시
+            */
+            /* flex-wrap: wrap-reverse; */
+
+            /* 기본값, main축의 start방향으로 정렬 */
+            /* justify-content: flex-start; */
+            /* main축의 end방향으로 정렬*/
+            /* justify-content: flex-end; */
+            /* justify-content: center; */
+            /*
+                사이사이에 남은 공간을 균등하게 배치
+                처음과 끝 item은 딱 붙게 됨
+            */
+            /* justify-content: space-between; */
+            /* 
+                item 양쪽에 똑같은 공간을 배치
+                처음과 끝의 공간은 사이의 공간의 반이 된다
+            */
+            /* justify-content: space-around; */
+            /* 모든 공간을 균등하게 배치 */
+            /* justify-content: space-evenly; */
+
+            /* 한 줄에 대한 cross축 이야기 */
+            /* 기본값, 부모의 크기만큼 cross축 방향으로 쭉 늘리기 */
+            /* align-items: stretch; */
+            /* cross축의 start방향으로 정렬 */
+            /* align-items: flex-start; */
+            /* cross축의 end방향으로 정렬 */
+            /* align-items: flex-end; */
+            /* cross축 기준 중앙 정렬 */
+            /* align-items: center; */
+
+
+            /* flex-wrap: wrap; */
+            /* 여러줄에 대한 cross축 이야기 */
+            /* 기본값, 각 줄의 높이를 꽉 채워줌 */
+            /* align-content: stretch; */
+            /* cross축의 start로 몰리게 됨 */
+            /* align-content: flex-start; */
+            /* align-content: flex-end; */
+            /* align-content: center; */
+            /* align-content: space-between; */
+            /* align-content: space-around; */
+            /* align-content: space-evenly; */
+
+        }
+        .flex-container .flex-item {
+            border: 1px solid red;
+            background-color: brown;
+            color: #fff;
+
+            /* width: 100px; */
+            flex-basis: 100px;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="flex-container">
+        <div class="flex-item" style="align-self: flex-start;">1</div>
+        <!-- 
+            order 값이 클 수록 뒤에 표시된다
+            기본값은 0
+            html수정 없이 순서를 다르게 출력할 수 있다
+         -->
+        <div class="flex-item" style="order: 1;">2</div>
+        <div class="flex-item" style="order: -1;">3</div>
+        <!--
+            남은 공간을 꽉 채우는 기술
+            기본값은 0
+            빈 공간이 없게 됨
+            모든 flex-grow의 합으로 남은 공간을 나누고
+                - flex-grow만큼 분배해줌
+        -->
+        <!--
+            줄어들 공간의 비율을 적용하는 기술
+            기본값 1
+            속성이 있는 것만 줄어듬
+            값이 클 수록 많이 줄어듬
+            모든 flex-shrink의 합으로 줄어들 공간을 나누고
+                - 값 만큼 줄어들게 만듬
+        -->
+        <div class="flex-item" style="flex-grow: 1; flex-shrink: 4; min-width: 30px;">4</div>
+        <div class="flex-item" style="flex-grow: 3; flex-shrink: 2;">5</div>
+    </div>
+    부모 아래 글씨
+</body>
+</html>

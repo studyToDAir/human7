@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!--
+        td나 th에 표현할 내용을 적는다
+        td나 th는 tr의 자식요소여야 한다
+        tr은 table의 자식요소여야 한다
+    -->
+    <table border="1">
+        <tr>
+            <th>제목1</th>
+            <td>제목2</td>
+            <th>제목3</th>
+        </tr>
+        <tr>
+            <td>제목보다 긴 글씨 1</td>
+            <td>제목보다 긴 글씨 2</td>
+            <td></td>
+        </tr>
+        삽입1
+        <tr>
+            삽입2
+            <td>제목보다 긴 글씨 1</td>
+            <td>제목보다 긴 글씨 2</td>
+            <td>제목보다 긴 글씨 3</td>
+            <td>add</td>
+        </tr>
+    </table>
+
+    <!--
+        colspan, rowspan할때
+        원본을 먼저 코딩하고
+        합쳐질 것들 중 첫번째 칸에 속성을 넣고
+        필요 없어진 코드를 지운다
+    -->
+    <table border="1">
+        <tr>
+            <th>제목1</th>
+            <th colspan="2">제목2</th>
+            <!-- <th>제목3</th> -->
+        </tr>
+        <tr>
+            <td rowspan="2">제목보다 긴 글씨 1</td>
+            <td>제목보다 긴 글씨 2</td>
+            <td>제목보다 긴 글씨 3</td>
+        </tr>
+        <tr>
+            <!-- <td>제목보다 긴 글씨 1</td> -->
+            <td>제목보다 긴 글씨 2</td>
+            <td>제목보다 긴 글씨 3</td>
+        </tr>
+    </table>
+
+    <table border="1">
+        <caption>caption 테이블의 설명</caption>
+        <!--summary 어떤 제목들로 이루어져 있는가?-->
+        <summary>제목1, 제목2</summary>
+        <thead>
+            <tr>
+                <td>제목1</td>
+                <td>제목2</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>내용1</td>
+                <td>내용2</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table border="1">
+        <tr>
+            <td>왼쪽칸</td>
+            <td>
+
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <td>제목1</td>
+                            <td>제목2</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>내용1</td>
+                            <td>내용2</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </td>
+
+
+
+        </tr>
+    </table>
+
+
+    <table>
+        <tr>
+            <td>
+                <img 
+                    src="https://ima.net/umbnail/thumbnail_.jpg" 
+                    alt="신혼일기 표지 이미지"
+                    onerror="this.src='https://image-comic.pstatic.net/webtoon/808198/thumbnail/thumbnail_IMAG21_2aabb538-5b1a-4d74-81ed-b41bb8a155ff.jpg'"
+                    width="200"
+                    height="100"
+                    >
+            </td>
+            <td>
+                <strong>신혼일기</strong><br>
+                자까
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <img alt="촉법소년 이미지" src="https://image-comic.pstatic.net/webtoon/808198/thumbnail/thumbnail_IMAG21_2aabb538-5b1a-4d74-81ed-b41bb8a155ff.jpg">
+            </td>
+            <td>
+                <strong>촉법소년</strong><br>
+                박만사, 남자의 이야기 / 정종택
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <img src="https://image-comic.pstatic.net/webtoon/812354/thumbnail/thumbnail_IMAG21_db07011f-6b03-4a20-83cc-6bf5689e975f.jpg">
+            </td>
+            <td>
+                <strong>신혼일기</strong><br>
+                자까
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <img src="https://image-comic.pstatic.net/webtoon/812354/thumbnail/thumbnail_IMAG21_db07011f-6b03-4a20-83cc-6bf5689e975f.jpg">
+            </td>
+            <td>
+                <strong>신혼일기</strong><br>
+                자까
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <img src="https://image-comic.pstatic.net/webtoon/812354/thumbnail/thumbnail_IMAG21_db07011f-6b03-4a20-83cc-6bf5689e975f.jpg">
+            </td>
+            <td>
+                <strong>신혼일기</strong><br>
+                자까
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <img src="https://image-comic.pstatic.net/webtoon/812354/thumbnail/thumbnail_IMAG21_db07011f-6b03-4a20-83cc-6bf5689e975f.jpg">
+            </td>
+            <td>
+                <strong>신혼일기</strong><br>
+                자까
+            </td>
+        </tr>
+    </table>
+
+
+</body>
+
+</html>

@@ -1,0 +1,100 @@
+body {
+    margin: 0px;
+}
+div.first {
+    /* border: 20px solid red; */
+    border-top: 5px solid red;
+    border-right: 10px solid #0000ff;
+    border-bottom: 15px solid #00ff00;
+    border-left: 15px solid rgba(255, 0, 0 ,0.5);
+    
+    /* padding 4방향 */
+    /* padding: 20px; */
+
+    padding-top: 50px; 
+    padding-right: 40px; 
+    padding-bottom: 30px; 
+    padding-left: 20px; 
+
+    /* margin: 20px; */
+    /* 
+        4개를 연달아 쓰면 위, 오른쪽, 아래, 왼쪽 순
+        3개를 연달아 쓰면 위, 좌우, 아래
+        2개를 연달아 쓰면 위아래, 좌우
+        1만 쓰면 상하좌우 모두 한번에
+    */
+    margin: 30px 60px;
+
+    /* width: 300px; */
+    width: 50%;
+    /* height: 50px; */
+}
+
+div.second {
+    border: 1px solid red;
+    width: 200px;
+    /* margin에 auto는 좌우 가운데 정렬을 뜻한다 */
+    margin: 20px auto;
+    /* margin: 20px 200px; */
+}
+
+div.third {
+    border: 1px solid red;
+    max-width: 700px;
+    min-width: 600px;
+
+    border-radius: 10px;
+}
+
+div.fourth img {
+    border-width: 2px;
+    border-style: dotted;
+    border-color: grey;
+
+    width: 200px;
+    height: 200px;
+
+    /* 나중에 배울껀데 img는 margin auto로 가운데 처리가 안된다 */
+    /* margin: auto; */
+
+    border-radius: 50%;
+}
+
+div.talk {
+    width: 100px;
+    background-color: yellow;
+    border: 1px solid black;
+    padding: 10px;
+
+}
+
+div.talk.right {
+    border-radius: 20px 0 20px 20px;
+    margin-left: 200px;
+}
+div.talk.left {
+    border-radius: 0 20px 20px 20px;
+}
+
+#p, #c1, #c2 {
+    border: 1px solid red;
+}
+#p {
+    margin-top: 20px;
+}
+#c1 {
+    margin: 20px;
+}
+#c2 {
+    margin: 20px;
+}
+
+div.box {
+    border: 1px solid red;
+    margin: 10px;
+    padding: 50px;
+    width: 50%;
+}
+div.box.border {
+    box-sizing: border-box;
+}
