@@ -4,6 +4,17 @@ public class VarExam {
 
 	public static void main(String[] args) {
 		
+		/*
+		 *  변수 명을 정하는 규칙
+		 * 
+		 *  1. 숫자로 시작하면 안됨
+		 *  2. 예약어 사용 금지 (int, double)
+		 *  3. 특수문자는 _ $ 만 쓸 수 있다( int _a; int my_name; int $a;)
+		 *  4. 소문자로 시작하는게 좋다 
+		 */
+		
+		
+		
 		// 변수 선언 : 자료의 종류(타입type) 한칸띄고 이름
 		int score;	// 선언부
 		score = 90;	// 할당, 값 넣기
