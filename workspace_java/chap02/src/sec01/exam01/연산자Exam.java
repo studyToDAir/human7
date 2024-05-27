@@ -90,6 +90,63 @@ public class 연산자Exam {
 		 // 단, left = "멜론" 금지
 		 System.out.println(left);	// 결과 : 멜론
 		 System.out.println(right);	// 결과 : 수박
+		 
+		 
+		 left = "watermelon";
+		 right = "melon";
+		 left = right;
+//		 right = right + "water";
+		 right += "water";
+		 
+		 
+		 System.out.println(3 > 5);
+		 boolean bool = 3 > 5;
+		 System.out.println(bool);
+		 
+		 System.out.println(0.1 == 0.1f);	// 결과 false
+		 //같은 타입으로 변경해서 비교하자
+		 System.out.println((float)0.1 == 0.1f);
+		 
+		 
+		 System.out.println("3 == 3 : " + (3 == 3));
+		 System.out.println("3 != 3 : " + (3 != 3));
+		 
+		 String str1 = "최민수";
+		 String str2 = "최민수";
+//		 System.out.println(str1 == str2);
+		 // 글씨 비교는 == 사용 금지
+		 // String 변수나 ""에 .equals( )붙여서 사용 ()안에 글씨와 비교
+		 
+		 System.out.println(   str1.equals(str2)    );
+		 
+		 
+		 System.out.println(   10 | 3   );
+		 
+		 
+		 int i1 = 7;
+		 int i2 = 15;
+		 int i3 = 17;
+		 
+		 System.out.println("i3이 가장 큰 값인가? "
+				 + ( (i3 >= i1) && (i3 >= i2)    )    );
+		 
+		 boolean i4 = i3 > i2;
+		 System.out.println(  i4 ? "i3이 크다" : "i3이 작거나 같다" );
+		 
+		 
+		 // 5번
+		 int var1 = 5;
+		 int var2 = 2;
+		 double var3 = var1 / var2;				// 예상 : 2.5
+		 System.out.println("var3 : "+ var3);	// 출력 : 2.0
+		 int var4 = (int) (var3*var2);
+		 System.out.println("var4 : "+ var4);
+		 
+		 // 6번
+		 int i5 = 356;
+		 System.out.println(  (i5 / 100) * 100  );
+		 System.out.println(  i5 - (i5 % 100)  );
+		 
 	}
 
 }
