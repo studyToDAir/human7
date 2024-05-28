@@ -1,10 +1,7 @@
-workspace_html2/temp/
-workspace_html2/과제/
+.metadata/
+bin/
+
 workspace_html/temp/
 workspace_html/과제/
-.classpath
-.project
-workspace_java/chap01/.settings/
-/bin
-bin
-.settings
+
+

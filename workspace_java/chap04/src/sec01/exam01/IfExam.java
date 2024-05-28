@@ -184,7 +184,25 @@ public class IfExam {
 			System.out.println("겨울");
 		}
 		
+		if(month < 1) month = 1;
+		if(month > 12) month = 12;
 		
+//		if(month < 1) 
+//			if(month > 12) month = 12;
+//	else
+//		month += 1;
+		
+//		String str;
+//		if(month >= 3 && month <=5) {
+//			str = "봄임";
+//		} else {
+//			str = "봄 아님";
+//		}
+//		System.out.println(str);
+		
+		String str = (month >= 3 && month <=5) ? "봄임" : "봄 아님";
+		System.out.println(str);
+
 		// break가 없을때 다음 case도 실행되는 원리를 이용해서
 		switch(month) {
 			case 3 : 
