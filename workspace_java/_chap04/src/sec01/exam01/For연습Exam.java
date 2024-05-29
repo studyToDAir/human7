@@ -5,7 +5,6 @@ import java.util.Scanner;
 public class For연습Exam {
 
 	public static void main(String[] args) {
-
 		// 주어진 수가 양수(0포함), 음수 여부 출력
 		Scanner scan = new Scanner(System.in);
 ////		int a = 0;
@@ -151,6 +150,72 @@ public class For연습Exam {
 			System.out.print(" ");
 		}
 		System.out.println();
+		
+		
+		
+		/*
+		 * 3단계
+			+
+			++
+			+++
+			++++
+			+++++
+		 */
+//		System.out.println("+");
+//		System.out.println("++");
+		
+//		// 첫번째 줄 1번줄
+//		// +출력
+//		// 한번출력 1번 출력
+//		// 모든 + 출력 끝나고 엔터
+//		System.out.print("+");
+//		System.out.println();
+//		
+//		// 2번줄
+//		// +출력
+//		// 2번 출력
+//		// 모든 + 출력 끝나고 엔터
+//		System.out.print("+");
+//		System.out.print("+");
+//		System.out.println();
+//		
+//		for(int i=1; i<=2; i++) {
+//			System.out.print("+");
+//		}
+//		System.out.println();
+//		int j = 2;
+//		
+//		j++;
+//		
+//		for(int i=1; i<=j; i++) {
+//			System.out.print("+");
+//		}
+//		System.out.println();
+//		
+//
+//		j++;
+//		
+//		for(int i=1; i<=j; i++) {
+//			System.out.print("+");
+//		}
+//		System.out.println();
+		
+		for(int k=1; k<=5; k++) {
+			for(int i=1; i<=k; i++) {
+				System.out.print("+");
+			}
+			System.out.println();
+		}
+		
+		String plus = "+";
+		String result = plus;
+		System.out.println(result);
+		
+		result = result + plus;
+		System.out.println(result);
+		
+		result = result + plus;
+		System.out.println(result);
 /*
  * 1단계
  * 구구단 한단을 옆으로 출력

@@ -88,15 +88,27 @@ public class 연산자Exam {
 		 String left = "수박";
 		 String right = "멜론";
 		 // 단, left = "멜론" 금지
-		 System.out.println(left);	// 결과 : 멜론
-		 System.out.println(right);	// 결과 : 수박
+		 System.out.println("left : "+ left);	// 결과 : 멜론
+		 System.out.println("right : "+ right);	// 결과 : 수박
 		 
-		 
-		 left = "watermelon";
-		 right = "melon";
+		 String table = left;
 		 left = right;
-//		 right = right + "water";
-		 right += "water";
+		 right = table;
+		 
+		 System.out.println("left : "+ left);	// 결과 : 멜론
+		 System.out.println("right : "+ right);	// 결과 : 수박
+		 
+		 // swap
+		 
+		 
+//		 left = "watermelon";
+//		 right = "melon";
+//		 left = right;
+////		 right = right + "water";
+//		 right += "water";
+		 
+		 
+		 
 		 
 		 
 		 System.out.println(3 > 5);
