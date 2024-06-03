@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 내 컴퓨터 시간 출력하기
+        let now = new Date();
+        console.log(now);   // Mon Jun 03 2024 15:09:00 GMT+0900 (한국 표준시)
+
+        // 년도
+        let y = now.getFullYear();
+        // new Date().getFullYear();
+        console.log("년 : ", y);
+
+        // 월(0~11)
+        let M = now.getMonth();
+        console.log("월 : ", M+1);
+
+        // 일
+        let d = now.getDate();
+        console.log("일 : ", d);
+
+        // 요일(일0~토6)
+        let w = now.getDay();
+        console.log("요일(일0~토6) : ", w);
+
+        // 시간(24시간)
+        let h = now.getHours();
+        console.log("시 : ", h);
+        
+        // 분
+        let m = now.getMinutes();
+        console.log("분 : ", m);
+
+        let s = now.getSeconds();
+        console.log("초 : ", s);
+
+        // Mon Jun 03 2024 15:23:59 GMT+0900 (한국 표준시)
+        console.log("now.toString() : ", now.toString());
+
+        // 2024-06-03T06:25:05.698Z
+        console.log(now.toISOString())
+
+        // timestamp, UNIX time
+        // 1970년도 1월 1일 자정 기준으로 지금까지 지난 시간
+        // javascript는 1/1000초 까지 표시됨
+        console.log(now.getTime());
+
+        let a1;
+        let a2;
+        let a3;
+
+        let b1, b2, b3;
+
+        let c1 = 1,
+            c2 = 2,
+            c3 = 3;
+        let _, $;
+        
+        console.log(5/0);   // Infinity
+        let a4 = 0;
+        console.log(5/a4);  // Infinity
+
+        console.log( '1 == "1"', 1 == "1" )
+        console.log( '1 === "1"', 1 === "1" )
+        console.log(  a4 = 3 );
+
+        let a5 = 12;
+        a5 = a5 + 1;
+        a5 = a5++ + 1;
+        console.log("a5++ ", a5)    // 13
+        a5 = ++a5 + 1;
+
+
+        a5 += 1;
+        a5++;
+        ++a5;
+
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,92 @@
+<html>
+    <head>
+        <script>
+            // 한줄 주석
+            /* 
+                범위 주석
+            */
+            console.log("hello world");
+
+            // 변수
+            // int a = 12;
+            
+            a = 10;
+            console.log("a : "+ a);
+
+            var b = 11;
+            console.log("b :", b);
+            
+            let c = 12;
+            console.log("c :", c);
+            
+            const d = 13;
+            console.log("d :", d);
+
+            // a = 23;
+            // var은 이미 선언한 변수를
+            // 또 선언할 수 있음
+            var b = 110;
+            console.log("b :", b);
+
+            // let은 재선언 불가
+            // let c = 120;
+            c = 120;
+            console.log("c :", c);
+            c = "문자";
+            console.log("c :", c);
+
+            // const는 재할당 불가
+            // d = 14;
+            // const도 재선언 불가
+            // const d;
+
+/*
+            // 확인 버튼이 있는 창이 표시됨
+            // 확인을 누를때까지 모든 javascript가 멈춤
+            alert("글씨");
+            console.log(1234);
+
+            // alert + 확인/취소 버튼 표시
+            // 확인 : true로 바뀌고(true 돌려준다)
+            // 취소 : false
+            let c1 = confirm("하쉴?");
+            console.log("컨펌 결과 :", c1);
+
+            let c2 = prompt("당신의 나이는?");
+            console.log("프롬프트 결과 : ", c2);
+
+            alert("글씨\n다음줄");
+*/
+            console.log("쌍따옴표\" 탭\t문자 다음\n줄 ")
+            console.log('홀따옴표로 감싸진 경우 쌍따옴표"는 그냥 쓸 수 있는데 홀따옴표 \'이케 써야 함')
+            console.log(`백틱backtick(숫자 1 왼쪽에 있는 키보드)으로 출력 ${c} `);
+
+            console.error("그냥 빨간글씨");
+
+            let c3;
+            console.log(c3);
+
+            console.log(typeof 1);
+            console.log(typeof "문자");
+            console.log(typeof true);
+            console.log(typeof c);
+            
+            // NaN출력 : Not a Number
+            console.log(1-"a");
+
+            let c4 = "123.4";
+            console.log(c4 + 5);
+            // 문자를 숫자로
+            let c5 = Number(c4) + 5;
+            console.log(c5);
+
+            // 문자를 숫자로 변환하는데 정수만 남긴다
+            console.log( parseInt(c4) );
+
+            </script>
+        <!-- <script src="경로"></script> -->
+    </head>
+    <body>
+
+    </body>
+</html>
