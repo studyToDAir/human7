@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        test();
+        
+
+        // console.log(a2);
+        // let a2 = 1;
+
+
+
+
+        // function 키워드로 시작
+        // 함수이름 (키워드 빼고)
+        // () {} 
+        // ()안에는 전달 받을 내용을 담는 변수들
+        // return 키워드를 통해 값을 돌려줄 수 있다
+
+        // 함수를 쓰는 이유
+        // 1. 정해진 순으로 동작하는 코드의 묶음
+        // 2. 코드의 재사용을 편하게
+        // 지역변수
+        let z = 1;
+
+        function add(x, y){ // ()선언을 의미, 
+                            // 전달 받을 내용을 저장할 변수까지 선언
+            let z = x + y;
+            console.log('z : ', z);
+
+            return z;
+        }
+
+        let a = 3;
+        let b = 7;
+        let arr3 = add(a, b);  // ()실행을 의미, 전달할 내용을 넣을 수 있음
+        console.log('arr3 :', arr3);
+
+        let k = 3;
+        let l = 7;
+        add(k, l);
+
+        // x라는 이름의 기본 함수
+        function x(){
+
+        }
+        x();
+
+        // 즉시 실행하는 예제(아직 몰라도 됨)
+        (
+            function 
+            y()
+            {
+                console.log(123)
+            }
+        )();
+
+        // 전달인자가 하나인 함수
+        let result = sqr(5);
+        function sqr(a){
+            let b = a * a;
+            return b;
+        }
+
+        console.log(result);
+        
+        // 전달인자가 없는 함수
+        function printInfo(){
+            console.log("이름 : 최민수");
+            console.log("나이 : 비밀");
+        }
+        printInfo();
+
+        // 호이스팅
+        function test(){
+            console.log('test');
+            a3 = 3;
+        }
+        console.log("a3 : ",a3);
+        
+        // 함수안에서 호출하는 함수
+
+        // add(x,y), sqr(a)
+        // x, y를 더해서 
+        // 제곱할꺼임
+        function fnInfn(first, second){
+            console.log(1)
+            let result1 = add(first, second);   // TODO : stack개념 설명
+            let result2 = sqr(result1);
+            console.log(2)
+            return result2;
+        }
+        
+        let result3 = fnInfn(1,2);
+        console.log(result3)
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
