@@ -95,7 +95,127 @@
         }
         
         let result3 = fnInfn(1,2);
-        console.log(result3)
+        console.log(result3);
+
+
+        // 전달인자는 순서대로 넘어오기 때문에
+        // 하나만 오면 a에 들어감
+        // 그래서 b에만 전달 할 수 없음
+        function sum(a, b){
+            console.log('a : ',a);
+            console.log('b : ',b);
+
+            let c;
+            if(b){  // false란? false, undefined, null, 0, ''
+                    // true란? !false
+            // if(b == undefined){
+                c = a + a;
+            } else {
+                c = a + b;
+            }
+            
+            console.log('c : ', c);
+            console.log('isNaN : ', isNaN(c));
+            return c;
+        }
+        sum(1, 2);
+        sum('aaa', 3);
+        // 전달인자를 하나만 줌
+        // 두번째 전달인자를 주지 않아서 undefined
+        sum(1);
+        sum('a');
+        // 아무것도 안줌
+        sum();
+        // 전달인자 3개 줌
+        // 많이 줘봤자 두개만 씀
+        sum(1,2,5);
+
+        function sum2(a, b){
+            if(a == undefined) a = 10;
+            if(b == undefined) b = 20;
+
+            return a + b;
+        }
+
+        // 전달인자가 없는 경우 초기값(기본값) 지정
+        function sum3(a=10, b=20){
+            return a + b;
+        }
+        let result2 = sum3();
+        console.log('sum3() 호출 결과 :', result2); // 30
+        console.log('sum3() 호출 결과 :', sum3(50)); // 70
+        console.log('sum3() 호출 결과 :', sum3(50, 60)); // 110
+
+
+        function sum4(){
+            // arguments : 전달인자 모두를 배열로 받기
+            console.log(arguments);
+
+            for(let i=0; i<arguments.length; i++){
+                console.log(i, arguments[i]);
+            }
+        }
+        sum4(1,2,3,4);
+
+        // ... : 스프래드spread 연산자
+        //      지정하지 않는 arguments들을 배열처리 해줌
+        //      마지막 전달인자에만 적용할 수 있다
+        // 마치 splice(2,4, 'a', 'b', 'c')
+        function sum5(start, count, ...elem){
+            console.log(start, count, elem);
+        }
+        sum5(1,2,3,4,5);
+        
+        let aa = [100,200];
+        console.log(aa);
+
+        // console.log(100,200);
+        console.log(...aa);
+
+        // sum(aa[0], aa[1]);
+        sum(...aa);
+
+        let a5 = "console.log(123)";
+        eval(a5);   // 글씨를 javascript로 실행
+        eval("let a"+ 6 +'= 60');
+
+        // js의 변수에는 아무거나 담을 수 있다. 심지어 함수도
+        let sum55 = sum5;
+        sum55(2,3,4,5);
+        let cLog = console.log;
+        cLog(12345);
+
+        function sum5(){
+            console.log('올 뉴 sum5');
+        }
+        sum5();
+
+        var a7 = 2;
+        var a7 = 20;
+
+        console.log('before', typeof sum5);
+        sum5 = 1;   // 함수명도 변수 취급하기 때문에 
+                    // 이런 경우 sum5는 그냥 1을 담은 변수가 된다
+        // sum5(1,2);   // sum5는 더이상 함수가 아님
+        console.log('after', typeof sum5);
+
+        function minus(x, y){
+            console.log('minus 실행')
+            return x - y;
+        }
+
+        // 전달인자로 함수를 전달할 수 있다
+        // 전달된 함수를 콜백함수callback라고 한다
+        function study( cb ){
+            console.log('1~2시간 정도 공부함')
+
+            if(typeof cb == "function"){
+                let remain = cb(10, 2);
+                console.log('남은 공부시간 ', remain);
+            }
+        }
+
+        study(minus);
 
     </script>
 </head>
