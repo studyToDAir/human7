@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,24 +13,24 @@
         let arr2 = new Array(); // 두번째 방법
 
         // 관리할 값을 알고 있을때 배열 만들기
-        arr = [1,2,3];
-        arr = new Array(1,2,3);
+        arr = [1, 2, 3];
+        arr = new Array(1, 2, 3);
 
         console.log('arr[0]', arr[0]);
         arr[1] = 20;
         console.log('arr[1]', arr[1]);
-        
+
         console.log('arr[10]', arr[10]);
         arr[10] = 5;
         console.log('arr[9]', arr[9]);
         console.log('arr[10]', arr[10]);
 
         console.log(arr);
-        console.log('arr :'+ arr);
+        console.log('arr :' + arr);
         console.log('arr :', arr);
-        
 
-        
+
+
         // index에 아무거나 넣을 수 있는데 숫자가 아닌 경우
         // 배열의 길이에 영향을 주지 않음
         arr['참'] = true;
@@ -40,7 +41,7 @@
 
         // 인덱스index가 있는 것만 출력 됨
         // '참'도 출력됨
-        for(let i in arr) {
+        for (let i in arr) {
             console.log(i);
         }
 
@@ -53,19 +54,19 @@
 
         // 배열Array의 메소드(함수)
 
-        arr = [1,3,2,5,4,5];
+        arr = [1, 3, 2, 5, 4, 5];
 
         console.log(arr.length);
         // 마지막에 하나 추가
         // 자동으로 배열의 사이즈도 늘어남
         arr.push(100);
         console.log(arr);
-        
+
         // 맨 처음에 하나 추가
         // 사이즈 늘어남
         arr.unshift(-1);
         console.log(arr);
-        
+
         // 마지막 값이 100이었는데
         // pop() : 마지막 값을 지우고 그 값을 돌려주는 역할을 수행
         // 원본 배열에서 마지막 값은 사라진다
@@ -74,7 +75,7 @@
         let pop = arr.pop();
         console.log('arr', arr);
         console.log('pop', pop);
-        
+
         // 지금 현재 첫번째 값은 -1
         let shift = arr.shift();
         console.log('arr', arr);
@@ -90,11 +91,11 @@
         // 배열 거꾸로 순서 바꾸기
         arr.reverse();
         console.log('arr', arr);
-        
+
         // 정렬해줌, 대신에 오름차순만 지원
         arr.sort();
         console.log('arr', arr);
-        
+
         // arr : 1, 2, 3, 4, 5, 5
         // 시작 index, count
         let arr3 = arr.splice(2, 3);
@@ -107,7 +108,7 @@
         console.log('arr3', arr3);
         console.log('arr', arr);
 
-        arr = [10,30,20,50,40,50];
+        arr = [10, 30, 20, 50, 40, 50];
 
         arr3 = arr.splice(-4, 2);
         console.log('arr3', arr3);
@@ -126,7 +127,7 @@
         // arr : [10, '일', '3', '4', '5', 50]
 
         // fill : 채우고 싶은 값, 시작index, 종료index바로 앞까지 채워줌
-        let arr4 = [0,1,2,3,4];
+        let arr4 = [0, 1, 2, 3, 4];
         // arr4.fill(8) // 모두다 8로
         // arr4.fill(8, 1) // 1번 index부터 끝까지 8로
         arr4.fill(8, 1, 3) // 1번 index부터 3번 index 바로 앞까지 8로
@@ -143,10 +144,10 @@
         let str2 = arr.join();
         console.log('str2', str2); // 10,일,3,4,5,50
         console.log('arr', arr); // [10, '일', '3', '4', '5', 50]
-        
+
         str2 = arr.join("-");
         console.log('str2', str2); // 10-일-3-4-5-50
-    
+
         // str2 : 10-일-3-4-5-50
         // split : 특수문자로 구분되는 문자열을 잘라서 배열로 만들어줌
         //         특수문자는 사라짐
@@ -170,28 +171,105 @@
         console.log('arr', arr);
 
         // concat : 배열을 합쳐준다
-        let arr5 = ['a','b','c'];
+        let arr5 = ['a', 'b', 'c'];
         arr3 = arr.concat(arr5);
         console.log('arr3', arr3);
         console.log('arr', arr);
 
         str = arr.toString();
         console.log(str);
-        console.log(""+arr);
+        console.log("" + arr);
 
         // arr : [10, '일', '3', '4', '5', 50]
         // indexOf : 해당되는 값이 어느 index에 있는지
         //           값이 없으면 -1
         //           맨 앞에서 처음 같은 값이 나온 index 출력
-        console.log( arr.indexOf('3') )
-        console.log( arr.indexOf(100) )
+        console.log(arr.indexOf('3'))
+        console.log(arr.indexOf(100))
         arr.push('3')
-        console.log( arr.indexOf('3') )
+        console.log(arr.indexOf('3'))
 
 
+        arr = ['a0', 'a1', 'a2', 'a3', 'a4'];
+
+        // forEach : 모든 요소를 순회하면서
+        // 전달인자로 받은 함수를 실행 줌
+        arr.forEach(function (a, b, c, d) {
+            console.log('------------')
+            console.log('a :', a);  // 첫번째 전달인자 : 배열 중 이번 내용
+            console.log('b :', b);  // 두번째 : index
+            console.log('c :', c);  // 세번째 : 원본 배열
+            console.log('d :', d);  // 이후 전달 없음
+        });
+        arr.forEach(function (value, index, array) {
+            console.log('************')
+            console.log('value :', value);  // 첫번째 전달인자 : 배열 중 이번 내용
+            console.log('index :', index);  // 두번째 : index
+            console.log('array :', array);  // 세번째 : 원본 배열
+        });
+        let result = arr.forEach(function (value) {
+            console.log('++++++++++')
+            console.log('value :', value);  // 첫번째 전달인자 : 배열 중 이번 내용
+        });
+        console.log(result)
+
+        arr = ['a0', 'a1', 'a2', 'a3', 'a4'];
+        // forEach처럼 동작하는데
+        // return을 통해서 새로운 배열을 만들어줌
+        result = arr.map(function (a, b, c, d) {
+            console.log('------------')
+            console.log('a :', a);  // 첫번째 전달인자 : 배열 중 이번 내용
+            console.log('b :', b);  // 두번째 : index
+            console.log('c :', c);  // 세번째 : 원본 배열
+            console.log('d :', d);  // 이후 전달 없음
+
+            return a + "!";
+        });
+        console.log(result)
+
+        console.log('----------------------')
+        result = arr.map(function (data) {
+            return data + "!";
+        }).slice(2).slice(1)
+        console.log(result)
+
+        arr = [8, 4, 2, 8, 4, 7, 8, 5, 2, 3, 6];
+        result = arr.filter(data => {
+
+
+            // if(data > 5){
+            //     return true;
+            // } else {
+            //     return false;
+            // }
+
+            // let is5;
+            // if(data > 5){
+            //     is5 = true;
+            // } else {
+            //     is5 = false;
+            // }
+            // return is5;
+
+
+            // if (data > 5) {
+            //     return true;
+            // }
+            // return false;
+
+
+            let is5 = false;
+            if(data > 5){
+                is5 = true;
+            }
+            return is5;
+        })
+        console.log(result)
     </script>
 </head>
+
 <body>
-    
+
 </body>
+
 </html>
