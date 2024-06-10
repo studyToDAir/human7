@@ -9,6 +9,10 @@
         #wrap .div2 {
             border: 1px solid red;
         }
+
+        .red {
+            color: red;
+        }
     </style>
 
 </head>
@@ -107,9 +111,59 @@
         console.log(two.classList);
         // add로 추가할 수 있음
         two.classList.add('div4');
+        two.classList.add('div4');
+
         // class 중에서 div3 삭제
         two.classList.remove("div3");
 
+        // toggle 없으면 있게, 있으면 없게
+        two.classList.toggle("div5");
+        two.classList.toggle("div5");
+
+        let isDiv4 = two.classList.contains("div4");
+        console.log(isDiv4);
+
+        // two에 class red가 있는지 확인
+        let isRed = two.classList.contains("red");
+        console.log(isRed);
+
+        // TODO: toggle 구현
+        //       red라는 class가 없는 경우 red 추가
+        //       red class가 있는 경우 red 삭제
+        if(isRed == true){
+            two.classList.remove('red');
+        } else {
+            two.classList.add('red');
+        }
+
+        console.log(two.className);
+        two.className = 'blue';
+
+        // 속성이 있는가?
+        // [class]
+        let isClass = two.hasAttribute('class');
+        console.log(isClass);
+
+        // 해당 속성의 값을 가져오는 방법
+        let id = two.getAttribute('id');
+        console.log(id);
+
+        // 없으면 null
+        console.log( two.getAttribute('href') );
+
+
+        // 속성과 속성 값을 추가
+        // 만약 속성이 원래 있었다면 덮어쓰기
+        two.setAttribute("data-human", '1강의실');
+        two.setAttribute("data-human", '');
+
+        // 속성 지우기
+        two.removeAttribute('data-human');
+
+        console.log(document);
+
+
+        
     </script>
 
 </body>
