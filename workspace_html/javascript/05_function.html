@@ -274,7 +274,7 @@
         console.log(new Date().getTime())
 
 
-        let test = function (a, b){
+        let test0 = function (a, b){
             console.log(a, b);
             return a;
         }
@@ -310,6 +310,37 @@
         let test6 = a => a * 3;
 
         study(a => a * 3);
+
+
+        let before = new Date().getTime();  // 시계 보기
+        console.log('before', before); // 1717981496359 // 0
+        
+        let interval = 4 * 1000;
+
+        function doit(){
+            console.log('이제 실행');
+        }
+
+        // let now = new Date().getTime();    // 10/1000초 뒤
+        // let diff = now - before;    // before와 now 사이 흐른 시간
+        // if( diff < interval ){
+        //     now = new Date().getTime();    // 10/1000초 뒤
+        //     diff = now - before;
+        //     if( diff < interval ){
+        //         now = new Date().getTime();    // 10/1000초 뒤
+        //         diff = now - before;
+        //     }
+        // }
+
+        let diff = -1;
+        // while이 끝날때 까지 다음 줄이 실행되지 않는다(동기)
+        // setTimeout은 실행되고 다음 줄이 실행된다(비동기)
+        while(diff < interval){
+            let now = new Date().getTime();
+            diff = now - before;
+            // console.log('diff', diff);
+        }
+        doit();
 
     </script>
 </head>
