@@ -6,9 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script>
+
+        const owner_id = 'admin';
+
+
         function btn2click() {
             document.querySelector("#console").innerHTML = '버튼2 클릭<br>';
         }
+
+
 
         // let btn1 = document.querySelector("#btn1");
         // console.log('btn1 :', btn1);
@@ -72,9 +78,30 @@
 
             document.querySelector("#login").addEventListener('click', function (event) {
                 console.log('로그인 버튼 클릭');
-                let text = document.querySelector("#id").value;
-                console.log("아이디 : ", text);
-                document.querySelector("#id").value = "admin";
+                let id = document.querySelector("#id").value;
+                console.log("아이디 : ", id);
+                // document.querySelector("#id").value = "admin";
+                let pw = document.querySelector("#pw").value;
+                console.log("비번 : ", pw);
+
+                if( id == 'admin' && pw == '1234' ){
+                    document.querySelector("#console").innerHTML = "로그인 성공";
+                } else {
+                    document.querySelector("#console").innerHTML = "아이디 또는 비밀번호를 확인해 주세요";
+                }
+
+                console.log('id == ""', id == "", id.trim().length)
+                if(id == ""){
+                    document.querySelector("#console").innerHTML += '<br>아뒤는 필수임'
+
+                    document.querySelector("#msg").innerText = "아뒤는 필수임";
+                    document.querySelector("#msg").style.display = 'block';
+                }
+                if(pw == ""){
+                    document.querySelector("#console").innerHTML += '<br>비번은 필수임'
+                }
+
+                document.querySelector("#console").innerHTML = id;
             })
 
             /*
@@ -101,6 +128,7 @@
         아이디 : <input type="text" id="id"><br>
         비밀번호 : <input type="password" id="pw"><br>
         <br>
+        <div id="msg" style="display: none; color: red;"></div>
         <input type="button" id="login" value="로그인">
     </div>
 
