@@ -27,6 +27,7 @@
     <div id="wrap">
         <div class="div2">안쪽 div2</div>
         <div class="div3">안쪽 div3</div>
+        <input type="text" name="addr">
     </div>
 
     <div id="two" class="div3 div2">div2</div>
@@ -75,6 +76,10 @@
         // let child_div2 = document.getElementById("wrap").getElementsByClassName("div2");
         let child_div2 = parent_wrap.getElementsByClassName("div2");
         console.log(child_div2);
+
+        // // getElementsByName 이제 못씀 ㅠㅠㅠ
+        // let names = parent_wrap.getElementsByName("addr");
+        // console.log(names);
 
         // css 선택자로 선택하는 방법
         let qs = document.querySelector("div#wrap > div.div2");

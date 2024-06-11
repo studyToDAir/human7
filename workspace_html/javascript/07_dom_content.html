@@ -4,11 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        #view {
+            color: red;
+            background-color: blue;
+        }
+
+        [name=rad]:checked {
+            transform: scale(2);
+        }
+    </style>
 </head>
 <body>
     <div id="captain">
         <span>당선을  </span>    <span>    축하드립니다</span>
     </div>
+    <div id="view">
+        <span>원래 있던 글씨</span>
+    </div>
+    <div id="view2">
+        view2
+    </div>
+
+    id : <input type="password" id="id" value="미리적은글"><br>
+
+    <select id="select">
+        <option value="1">첫번째</option>
+        <option value="2">두번째</option>
+    </select>
+    <br>
+
+    <input type="radio" name="rad" value="1" checked="checked">라디오1
+    <input type="radio" name="rad" value="2">라디오2
+    <input type="radio" name="rad" value="3">라디오3
+
 
     <script>
         let cap = document.querySelector("#captain");
@@ -30,6 +59,87 @@
         cap.innerText = "<h1>a1</h1>  b1   c1";
 
         cap.innerHTML = "<h1>a1</h1>  b1   c1";
+
+        console.log(cap.innerHTML)
+        cap.innerHTML += "<h2>h2</h2>"
+
+        // <h3 id='subtitle'></h3>
+        // DOM을 만들기
+        let h3 = document.createElement("h3");
+        h3.setAttribute('id', 'subtitle');
+        h3.setAttribute('style', 'color: red;');
+        h3.innerText = "나중에 추가한 h3";
+
+        let view = document.querySelector("#view");
+
+        // 만들어진 DOM과 글씨를 넣을 수 있다
+        // 자식요소로 마지막에 추가
+        view.append(h3);
+        // 외않됨
+        // h3.innerText = "두번째 h3"
+        // view.append(h3);
+        view.append("<strong>글씨</strong>");
+        // DOM만 넣을 수 있다
+        view.appendChild(h3);
+
+        // 자식요소로 처음에 붙이기
+        view.prepend(h3);
+
+        // 다음 형제로 추가
+        view.after(h3);
+
+        // 이전 형제로 추가
+        view.before(h3);
+
+        // string을 dom으로 만들기
+        let html = '';
+        html += "<div>";
+        html += "    div안쪽";
+        html += "    <span>";
+        html += "        span안쪽";
+        html += "    </span>";
+        html += "</div>";
+        // innerHTML 써도 되고(그런데 덮어쓰기다)
+
+        // #Document 객체를 생성해서 <html>부터 싹 만들어 줌
+        let dom = new DOMParser().parseFromString(html, "text/html");
+        let view2 = document.querySelector("#view2");
+        view2.appendChild(dom.documentElement);
+
+        // style이 원래 css값을 저장하고 있지 않다
+        console.log(view.style.color);
+        // javascript로 지정하는 경우 반영도되고 그 값을 저장하고 있다
+        view.style.color = '#fff';
+        console.log(view.style.color);
+
+        // css에서 -로 연결된 문법(캐밥케이스)은 카멜케이스로 변경됐다
+        // background-color >>>> backgroundColor
+        view.style.backgroundColor = '#000';
+
+        // javascript의 style로 준 모든걸 덮어쓴다
+        view.style.cssText = 'font-size: 20px; border: 1px solid red;';
+
+        // form 요소들 input, select, textarea의 값은 .value로 가져온다
+        let input = document.querySelector("#id");
+        console.log(input.value);
+        
+        // select된 option의 value를 가져온다
+        let select = document.querySelector("#select");
+        console.log(select.value);
+        
+        // css 선택자로 체크 된 것만 가져오기
+        let radio1 = document.querySelector('[name=rad]:checked');
+        console.log(radio1.value);
+
+        // javascript의 프로퍼티 checked를 통해서 알 수도 있다
+        let radios = document.querySelectorAll('[name=rad]');
+        for(let i=0; i<radios.length; i++){
+            console.log(radios[i].checked)
+            if(radios[i].checked){
+                console.log('선택', radios[i].value)
+            }
+        }
+
     </script>
 </body>
 </html>

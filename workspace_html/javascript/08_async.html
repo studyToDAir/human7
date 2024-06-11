@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function fn1(){
+            console.log('fn1 실행');
+
+            fn2();
+        }
+        function fn2(){
+            // console.log('fn2 실행');
+            setTimeout(function(){
+                console.log('fn2 실행');
+            }, 0)
+
+            fn3();
+            fn3();
+            setTimeout(function(){
+                console.log('중간에 낀거');
+            }, 0)
+            fn3();
+            fn3();
+        }
+        function fn3(){
+            console.log('fn3 실행');
+        }
+
+        fn1();
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
