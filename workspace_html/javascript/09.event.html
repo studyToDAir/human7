@@ -5,6 +5,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <style>
+        #cursor {
+            width: 30px;
+            height: 33px;
+
+            position: absolute;
+            top:0;
+            left:0;
+
+            display: none;
+        }
+        #catTower {
+            border: 1px solid red;
+            width: 300px;
+            height: 300px;
+            margin: 50px;
+        }
+    </style>
+
     <script>
 
         const owner_id = 'admin';
@@ -76,6 +96,17 @@
                     }
                 })
 
+                
+            /*
+                로그인 버튼을 눌렀을때
+                id는 admin
+                password는 1234
+                인 경우 "로그인 되었습니다"
+                그 외에는 "아이디 또는 비밀번호를 확인하세요" 출력
+
+                id, password가 아무것도 안 적힌 경우 "..는 필수입니다" 출력
+            */
+
             document.querySelector("#login").addEventListener('click', function (event) {
                 console.log('로그인 버튼 클릭');
                 let id = document.querySelector("#id").value;
@@ -104,17 +135,56 @@
                 document.querySelector("#console").innerHTML = id;
             })
 
-            /*
-                로그인 버튼을 눌렀을때
-                id는 admin
-                password는 1234
-                인 경우 "로그인 되었습니다"
-                그 외에는 "아이디 또는 비밀번호를 확인하세요" 출력
 
-                id, password가 아무것도 안 적힌 경우 "..는 필수입니다" 출력
-            */
+        /*  버튼3에 
+            마우스가 들어갔을때(hover)
+            font-size를 20px로
+            마우스가 나갔을때
+            14px로 변경
+        */
+            // id가 btn3인 dom(html 태그)를 가져와서 변수에 담기
+            let newBtn3 = document.querySelector("#btn3");
+            newBtn3.addEventListener('mouseover', function(){
+                console.log('마우스 들어옴')
+                newBtn3.style.fontSize = 20 + 'px';
+            });
+            newBtn3.addEventListener('mouseout', function(evt){
+                console.log('마우스 나감')
+                newBtn3.style.fontSize = 14 + 'px';
+            })
 
+            // 앞에 아무것도 안쓰면 브라우저 전체에 적용되는 이벤트
+            addEventListener('mousemove', function(evt){
+                // console.log('마우스 움직임')
+            })
+
+            let catTower = document.querySelector('#catTower');
+            catTower.addEventListener('mousemove', function(evt){
+                // console.log('마우스 움직임')
+                // 화면에 보이는 영역 기준 x, y
+                
+                // 스크롤이 내려 왔더라도 그냥 지금 보이는 왼쪽 위 기준
+                // console.log(evt.x, evt.clientX)
+                
+                // 스크롤에 관계없이 문서 좌상단 기준
+                // console.log(evt.pageX)
+                
+                // 이벤트가 적용된 대상의 좌상단 기준
+                // console.log(evt.offsetX)
+
+                /*
+                    event.pageX를 left
+                    event.pageY를 top
+                    display를 보이게 해주기
+                */
+               let cursor = document.querySelector("#cursor");
+               cursor.style.left = evt.pageX + 'px';
+               cursor.style.top = evt.pageY + 'px';
+               cursor.style.display = "block";
+            })
         }
+
+
 
     </script>
 </head>
@@ -133,6 +203,11 @@
     </div>
 
     <div id="console"></div>
+
+    <img id="cursor" src="https://cdn.discordapp.com/attachments/1237222207395205138/1250271715414773780/image.png?ex=666a55c5&is=66690445&hm=db0a7d03382cf6c77bf7b73d4ebf377622d4bdcb293fa8f51512be88965cb450&">
+    <div id="catTower">
+
+    </div>
 </body>
 
 </html>
