@@ -34,6 +34,7 @@
                 // console.log(list.innerHTML)
                 // <input type="checkbox"> 할일 <input type="button" value="삭제"><br>
 
+                /*
                 // innerHTML 방식
                 // let html = '<input type="checkbox">'+ todo.value +'<input type="button" value="삭제"><br>';
                 let html = '';
@@ -65,13 +66,13 @@
 
                 _count++;
 
+                */
                 
-                /*
                 // append 방식
                 let div = document.createElement('div');
 
                 let html = '';
-                html += '   <input type="checkbox">';
+                html += '   <input type="checkbox" class="chk">';
                 html +=     todo.value;
                 html += '   <input type="button" class="del" value="삭제"><br>';
                 div.innerHTML = html;
@@ -80,9 +81,24 @@
                     console.log(event.target.parentNode.innerText);
                 })
 
+                div.querySelector(".chk").addEventListener('click', function(event){
+                    // // if(event.target.checked == false){
+                    // if( !event.target.checked ){
+                    //     document.querySelector("#all").checked = false;
+                    // }
+
+                    let count_chk_all = document.querySelectorAll(".chk").length;
+                    let count_chk = document.querySelectorAll(".chk:checked").length;
+                    if(count_chk_all == count_chk){
+                        document.querySelector("#all").checked = true;
+                    } else {
+                        document.querySelector("#all").checked = false;
+                    }
+
+                })
+
                 // 삭제 버튼등이 생기는 순간
                 list.prepend(div);
-                */
 
 
                 /*
@@ -101,6 +117,8 @@
                     }
                 }
                 */
+
+                todo.value = "";
             })
 
             document.querySelector("#all").addEventListener("click", function(){
@@ -112,7 +130,14 @@
                     list_chk[i].checked = isChecked;
                 }
             });
-           
+
+            document.querySelector("#delete").addEventListener("click", function(){
+                let list_checked = document.querySelectorAll(".chk:checked");
+                for(let i=0; i<list_checked.length; i++){
+                    list_checked[i].parentNode.remove();
+                }
+            });
+
         })
     </script>
 </head>
