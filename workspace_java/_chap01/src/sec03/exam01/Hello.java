@@ -62,9 +62,90 @@ public class Hello {
 //		int a1 = Integer.parseInt(car_cc);
 //		
 		
-		Scanner scanner = new Scanner(System.in);
-		int input = scanner.nextInt();
-		System.out.println(input);
+//		Scanner scanner = new Scanner(System.in);
+//		int input = scanner.nextInt();
+//		System.out.println(input);
+		
+		
+		int a2 = -1;
+		
+		a2 = a2 + 2;
+		
+		a2 += 2;
+		
+		a2 += 1;
+		a2++;
+		++a2;
+		a2--;
+		
+		a2 = 10;
+		int a3 = a2++;
+//		int a4 = ++a2;
+		System.out.println("a3 : "+ a3);
+		System.out.println("a2 : "+ a2);
+		
+		System.out.println("--------------");
+		a2 = 10;
+//		a3 = a2++ + 2;
+//		a3 = 2 + ++a2 + 1;
+		int a4 = 2 + a2++ + 1;
+		System.out.println("a4 : "+a4);
+		System.out.println("a2 : "+ a2);
+//		System.out.println("a3 : "+ a3);
+
+		
+		a2 = 10;
+		a3 = (a2++) + (a2);
+		
+		
+		a2 = 2;
+//		a3 = a2++ + ++a2 - --a2 - a2-- + --a2;		
+//		a3 = a2++ + ++a2 * (--a2 - a2--) + --a2;		
+		
+		System.out.println("a3 : "+ a3);
+		System.out.println("a2 : "+ a2);
+		
+//		System.out.println("a3 : "+ a3);
+		
+		
+		a2 = 2;
+//		a3 = a++ + a;
+		a3 = a + a+1;
+		
+		
+		
+		
+		
+//		System.out.println("--------------");
+//		a2 = 3;
+//		int b2 = a2++      +       ++a2;
+//		System.out.println(b2);
+		
+		
+		int[] a5 = {10,20,30,40,50};
+		
+		int b2 = 0;
+		System.out.println(a5[b2++]);
+		System.out.println(a5[b2++]);
+		System.out.println(a5[b2++]);
+		System.out.println(a5[b2++]);
+		System.out.println(a5[b2++]);
+		
+		
+		b2 = b2 + 1;
+		b2 = 1 + b2;
+		
+		b2 += 1;
+		b2++;
+		
+		
+//		if(  (3 < b2) < 6 ) {
+		
+		
+		
+		
+		
+		
 		
 	}
 

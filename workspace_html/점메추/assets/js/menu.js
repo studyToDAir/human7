@@ -85,14 +85,13 @@ function bind() {
         getLunch();
     });
 
-    // addEventListener('mousemove', function(event){
-    //     let cursor = document.querySelector('#cur1');
-    //     cursor.style.display = 'block';
-    //     console.log(event.pageY)
-    //     console.log(event.pageX)
-    //     cursor.style.top = event.pageY;
-    //     cursor.style.left = event.pageX;
-    // })
+    window.addEventListener('mousemove', function(event){
+        let cursor = document.querySelector('#cur1');
+        cursor.style.pointerEvents = 'none';
+        cursor.style.top = event.pageY-15 +'px';
+        cursor.style.left = event.pageX-15 +'px';
+        cursor.style.display = 'block';
+    })
 }
 let _count_select_max = 10;
 let _count_select = _count_select_max;

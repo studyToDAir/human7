@@ -254,6 +254,40 @@
                     }
                 });
             
+
+
+            document.querySelector("#btn4").addEventListener("click", function(){
+                let chks = document.querySelectorAll('.chk');
+                // for(let i=0; i<배열.length; i++)
+                // for(let index in 배열)
+                // for(let item of 배열)
+                // 배열.forEach( function(item){} )
+                
+                for(let dom of chks) {
+                    // dom = chks[0]
+                    // 모든 요소의 (프로퍼티property 중에서)체크 상태 점검
+                    if(dom.checked/* == true*/){
+                        console.log(dom.value, dom.checked);
+                    }
+                }
+
+                // css 선택자를 이용해서 체크 된 것만 가져오기
+                let chks2 = document.querySelectorAll('.chk:checked');
+                console.log(chks2.length);
+            })
+
+
+            // 모든 삭제 버튼에 클릭 이벤트 적용
+            // 삭제 버튼에는 모두 class del이 있음
+            let dels = document.querySelectorAll('.del')
+            for(let i=0; i<dels.length; i++){
+                dels[i].addEventListener('click', function(event){
+                    console.log(event.target);
+
+                    event.target.parentNode.remove();
+                })
+            }
+
         }
 
 
@@ -292,7 +326,30 @@
         <input id="keyword" type="text" name="query">
         <input type="submit" value="네이버 검색">
     </form>
+    
+    <input type="button" id="btn4" value="토핑확인"><br>
+    <input type="checkbox" class="chk" value="udon">우동사리<br>
+    <input type="checkbox" class="chk" value="cake">떡<br>
+    
+    <label>
+        <input type="checkbox" class="chk" value="china">
+        중국당면
+    </label><br>
+    
+    <input type="checkbox" id="bun" class="chk" value="china">
+    <label for="bun">분모자</label>
 
+
+    <div>
+        <span>우동사리</span> 
+        <button type="button" class="del">삭제1</button>
+    </div>
+    <div>
+        <span>떡</span> <button type="button" class="del">삭제2</button>
+    </div>
+    <div>
+        <span>중국당면</span> <button type="button" class="del">삭제3</button>
+    </div>
 </body>
 
 </html>
