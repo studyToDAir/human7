@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.addEventListener("load", function(){
+
+            document.querySelector("#same").addEventListener("click", function(event){
+
+                // event.target, event.currentTarget, this, document.querySelector("#same")
+                // 모두 같은 DOM
+
+                if( event.target.checked ){
+                    let name = document.getElementById("name");
+                    let tel = document.getElementById("tel");
+                    let addr = document.getElementById("addr");
+    
+                    console.log(name.value);
+                    console.log(tel.value);
+                    console.log(addr.value);
+    
+                    document.getElementById("name2").value = name.value;
+                    document.getElementById("tel2").value = tel.value;
+                    document.getElementById("addr2").value = addr.value;
+                } else {
+                    document.getElementById("name2").value = "";
+                    document.getElementById("tel2").value = "";
+                    document.getElementById("addr2").value = "";
+                }
+
+
+            })
+
+        })
+    </script>
+</head>
+<body>
+    <h1>실습</h1>
+    <div>
+        <h2>실습 1</h2>
+        <div>
+            주문 정보<br>
+            이름 : <input type="text" id="name"><br>
+            연락처 : <input type="text" id="tel"><br>
+            주소 : <input type="text" id="addr"><br>
+
+            <hr>
+            배송 정보<br>
+            <input type="checkbox" id="same"> 주문 정보와 배송 정보가 같습니다<br>
+            이름 : <input type="text" id="name2"><br>
+            연락처 : <input type="text" id="tel2"><br>
+            주소 : <input type="text" id="addr2"><br>
+
+        </div>
+    </div>
+</body>
+</html>
