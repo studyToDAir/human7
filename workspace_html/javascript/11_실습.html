@@ -16,6 +16,24 @@
         #thumbnail img {
             width: 100%;
         }
+
+        #color {
+            border: 1px solid red;
+            width: 300px;
+            height: 100px;
+        }
+        .red {
+            background-color: red;
+        }
+        .green {
+            background-color: green;
+        }
+        .blue {
+            background-color: blue;
+        }
+        .pink {
+            background-color: pink;
+        }
     </style>
     <script>
         window.addEventListener("load", function () {
@@ -24,6 +42,9 @@
             
             // 실습 2
             thumb();
+
+            // 실습 3
+            picker();
         });
 
         // 실습 1
@@ -60,6 +81,52 @@
 
                 let img_main = document.querySelector("#img_main");
                 img_main.setAttribute('src', event.target.getAttribute("src"));
+            })
+        }
+
+        function picker(){
+            document.querySelector("#빨강").addEventListener("click", function(){
+                let color = document.querySelector("#color");
+                // 클래스 추가
+                color.classList.add("red");
+            })
+            document.querySelector("#초록").addEventListener("click", function(){
+                let color = document.querySelector("#color");
+
+                // 클래스 삭제
+                color.classList.remove("red");
+                color.classList.remove("green");
+                color.classList.remove("blue");
+                color.classList.remove("pink");
+
+                // 클래스 추가
+                color.classList.add("green");
+            })
+
+            document.querySelector("#파랑").addEventListener("click", function(){
+                let color = document.querySelector("#color");
+
+                // 클래스 삭제
+                color.classList.remove("red");
+                color.classList.remove("green");
+                color.classList.remove("blue");
+                color.classList.remove("pink");
+
+                // 클래스 추가
+                color.classList.add("blue");
+            })
+
+            document.querySelector("#핑쿠").addEventListener("click", function(){
+                let color = document.querySelector("#color");
+
+                // 클래스 삭제
+                color.classList.remove("red");
+                color.classList.remove("green");
+                color.classList.remove("blue");
+                color.classList.remove("pink");
+
+                // 클래스 추가
+                color.classList.add("pink");
             })
         }
 
@@ -105,6 +172,17 @@
             </div>
         </div>
     </div>
+
+    <div>
+        <h2>실습 3</h2>
+        <div id="color">
+        </div>
+        <div>
+            <button type="button" id="빨강">빨강</button>
+            <button type="button" id="초록">초록</button>
+            <button type="button" id="파랑">파랑</button>
+            <button type="button" id="핑쿠">핑쿠</button>
+        </div>
 </body>
 
 </html>
