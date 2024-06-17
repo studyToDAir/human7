@@ -40,6 +40,21 @@
         .pink {
             background-color: pink;
         }
+
+        #game {
+            border: 1px solid red;
+            width: 500px;
+            height: 500px;
+
+            position: relative;
+        }
+        #game #char {
+            width: 100px;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
     </style>
     <script>
         window.addEventListener("load", function () {
@@ -59,6 +74,63 @@
             age();
 
             pizza();
+
+            game();
+
+            let lotto = [];
+
+            // // 첫번째 뽑기
+            // let tmp = parseInt(Math.random() * 45) + 1;
+            // console.log('tmp0', tmp)
+            // lotto.push(tmp);
+            // console.log(lotto)
+            
+            // // 두번째 뽑기
+            // do {
+            //     tmp = parseInt(Math.random() * 45) + 1;
+            //     console.log('tmp1', tmp)
+            // }while(lotto[0] == tmp);
+            // lotto.push(tmp);
+            // console.log(lotto)
+
+            // // 세번째 뽑기
+            // do {
+            //     tmp = parseInt(Math.random() * 45) + 1;
+            //     console.log('tmp2', tmp)
+            // }while(lotto[0] == tmp || lotto[1] == tmp);
+            // lotto.push(tmp);
+            // console.log(lotto);
+
+
+            lotto = [];
+            while(lotto.length != 6){
+
+                let isDup;
+                do {
+                    isDup = false;
+                    let tmp = parseInt(Math.random() * 45) + 1;
+                    console.log('tmp', tmp);
+
+                    // 이거 대신 배열의 indexOf 사용해도 됨
+                    for(let i=0; i<lotto.length; i++){
+                        if(lotto[i] == tmp){
+                            isDup = true;
+                            break;
+                        }
+                    }
+
+                    if(!isDup){
+                        lotto.push(tmp);
+                    }
+                }while(isDup)
+                console.log(lotto)
+            }
+
+            // 로또 퀴즈
+            // 지정한 자리를 제외하고 자동뽑기
+            // 예를들어 첫번째 6, 두번째 8 고정하고 나머지 자동선택
+            // 예를들어 두번째 5, 네번째 30, 다섯번째 35 고정하고 나머지 자동선택
+
         });
 
         // 실습 1
@@ -266,6 +338,40 @@
 
             })
         }
+
+
+        function game(){
+            let top = 0;
+            let left = 0;
+            document.querySelector("body").addEventListener("keyup", function(event){
+                // console.log(event.keyCode)
+                // up : 38
+                // right: 39
+                // down: 40
+                // left : 37
+                
+                if(event.keyCode == 39){ // 오른쪽 방향키
+                    left += 50;
+                    document.querySelector("#char").style.left = left+"px";
+                } else if(event.keyCode == 37){ // 왼쪽 방향키
+                    left -= 50;
+                    document.querySelector("#char").style.left = left+"px";
+                } else if(event.keyCode == 38){ // 위쪽 방향키
+                    top -= 50;
+                    document.querySelector("#char").style.top = top+"px";
+                } else if(event.keyCode == 40){ // 아래쪽 방향키
+                    top += 50;
+                    document.querySelector("#char").style.top = top+"px";
+                }
+
+
+                for(let i=0; i<50; i += 1){
+                    setTimeout(function(){
+                        document.querySelector("#char").style.left = 10*i+'px';
+                    }, 100*i )
+                }
+            })
+        }
     </script>
 </head>
 
@@ -371,6 +477,13 @@
             <input type="button" value="주문하기" id="order">
 
         </div>
+
+
+        <div id="game">
+            <img id="char" src="https://i.giphy.com/MGqYLloqVU93ndrFmT.webp">
+        </div>
+
+
     </div>
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 </body>
