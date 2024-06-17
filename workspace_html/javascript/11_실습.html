@@ -1,26 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        #img_main {
+            width: 300px;
+        }
+        #thumbnail {
+            display: flex;
+            width: 300px;
+        }
+        #thumbnail img {
+            width: 100%;
+        }
+    </style>
     <script>
-        window.addEventListener("load", function(){
+        window.addEventListener("load", function () {
+            // 실습 1
+            same();
+            
+            // 실습 2
+            thumb();
+        });
 
-            document.querySelector("#same").addEventListener("click", function(event){
+        // 실습 1
+        function same() {
+            document.querySelector("#same").addEventListener("click", function (event) {
 
                 // event.target, event.currentTarget, this, document.querySelector("#same")
                 // 모두 같은 DOM
 
-                if( event.target.checked ){
+                if (event.target.checked) {
                     let name = document.getElementById("name");
                     let tel = document.getElementById("tel");
                     let addr = document.getElementById("addr");
-    
+
                     console.log(name.value);
                     console.log(tel.value);
                     console.log(addr.value);
-    
+
                     document.getElementById("name2").value = name.value;
                     document.getElementById("tel2").value = tel.value;
                     document.getElementById("addr2").value = addr.value;
@@ -29,13 +50,22 @@
                     document.getElementById("tel2").value = "";
                     document.getElementById("addr2").value = "";
                 }
-
-
             })
+        }
 
-        })
+        function thumb(){
+            document.querySelector("#thumbnail").addEventListener("click", function(event){
+                // console.log(event.target);
+                // console.log( event.target.getAttribute("src") );
+
+                let img_main = document.querySelector("#img_main");
+                img_main.setAttribute('src', event.target.getAttribute("src"));
+            })
+        }
+
     </script>
 </head>
+
 <body>
     <h1>실습</h1>
     <div>
@@ -55,5 +85,26 @@
 
         </div>
     </div>
+    <div>
+        <h2>실습 2</h2>
+        <div>
+            <div>
+                <img id="img_main" src="https://i.namu.wiki/i/NWmuIT7JeiXWGXp4yiyJ61_R39fx5CBzos0_OJXo6dmDRQ-wkPE8oVjjj2-Sgc0j5Dt0pT7Aj-upAulruh1QpA.webp">
+            </div>
+
+            <div id="thumbnail">
+                <div>
+                    <img src="https://renew.terarosa.com:9000//product/330/thumb/thumb_330_a90a2181-3ae0-497f-9198-c8ac6c510440.png">
+                </div>
+                <div>
+                    <img src="https://i.namu.wiki/i/NWmuIT7JeiXWGXp4yiyJ61_R39fx5CBzos0_OJXo6dmDRQ-wkPE8oVjjj2-Sgc0j5Dt0pT7Aj-upAulruh1QpA.webp">
+                </div>
+                <div>
+                    <img src="https://cdn.ftoday.co.kr/news/photo/202309/308342_309298_1440.png">
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
+
 </html>
