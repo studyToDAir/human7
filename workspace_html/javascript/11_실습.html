@@ -9,10 +9,12 @@
         #img_main {
             width: 300px;
         }
+
         #thumbnail {
             display: flex;
             width: 300px;
         }
+
         #thumbnail img {
             width: 100%;
         }
@@ -22,15 +24,19 @@
             width: 300px;
             height: 100px;
         }
+
         .red {
             background-color: red;
         }
+
         .green {
             background-color: green;
         }
+
         .blue {
             background-color: blue;
         }
+
         .pink {
             background-color: pink;
         }
@@ -39,12 +45,20 @@
         window.addEventListener("load", function () {
             // 실습 1
             same();
-            
+
             // 실습 2
             thumb();
 
             // 실습 3
             picker();
+
+            // 실습 4
+            time();
+
+            // 실습 5
+            age();
+
+            pizza();
         });
 
         // 실습 1
@@ -74,8 +88,8 @@
             })
         }
 
-        function thumb(){
-            document.querySelector("#thumbnail").addEventListener("click", function(event){
+        function thumb() {
+            document.querySelector("#thumbnail").addEventListener("click", function (event) {
                 // console.log(event.target);
                 // console.log( event.target.getAttribute("src") );
 
@@ -84,13 +98,13 @@
             })
         }
 
-        function picker(){
-            document.querySelector("#빨강").addEventListener("click", function(){
+        function picker() {
+            document.querySelector("#빨강").addEventListener("click", function () {
                 let color = document.querySelector("#color");
                 // 클래스 추가
                 color.classList.add("red");
             })
-            document.querySelector("#초록").addEventListener("click", function(){
+            document.querySelector("#초록").addEventListener("click", function () {
                 let color = document.querySelector("#color");
 
                 // 클래스 삭제
@@ -103,7 +117,7 @@
                 color.classList.add("green");
             })
 
-            document.querySelector("#파랑").addEventListener("click", function(){
+            document.querySelector("#파랑").addEventListener("click", function () {
                 let color = document.querySelector("#color");
 
                 // 클래스 삭제
@@ -116,7 +130,7 @@
                 color.classList.add("blue");
             })
 
-            document.querySelector("#핑쿠").addEventListener("click", function(){
+            document.querySelector("#핑쿠").addEventListener("click", function () {
                 let color = document.querySelector("#color");
 
                 // 클래스 삭제
@@ -130,6 +144,129 @@
             })
         }
 
+        function time() {
+            let time = document.querySelector("#time");
+            // time은 div이고 그 안에 컨텐츠 영역에 글씨 쓰기
+            time.textContent = 'textContent';
+            time.innerText = 'innerText';
+            time.innerHTML = 'innerHTML';
+
+            time.innerText = '시 : 분 : 초';
+
+            let now = new Date();
+            let h = now.getHours();
+            let m = now.getMinutes();
+            let s = now.getSeconds();
+
+            let hms = h + "시 " + m + "분 " + s + "초";
+            time.innerText = hms;
+
+            // now.toISOString().split("T")[1]
+
+            // // 실시간(1초에 4번) 갱신
+            // setInterval(function () {
+            //     let now = new Date();
+            //     let h = now.getHours();
+            //     let m = now.getMinutes();
+            //     let s = now.getSeconds();
+
+            //     if (s < 10) {
+            //         s = "0" + s;
+            //     }
+
+
+            //     let hms = h + "시 " + m + "분 " + s + "초";
+            //     time.innerText = hms;
+            // }, 1000 / 4)
+
+            time_refresh();
+        }
+        function time_refresh(){
+            // console.log(1)
+            setTimeout(function () {
+                // console.log(2)
+                let now = new Date();
+                let h = now.getHours();
+                let m = now.getMinutes();
+                let s = now.getSeconds();
+
+                if (s < 10) {
+                    s = "0" + s;
+                }
+
+
+                let hms = h + "시 " + m + "분 " + s + "초";
+                let time = document.querySelector("#time");
+
+                hms += now.getFullYear()+"년 "
+
+                time.innerText = hms;
+
+                time_refresh();
+            }, 1000/4);
+        }
+
+        function age(){
+            document.querySelector("#calc").addEventListener("click", function(){
+
+                let year = document.querySelector("#year").value;
+                document.querySelector("#age").textContent =  new Date().getFullYear() - year + 1;
+                
+            })
+        }
+
+        function pizza(){
+            document.querySelector("#order").addEventListener("click", function(){
+
+                // 주문 총 금액
+                let total_price = 0;
+                let total_text = "";
+
+                // select (피자 종류)
+                let type = document.querySelector("#type");
+                // 선택된 option의 value 구하기
+                // console.log(type.value)
+                total_price += Number(type.value);
+
+                // select의 선택된 option 가져오기
+                let type_text = document.querySelector("#type option:checked").innerText
+                total_text += "피자 종류 : "+ type_text + ","
+                // console.log(type_text);
+
+                // 사이즈 선택
+                let size = document.querySelector("[name=size]:checked");
+                total_price += Number(size.value);
+                // console.log(size.value, total_price)
+                
+                // css 선택자로 글씨span 가져오기
+                // console.log( document.querySelector("[name=size]:checked + span").textContent );
+
+                // 부모로 올라갔다가 span으로 내려오기
+                // console.log( size.parentNode.querySelector("span").innerText );
+
+                // 같은 속성 값을 가진다는 아이디어로 가져오기
+                // console.log( document.querySelector("label[for="+  size.getAttribute("id")  +"]").innerText );
+
+                // console.log( size.getAttribute("data-name") );
+                total_text += "사이즈 : "+ size.getAttribute("data-name") +",";
+
+                // console.log(total_text)
+
+                total_text += "토핑 : "
+                let list_topping = document.querySelectorAll('.topping:checked');
+                for(let i=0; i<list_topping.length; i++){
+                    total_price += Number(list_topping[i].value);
+                    total_text += list_topping[i].getAttribute("data-topping") +", " ;
+                }
+
+                total_text += "요청사항 : " + document.querySelector("#request").value;
+
+                console.log("주문내역 : "+ total_text);
+                console.log("총 가격 : "+ total_price);
+
+
+            })
+        }
     </script>
 </head>
 
@@ -156,15 +293,18 @@
         <h2>실습 2</h2>
         <div>
             <div>
-                <img id="img_main" src="https://i.namu.wiki/i/NWmuIT7JeiXWGXp4yiyJ61_R39fx5CBzos0_OJXo6dmDRQ-wkPE8oVjjj2-Sgc0j5Dt0pT7Aj-upAulruh1QpA.webp">
+                <img id="img_main"
+                    src="https://i.namu.wiki/i/NWmuIT7JeiXWGXp4yiyJ61_R39fx5CBzos0_OJXo6dmDRQ-wkPE8oVjjj2-Sgc0j5Dt0pT7Aj-upAulruh1QpA.webp">
             </div>
 
             <div id="thumbnail">
                 <div>
-                    <img src="https://renew.terarosa.com:9000//product/330/thumb/thumb_330_a90a2181-3ae0-497f-9198-c8ac6c510440.png">
+                    <img
+                        src="https://renew.terarosa.com:9000//product/330/thumb/thumb_330_a90a2181-3ae0-497f-9198-c8ac6c510440.png">
                 </div>
                 <div>
-                    <img src="https://i.namu.wiki/i/NWmuIT7JeiXWGXp4yiyJ61_R39fx5CBzos0_OJXo6dmDRQ-wkPE8oVjjj2-Sgc0j5Dt0pT7Aj-upAulruh1QpA.webp">
+                    <img
+                        src="https://i.namu.wiki/i/NWmuIT7JeiXWGXp4yiyJ61_R39fx5CBzos0_OJXo6dmDRQ-wkPE8oVjjj2-Sgc0j5Dt0pT7Aj-upAulruh1QpA.webp">
                 </div>
                 <div>
                     <img src="https://cdn.ftoday.co.kr/news/photo/202309/308342_309298_1440.png">
@@ -172,7 +312,6 @@
             </div>
         </div>
     </div>
-
     <div>
         <h2>실습 3</h2>
         <div id="color">
@@ -183,6 +322,58 @@
             <button type="button" id="파랑">파랑</button>
             <button type="button" id="핑쿠">핑쿠</button>
         </div>
+    </div>
+
+    <div>
+        <h2>실습 4</h2>
+        <div id="time"></div>
+    </div>
+
+    <div>
+        <h2>실습 5</h2>
+        <div>
+            출생년도(예:2001) : <input type="text" id="year">
+            <input type="button" id="calc" value="나이계산">
+        </div>
+        <div id="age"></div>
+    </div>
+
+    <div>
+        <h2>실습 6</h2>
+        <div>
+            피자 종류 : 
+            <select id="type">
+                <option value="15000">시크릿가든(15000)</option>
+                <option value="20000">더히든시크릿(20000)</option>
+                <option value="25000">햄벅한새우(25000)</option>
+            </select>
+            <br>
+            사이즈 선택 :
+            <input type="radio" name="size" value="0" data-name="미디엄"><span>미디엄</span>
+            <label>
+                <input type="radio" name="size" checked="checked" value="3000" data-name="라지"><span>라지(+3000)</span>
+            </label>
+            
+            <input type="radio" name="size" id="fam" value="6000" data-name="패밀리">
+            <label for='fam'>패밀리(+6000)</label>
+            
+            <input type="radio" name="size" value="0" data-name="스몰">스몰
+            <br>
+            추가 토핑 :
+            <input type="checkbox" class="topping" value="1000" data-topping="미트토핑">미트토핑(1000)
+            <input type="checkbox" class="topping" value="2000" data-topping="베이컨">베이컨(2000)
+            <input type="checkbox" class="topping" value="3000" data-topping="치즈">치즈(3000)
+            <input type="checkbox" class="topping" value="3500" data-topping="페퍼로니">페퍼로니(3500)
+            <input type="checkbox" class="topping" value="4000" data-topping="카나디안햄">카나디안햄(4000)
+            <br>
+            요청사항 : 
+            <input type="text" id="request">
+            <br>
+            <input type="button" value="주문하기" id="order">
+
+        </div>
+    </div>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 </body>
 
 </html>
