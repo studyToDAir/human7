@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 배열 선언만 하는 방법
+        // 배열 : 값을 순서로 관리하는 방법
+        let array = [];
+
+        // json 선언만 하는 방법
+        // json : 값을 key로 관리하는 방법
+        let json = {};
+
+        // 값을 미리 알고 있는 경우의 json 사용법
+        json = {
+            "key" : "value",
+            "k" : "v",
+            k1 : 'v1',
+            "num" : 123,
+            "child" : {
+                "child_1" : "value-1"
+            },
+            "a1" : array,
+            "fn" : function(){
+                console.log('익명함수 실행');
+            }
+        };
+
+
+        // 꺼내는 방법
+        console.log(json);
+        console.log(""+json);
+
+        console.log('json.k', json.k);          // 방법 1:프로퍼티처럼 접근
+        console.log('json["k"]', json["k"]);    // 방법 2:배열처럼 접근
+        console.log('json[\'k\']', json['k']);
+        let 숫자 = "num";
+        console.log(json[숫자]) // 대괄호안에 문자가 들어간다는거에 착안해서
+                                // 변수에 담아서 사용할 수도 있다
+
+        // let a = json.child
+        // a.child_1
+        console.log(json.child.child_1);
+        console.log(json['child']['child_1']);
+        
+        json.a1.push(123);
+        json.a1.push(123);
+        console.log(json.a1);
+        
+        // let a = function(){
+        //     console.log('익명함수 실행');
+        // }
+        // a();
+        json.fn();
+
+        // 추가하는 방법
+        json.a = "b";
+        json.a = "b1";
+        json["c"] = "d";
+        console.log(json);
+        
+        // 키 삭제 방법
+        delete json.key;
+        console.log(json);
+
+        console.log(json.human);
+
+        // 모든 key를 가져오는 방법
+        let keys = Object.keys(json);
+        console.log('keys', keys)
+        // json[keys[0]]
+        // json[keys[1]]
+        for(let i=0; i<keys.length; i++){
+            console.log("키 : ", keys[i], "벨류 : ", json[keys[i]]);
+        }
+
+        // json을 문자열로 변환
+        let strJson = JSON.stringify(json);
+        console.log(strJson);
+
+        // json 문법으로 적힌 문자열을 json 객체로 변환
+        // json으로 이루어진 배열도 변환 가능
+        let json2 = JSON.parse(strJson);
+        console.log(json2);
+
+        let aJson = [];
+        let json3 = { "k1": "v1" };
+        let json4 = { "k2": "v2" };
+        aJson.push(json3);
+        aJson.push(json4);
+        console.log(aJson);
+
+        strJson = JSON.stringify(aJson);
+        console.log(strJson);
+
+        json2 = JSON.parse(strJson);
+        console.log(json2);
+
+        // json이나 json으로만 이루어진 배열이 아닌 경우
+        // {}이거나 [{}]의 형식이 아닌경우
+        // parse에서 오류남
+        JSON.parse("abc");
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

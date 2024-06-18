@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.addEventListener("load", function(){
+            document.querySelector("#btn").addEventListener("click", function(){
+                forecast();
+            });
+        })
+
+        function forecast(){
+            let url = "http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtFcst";
+            url += "?";
+            url += "serviceKey=Y9YdBWQ%2Bn363rvySEtgHZvR5xId%2B8dk24SE3nP1m5L5gnTdY0XcYecZcQOKlIO10v1WarYyUXty9uSJ4UYQ5lw%3D%3D";
+            url += "&";
+            url += "numOfRows=1000";
+            url += "&";
+            url += "pageNo=1";
+            url += "&";
+            url += "dataType=JSON";
+            url += "&";
+            url += "base_date=20240618";
+            url += "&";
+            url += "base_time=1530";
+            url += "&";
+            url += "nx=63";
+            url += "&";
+            url += "ny=110";
+            console.log(url)
+
+            let xhr = new XMLHttpRequest();
+            xhr.open("get", url);
+            xhr.send();
+            xhr.onload = function(){
+                let data = xhr.responseText;
+                // console.log(data);
+
+                let json = JSON.parse(data);
+                console.log(json);
+            }
+        }
+    </script>
+</head>
+<body>
+    <button type="button" id="btn">초단기예보조회</button>
+</body>
+</html>
