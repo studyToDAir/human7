@@ -10,8 +10,8 @@
         $(
             function(){
                 // 페이지 로딩이 끝나면 실행됨
-                init();
                 bind();
+                init();
             }
         );
 
@@ -42,10 +42,10 @@
             
             // $("#parent")[0].innerHTML = "";
             // $("#parent").html("");
-            $("#parent").empty();
+            // $("#parent").empty();
             
             // $("#parent")[0].remove();
-            $("#parent").remove();
+            // $("#parent").remove();
 
             // 클래스 속성 다루기
             $("#chk").addClass("c1");
@@ -83,6 +83,21 @@
             $("#input").css("border", "1px solid red");
 
 
+            // display: none 추가
+            $("#input").hide();
+            // display: none 제거
+            $("#input").show();
+
+            // 자식 요소 중에서 찾기
+            $("#parent").find(".c");
+
+            // 부모로 올라가기
+            $("#parent").parent();
+
+            // css 선택자 조상 중에 가장 가까운 것을 찾기 
+            $("#parent").parents(".grand");
+
+            $("#btn1").trigger("click");
         }
 
         function bind(){
@@ -105,14 +120,14 @@
     <h1>세번째</h1>
     <div id="parent">
         부모
-        <div>자식</div>
+        <div class="c">자식</div>
     </div>
 
     <input type="checkbox" id="chk" value="val1" data-human="값" checked="checked">
     <br>
     <input type="text" id="input" value="미리완성">\
     <br>
-    <input type="button" class="btn" value="버튼1"> 
+    <input type="button" class="btn" id="btn1" value="버튼1"> 
     <input type="button" class="btn" value="버튼2"> 
 </body>
 </html>

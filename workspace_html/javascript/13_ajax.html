@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+
     <script>
         window.addEventListener("load", function(){
 
@@ -13,6 +15,53 @@
 
             document.querySelector("#btn2").addEventListener("click", function(){
                 doAjaxDaum();
+            });
+
+            $("#btn3").off("click").on("click", function(){
+                let option = {
+                    "url": 'https://jsonplaceholder.typicode.com/users',
+                    "type": "get",
+                    "success": function(data){
+                        // 다녀오는걸 성공했을때 실행
+                        console.log('성공')
+                        console.log(data);
+                    },
+                    "error": function(data2){
+                        // 다녀오는게 실패하면 실행
+                        console.log('실패')
+                        console.log(data2);
+                    },
+                    "complete": function(data){
+                        // 성공 여부에 관계없이 무조건 마지막에 실행
+                        console.log('complete');
+                        console.log(data);
+                    }
+                };
+                $.ajax(option);
+            })
+
+            $("#btn4").off("click").on("click", function(){
+                let option = {
+                    "url": 'https://jsonplaceholder.typicode.com/users',
+                    "type": "get"
+                }
+                $.ajax(option)
+                .done(function(data){
+                    // json에 success 키에 지정하는 것과 같음
+                    // 다녀오는걸 성공했을때 실행
+                    console.log('성공')
+                    console.log(data);
+                }).fail(function(data2){
+                    // json에 error 키에 지정하는 것과 같음
+                    // 다녀오는게 실패하면 실행
+                    console.log('실패')
+                    console.log(data2);
+                }).always(function(data){
+                    // json에 complete 키에 지정하는 것과 같음
+                    // 성공 여부에 관계없이 무조건 마지막에 실행
+                    console.log('complete');
+                    console.log(data);
+                })
             });
         });
 
@@ -75,6 +124,8 @@
 </head>
 <body>
     <button type="button" id="btn">ajax 실행</button><br>
-    <button type="button" id="btn2">daum.net</button>
+    <button type="button" id="btn2">daum.net</button><br>
+    <button type="button" id="btn3">jQuery ajax 방법 1</button><br>
+    <button type="button" id="btn4">jQuery ajax 방법 2</button><br>
 </body>
 </html>
