@@ -22,9 +22,9 @@
             url += "&";
             url += "dataType=JSON";
             url += "&";
-            url += "base_date=20240618";
+            url += "base_date=20240619";
             url += "&";
-            url += "base_time=1530";
+            url += "base_time=1130";
             url += "&";
             url += "nx=63";
             url += "&";
@@ -36,15 +36,71 @@
             xhr.send();
             xhr.onload = function(){
                 let data = xhr.responseText;
-                // console.log(data);
+                console.log(data);
 
                 let json = JSON.parse(data);
                 console.log(json);
-            }
+
+
+                let info_view = document.querySelector("#info_view");
+
+                let item = json.response.body.items.item;
+                for(let i=0; i<item.length; i++){
+
+                    if(item[i].category == "T1H"){
+                        console.log(item[i])
+
+                        let html = `<tr>
+                                        <td>${item[i].category}</td>
+                                        <td>${item[i].fcstDate}</td>
+                                        <td>${item[i].fcstTime}</td>
+                                        <td>${item[i].fcstValue}</td>
+                                    </tr>`;
+                        info_view.innerHTML += html;
+
+                    } else if(item[i].category == "REH"){
+                        console.log(item[i])
+                        
+                        let html = `<tr>
+                                        <td>${item[i].category}</td>
+                                        <td>${item[i].fcstDate}</td>
+                                        <td>${item[i].fcstTime}</td>
+                                        <td>${item[i].fcstValue}</td>
+                                    </tr>`;
+                        info_view.innerHTML += html;
+                    }
+
+                }
+
+                /*
+                let filtered = item.filter(function(info){
+                    // return info.category == "RN1" || info.category == "REH"
+                    
+                    let result = false;
+                    if(info.category == "RN1"){
+                        result = true;
+                    } else if(info.category == "REH"){
+                        result = true;
+                    }
+
+                    return result;
+                })
+                console.log(filtered);
+                */
+
+
+            }   
         }
     </script>
 </head>
 <body>
     <button type="button" id="btn">초단기예보조회</button>
+    <table>
+        <tbody id="info_view">
+
+
+            
+        </tbody>
+    </table>
 </body>
 </html>
