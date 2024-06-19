@@ -43,7 +43,8 @@
 
 
                 let info_view = document.querySelector("#info_view");
-
+                info_view.innerHTML = '';
+                
                 let item = json.response.body.items.item;
                 for(let i=0; i<item.length; i++){
 
@@ -97,9 +98,6 @@
     <button type="button" id="btn">초단기예보조회</button>
     <table>
         <tbody id="info_view">
-
-
-            
         </tbody>
     </table>
 </body>

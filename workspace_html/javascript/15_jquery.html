@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script>
+        // jQuery();
+        $(
+            function(){
+                // 페이지 로딩이 끝나면 실행됨
+                init();
+                bind();
+            }
+        );
+
+        function init(){
+            // $() 함수에 전달인자로 글씨를 주게되면 css 선택자로 인식합니다.
+            // 그 글씨가 만약 tag라면 createElement 해줌
+            let list_h1 = $("h1");
+            console.log(list_h1);   // list_h1 : jQuery 배열 객체
+            console.log(list_h1[0]);// 순수한pure javascript
+            
+            // // querySelectorAll로 가져온 배열을 반복하면서
+            // // innerText = "싹다변경"을 실행 한 것과 같다
+            // let _list_h1 = document.querySelectorAll("h1")
+            // for(let i=0; i<_list_h1.length; i++){
+            //     _list_h1[i].innerText = "싹다변경";
+            // }
+
+            // text함수는 innerText
+            // $("h1").text("싹다변경");
+            // html함수는 innerHTML
+            $("h1").html("<a href='javascript:void(0)'>싹다변경</a>");
+
+            console.log($("#parent")); // 하나짜리 배열로 나온다
+
+            $("#parent").append("<div>자식2</div>");
+            $("#parent").prepend("<div>자식3</div>");
+            $("#parent").append($("h1")[0]);
+            
+            // $("#parent")[0].innerHTML = "";
+            // $("#parent").html("");
+            $("#parent").empty();
+            
+            // $("#parent")[0].remove();
+            $("#parent").remove();
+
+            // 클래스 속성 다루기
+            $("#chk").addClass("c1");
+            $("#chk").addClass("c1");
+            $("#chk").addClass("c2");
+            $("#chk").removeClass("c2");
+            $("#chk").toggleClass("c2");
+
+            if($("#chk").hasClass("c1")){
+                console.log('c1 있음')
+                $("#chk").removeClass("c1");
+            } else {
+                $("#chk").addClass("c1");
+            }
+
+            // 속성 조작
+            // attr
+            // 전달인자 하나인 경우 : getAttribute
+            console.log( $("#chk").attr('data-human') );
+            // 전달인자 두개인 경우 : setAttribute
+            $("#chk").attr('data-human2', '값2');
+            $("#chk").removeAttr("data-human");
+            console.log( $("#chk").data('human2') );
+
+            $("#chk").data('human3', '숨긴데이터');
+            console.log( $("#chk").data('human3') );
+
+            console.log( $("#chk").prop("checked") );
+            $("#chk").prop("checked", false);
+
+            // console.log($("#input")[0].value)
+            console.log($("#input").val())
+            $("#input").val("바꾼값");
+
+            $("#input").css("border", "1px solid red");
+
+
+        }
+
+        function bind(){
+
+            $(".btn").on("click", function(event){
+                // console.log(event.target);
+                console.log(this);
+            });
+            $(".btn").off("click").on("click", function(event){
+                // console.log(event.target);
+                console.log(this);
+            });
+
+        }
+    </script>
+</head>
+<body>
+    <h1>첫번째</h1>
+    <h1>두번째</h1>
+    <h1>세번째</h1>
+    <div id="parent">
+        부모
+        <div>자식</div>
+    </div>
+
+    <input type="checkbox" id="chk" value="val1" data-human="값" checked="checked">
+    <br>
+    <input type="text" id="input" value="미리완성">\
+    <br>
+    <input type="button" class="btn" value="버튼1"> 
+    <input type="button" class="btn" value="버튼2"> 
+</body>
+</html>
