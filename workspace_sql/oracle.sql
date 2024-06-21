@@ -280,5 +280,48 @@ select
         '*')
 from emp;
 
+-- 문자열 더하기
+select empno || ename || '님'
+from emp;
 
+-- trim : 앞 뒤 공백 제거
+-- 글씨 사이의 공백은 제거하지 않음
+select 
+    '   a b c      ',
+    trim('   a b c      ')
+from dual;
+
+-- 실습문제 1
+select
+    '210621-3123456',
+    '210621-3******'
+from dual;
+
+select
+    '210621-3' || '******',
+    substr('210621-3123456', 1, 8) || '******',
+    rpad('210621-3', 14, '*'),
+    rpad(
+        substr('210621-3123456', 1, 8), 
+        length('210621-3123456'), 
+        '*'
+    )
+from dual;
+
+-- 실습문제2
+-- 사원의 이름을 앞에 두자리만 보이게 하고 나머지는 *로 표시
+-- 정답의 예 : WARD -> WA**, MARTIN -> MA****
+-- 쉬운버전 : 앞 두글자 + '***'
+
+-- 실습문제3
+-- 앞글자 하나만
+-- WARD -> *ARD, MARTIN -> *ARTIN
+
+-- 실습문제4
+-- 두번째 글씨만 *
+-- WARD -> W*RD, MARTIN -> M*RTIN
+
+-- 실습문제5
+-- 가운데 글씨만 *
+-- MARTIN -> MA*TIN, SCOTT -> SC*TT
 
