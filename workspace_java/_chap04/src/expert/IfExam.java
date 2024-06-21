@@ -83,6 +83,38 @@ public class IfExam {
 			System.out.println(1234);
 		}
 		
+//		7 % 3 == 1;
+		
+		double rand = Math.random();
+//		double 답1 = rand * 100.0;
+		// 0 <= rand < 100.0
+//		(int)답1;
+//		System.out.println( (int)-3.5 );
+		
+		
+		// 5 ~ 7까지 렌덤으로 뽑고 싶을때
+		// 5 + (0 ~ 2)
+//		int a02 = (int) rand * 3;
+//		int a02 = (int)(rand * 3);
+//		int 결과 = a02 + 5;
+		int 결과 = (int)(Math.random() * 3) + 5;
+		
+		int b02 = (int)(Math.random() * 6849684) % 3; // 0 ~ 9999
+		
+		
+//		3,2,2,1
+		
+		
+		
+		// 내 주머니에 1만원있음
+		// 술을 마시고 싶어요
+		// 소주 : 5000
+		// 과자 : 2000
+		// 컵라면 : 1500
+		// 족발 : 35000
+		
+		
+		
 	}
 
 }

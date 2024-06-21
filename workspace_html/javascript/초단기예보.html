@@ -49,49 +49,28 @@
                 info_view.innerHTML = '';
                 
                 let item = json.response.body.items.item;
-                for(let i=0; i<item.length; i++){
 
-                    if(item[i].category == "T1H"){
-                        console.log(item[i])
+                let T1H = item.filter(function(info){
+                    return info.category == "T1H"
+                })
+                let REH = item.filter(function(info){
+                    return info.category == "REH"
+                })
+                let RN1 = item.filter(function(info){
+                    return info.category == "RN1"
+                })
 
-                        let html = `<tr>
-                                        <td>${item[i].category}</td>
-                                        <td>${item[i].fcstDate}</td>
-                                        <td>${item[i].fcstTime}</td>
-                                        <td>${item[i].fcstValue}</td>
-                                    </tr>`;
-                        info_view.innerHTML += html;
 
-                    } else if(item[i].category == "REH"){
-                        console.log(item[i])
-                        
-                        let html = `<tr>
-                                        <td>${item[i].category}</td>
-                                        <td>${item[i].fcstDate}</td>
-                                        <td>${item[i].fcstTime}</td>
-                                        <td>${item[i].fcstValue}</td>
-                                    </tr>`;
-                        info_view.innerHTML += html;
-                    }
+                for(let i=0; i<T1H.length; i++){
+                    let html = `<tr>
+                                    <td>${T1H[i].fcstTime.slice(0,2)}시</td>
+                                    <td>${T1H[i].fcstValue}도</td>
+                                    <td>${REH[i].fcstValue}%</td>
+                                    <td>${RN1[i].fcstValue}</td>
+                                </tr>`;
+                    info_view.innerHTML += html;
 
                 }
-
-                /*
-                let filtered = item.filter(function(info){
-                    // return info.category == "RN1" || info.category == "REH"
-                    
-                    let result = false;
-                    if(info.category == "RN1"){
-                        result = true;
-                    } else if(info.category == "REH"){
-                        result = true;
-                    }
-
-                    return result;
-                })
-                console.log(filtered);
-                */
-
 
             }   
         }
@@ -100,6 +79,12 @@
 <body>
     <button type="button" id="btn">초단기예보조회</button>
     <table>
+        <thead>
+            <th>시간</th>
+            <th>기온</th>
+            <th>습도</th>
+            <th>강수확률</th>
+        </thead>
         <tbody id="info_view">
 
         </tbody>
