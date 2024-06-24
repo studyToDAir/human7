@@ -439,13 +439,75 @@ case
     when mgr is null then '0000'
     else
         case substr(mgr, 1, 2)
-            when 75 then '5555'
-            when 76 then '6666'
+            when '75' then '5555'
+            when '76' then '6666'
             else to_char(mgr)
         end
-end
+end chg_mgr_2,
+case 
+    when mgr is null then '0000'
+    when mgr like '75%' then '5555'
+    when mgr like '76%' then '6666'
+    else to_char(mgr)
+end chg_mgr_3,
+case
+    when mgr like '75%' then '5555'
+    when mgr like '76%' then '6666'
+    else nvl(to_char(mgr), '0000')
+end chg_mgr_4,
+case
+    when substr(mgr, 2, 1) in ('5','6','7','8') 
+        then lpad(substr(mgr, 2, 1), 4, substr(mgr, 2, 1))
+    else nvl(to_char(mgr), '0000')
+end chg_mgr_5,
+case
+when mgr is null then '0000'
+when mgr >= 7500 and mgr < 7600 then '5555'
+when mgr >= 7600 and mgr < 7700 then '6666'
+when mgr >= 7700 and mgr < 7800 then '7777'
+when mgr >= 7800 and mgr < 7900 then '8888'
+else to_char(mgr)
+end as chg_mgr_6
 from emp;
 
+-- count처럼 null은 제외됨
+-- count는 *를 많이 씀
+select sum(sal), count(sal), count(*), count(comm) from emp;
 
+select count(*) from emp where ename like '%A%';
 
+select max(sal), max(ename), min(hiredate), min(comm), avg(sal) from emp;
 
+-- 부서별 급여 총합, 평균 표시
+-- deptno, sum, avg
+select sum(sal), avg(sal) from emp
+where deptno = 10
+union all
+select sum(sal), avg(sal) from emp
+where deptno = 20
+union all
+select sum(sal), avg(sal) from emp
+where deptno = 30;
+
+-- distinct처럼 중복을 제거해줌, 분류해줌
+-- select에는 group by한 것이나 다중행 함수(집계 함수)만 올 수 있음
+select deptno, avg(sal), sum(sal), count(*) from emp
+group by deptno;
+
+select deptno, empno, sum(sal), count(*) from emp
+group by deptno, empno;
+
+select deptno, job, count(*)
+from emp
+--where count(*) >= 2
+group by deptno, job
+order by deptno, job;
+
+-- having : group by에서만 사용된다.
+-- 집계함수를 조건으로 걸고 싶은 경우에 사용
+select deptno, job, avg(sal)
+from emp
+group by deptno, job
+--    having avg(sal) >= 2000;
+--    having count(*) >= 2;
+    having deptno = 20;
