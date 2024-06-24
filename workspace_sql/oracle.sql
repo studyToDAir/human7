@@ -312,16 +312,140 @@ from dual;
 -- 사원의 이름을 앞에 두자리만 보이게 하고 나머지는 *로 표시
 -- 정답의 예 : WARD -> WA**, MARTIN -> MA****
 -- 쉬운버전 : 앞 두글자 + '***'
+select 
+    ename,
+    substr(ename, 1, 2),
+    rpad( substr(ename, 1, 2), length(ename), '*'),
+    substr(ename, 1, 2) || '***'
+from emp;
+
 
 -- 실습문제3
 -- 앞글자 하나만
 -- WARD -> *ARD, MARTIN -> *ARTIN
 
+select '*' || substr(ename, 2) from emp;
+
 -- 실습문제4
 -- 두번째 글씨만 *
 -- WARD -> W*RD, MARTIN -> M*RTIN
+select substr(ename, 1, 1) || '*' || substr(ename, 3) from emp;
 
 -- 실습문제5
 -- 가운데 글씨만 *
 -- MARTIN -> MA*TIN, SCOTT -> SC*TT
+select
+    length(ename)/2 + 1,
+    substr(ename, 1, length(ename)/2-0.5)|| '*' || substr(ename, length(ename)/2 + 1.5 )
+from emp;
+
+select 
+    trunc(1234.5678),
+    trunc(1234.5678, 2),
+    trunc(1234.5678, -2),
+    trunc(-12.34)
+from dual;
+
+select
+    ceil(3.14),
+    floor(3.14),
+    ceil(-3.14),
+    floor(-3.14)
+from dual;
+
+-- sysdate : 지금 오라클 pc의 시간이 나옵니다
+-- 강사 pc는 9시간 차이 난다(영국 0시 기준 한국 +9시)
+-- 날짜 정보 중 일부만 select로 표시 됨
+select sysdate, sysdate+1, sysdate-1 from dual;
+
+-- 컬럼에 +를 적으면 모두 숫자로 변경해서 적용 함
+-- || 숫자도 문자로 적용
+select
+    to_char(sysdate+(9/24), 'yyyy"년" MM"월" dd"일"  hh24"시" mi"분" ss"초"')
+from dual;
+
+select 
+    sysdate - to_date('2024-05-07', 'yyyy-mm-dd')
+from dual;
+
+
+select
+    to_char(to_date('2024-05-07', 'yyyy-mm-dd'), 'yyyy"년" MM"월" dd"일"  hh24"시" mi"분" ss"초"')
+from dual;
+
+select 
+    comm, 
+    nvl(comm, -1),
+    sal,
+    sal + comm,
+    sal + nvl(comm, 0)
+from emp;
+
+select * from emp
+where comm = 0 or comm is null;
+
+select * from emp
+where nvl(comm, 0) = 0;
+
+select
+    case
+        when 
+            comm is null 
+            then
+--                'N/A'
+                0
+        else
+--            to_char(comm)
+--            '' || comm
+            comm
+    end new_comm
+from emp;
+
+-- Q2
+select empno, ename, sal,
+trunc(sal / 21.5, 2) as day_pay,
+round((sal / 21.5) / 8, 1) time_pay1,
+trunc(sal / 21.5, 2) / 8 time_pay2
+from emp;
+
+-- Q3
+select empno, ename, hiredate,
+to_char( add_months(hiredate, 3), 'yyyy-mm-dd') r_job_0,
+next_day(add_months(hiredate, 3), 2) r_job_1,   -- 일욜1, 월욜2,..., 토욜7
+comm,
+nvl( to_char(comm), 'N/A'),
+to_char(null),
+case
+    when comm is null then 'N/A'
+    else to_char(comm)
+end,
+decode(comm, 
+    null, 'N/A',
+    comm)   -- decode는 to_char 안써도 알아서 해줌
+from emp;
+
+-- Q4
+select empno, ename, mgr,
+case
+    when mgr is null then '0000'
+    else
+        case
+            when substr(mgr, 1, 2) = 75 then '5555'
+            when substr(mgr, 1, 2) = 76 then '6666'
+            else to_char(mgr)
+        end
+end chg_mgr_1,
+case 
+    when mgr is null then '0000'
+    else
+        case substr(mgr, 1, 2)
+            when 75 then '5555'
+            when 76 then '6666'
+            else to_char(mgr)
+        end
+end
+from emp;
+
+
+
 
