@@ -511,3 +511,117 @@ group by deptno, job
 --    having avg(sal) >= 2000;
 --    having count(*) >= 2;
     having deptno = 20;
+
+-- 212p.
+-- q1
+select 
+    deptno, floor(avg(sal)) avg_sal, max(sal) as max_sal, min(sal) min_sal, count(*) cnt
+from emp
+group by deptno;
+
+-- q2
+select job, count(*)
+from emp
+--where count(*) >= 3
+group by job
+    having count(*) >= 3
+;
+
+
+
+
+/* 5 */ select job, count(*) cnt
+/* 1 */ from emp
+/* 2 */ where sal > 1000
+/* 3 */ group by job
+/* 4 */ having count(*) >= 3
+/* 6 */ order by cnt desc;
+
+select * from dept;
+
+select * 
+from emp, dept
+order by empno;
+
+select 14 * 4 from dual;
+
+select /*emp.ename*/ ename, /*emp.loc*/dept.loc, /*deptno,*/ emp.deptno
+from emp, dept
+where emp.deptno = dept.deptno
+order by empno;
+-- 테이블 두개 이상 조회할때 관계를 꼭 알려줘야 원하는 정보만 출력된다
+-- 전체 테이블 수 - 1개의 조건이 적당하다
+
+select EnAmE
+from eMp e, dept d
+--where e.deptno = d.deptno;
+where E.deptno = d.deptno;
+
+
+select e.ename from emp e;
+
+-- *와 컬럼을 같이 쓰는 경우 *에 테이블을 지정해줘야 한다.
+select ename, e.*, d.*
+from eMp e, dept d
+--where e.deptno = d.deptno;
+where E.deptno = d.deptno;
+
+select ename, emp.* from emp;
+
+select * from salgrade;
+
+select *
+from emp e, salgrade s
+where e.sal >= s.losal and e.sal <= s.hisal;
+
+select * from emp;
+
+select e1.empno, e1.ename, e1.mgr, e2.empno, e2.ename
+from emp e1, emp e2
+where e1.mgr = e2.empno;
+
+-- using에는 둘다 같은 컬럼명이 있는 경우만 쓸 수 있다
+select *
+from emp join dept using (deptno);
+
+select *
+from emp join dept on (emp.deptno = dept.deptno);
+
+select *
+from emp e1 join emp e2 on(e1.mgr = e2.empno);
+
+-- left outer join이란? 왼쪽 테이블을 모두 출력하는걸 보장해준다
+select *
+from emp e1 left outer join emp e2 on(e1.mgr = e2.empno);
+
+-- quiz 1
+-- empno, ename, dname, loc 출력 : 결과 14줄
+select empno, ename, dname, loc
+from emp, dept
+where emp.deptno = dept.deptno;
+
+select empno, ename, dname, loc
+from emp join dept using (deptno);
+
+select empno, ename, dname, loc
+from emp left outer join dept on(emp.deptno = dept.deptno);
+
+-- quiz 2
+-- 사번, 이름, 부서명, 급여등급을 출력 : 결과 14줄
+select e.empno, e.ename, d.dname, s.grade
+  from emp e, dept d, salgrade s
+ where e.deptno = d.deptno
+   and (e.sal >= s.losal and e.sal <= s.hisal);
+
+select e.empno, e.ename, d.dname, s.grade
+from salgrade s , emp e join dept d using (deptno)
+where (e.sal >= s.losal and e.sal <= s.hisal);
+
+select e.empno, e.ename, d.dname, s.grade
+from emp e
+left outer join dept d on (e.deptno = d.deptno)
+left outer join salgrade s on (e.sal >= s.losal and e.sal <= s.hisal);
+
+-- quiz 3
+-- 매니저 보다 월급이 높은 사원의 이름, 급여, 매니저 이름, 매니저 급여
+
