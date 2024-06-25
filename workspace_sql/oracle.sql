@@ -581,7 +581,7 @@ from emp e1, emp e2
 where e1.mgr = e2.empno;
 
 -- using에는 둘다 같은 컬럼명이 있는 경우만 쓸 수 있다
-select *
+select deptno /*emp.deptno 못씀*/
 from emp join dept using (deptno);
 
 select *
@@ -598,7 +598,8 @@ from emp e1 left outer join emp e2 on(e1.mgr = e2.empno);
 -- empno, ename, dname, loc 출력 : 결과 14줄
 select empno, ename, dname, loc
 from emp, dept
-where emp.deptno = dept.deptno;
+where emp.deptno = dept.deptno
+order by emp.deptno;
 
 select empno, ename, dname, loc
 from emp join dept using (deptno);
@@ -623,5 +624,31 @@ left outer join dept d on (e.deptno = d.deptno)
 left outer join salgrade s on (e.sal >= s.losal and e.sal <= s.hisal);
 
 -- quiz 3
--- 매니저 보다 월급이 높은 사원의 이름, 급여, 매니저 이름, 매니저 급여
+-- 상사 보다 월급이 높은 사원의 이름, 급여, 상사 이름, 매니저 급여
+select e1.ename, e1.sal, e1.mgr, e2.empno, e2.sal
+from emp e1, emp e2
+where e1.mgr = e2.empno
+and e1.sal > e2.sal;
+
+-- q1
+select emp.deptno, dept.dname, emp.empno, emp.ename, emp.sal from emp, dept
+where emp.deptno = dept.deptno
+and sal > 2000
+order by deptno;
+
+-- q2
+select d.deptno, d.dname, floor(avg(e.sal)), max(e.sal), min(e.sal), count(*)
+from emp e left outer join dept d on (e.deptno = d.deptno)
+group by d.deptno, d.dname;
+
+-- q3
+select *
+from dept d left outer join emp e on (e.deptno = d.deptno)
+order by d.deptno
+;
+select sal from emp where ename = 'JONES';
+
+select * from emp
+where sal > (select sal from emp where ename = 'JONES');
+
 

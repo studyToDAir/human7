@@ -1,0 +1,48 @@
+select 출력할 것 들
+from 테이블(들)
+where 조건
+order by 정렬1이 중복되는게 있을때 정렬2가 적용되는 원리
+group by 같은 것 끼리 묶어줌
+having : group by된 조건을 이용하는 where같은 것
+
+/* 5 */ select job, count(*) cnt
+/* 1 */ from emp
+/* 2 */ where sal > 1000
+/* 3 */ group by job
+/* 4 */ having count(*) >= 3
+/* 6 */ order by cnt desc;
+
+
+not 결과를 반대로 만들어 줌
+in 일치하면서 or 조건
+like %뭐든지(심지어 없어도) OK
+     _어떤 글자든 딱 한글자
+is null 'null'은 =으로 구별할 수 없다
+is not null
+
+union all 위와 아래 sql을 합쳐줌(컬럼의 타입이 위아래 같아야 한다)
+
+upper 대문자로
+lower 소문자로 (like에서 대소문자 구분없이 검색할때 딱좋다)
+length
+substr 글씨 자르기(원본, 시작점, 개수)
+replace 바꾸기(원본, 바꿀대상, 바꿀글씨)
+lpad, rpad 채우기(원본, 글씨길이, 채울문자)
+trim 앞뒤 공백 제거
+ceil 올림
+floor 내림 (음수일때 주의)
+
+sysdate 현재 시각
+to_char 문자로 변경(형식을 줄 수 있다)
+to_date 글씨를 날짜로
+nvl 오라클전용 null 처리
+case when then else end 조건절
+
+count 개수 세기
+
+조인join
+1. from에 테이블, 테이블
+2. join using (동일한 컬럼명 일때만 가능)
+3. left outer join on(합성 조건)
+
+
