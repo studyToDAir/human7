@@ -651,4 +651,189 @@ select sal from emp where ename = 'JONES';
 select * from emp
 where sal > (select sal from emp where ename = 'JONES');
 
+-- 평균 급여보다 많이 받는 사람들
+select * from emp
+where sal > (select avg(sal) from emp);
+-- BLAKE씨 보다 높은 연봉을 받는 사람들
+select * from emp
+where sal > (select sal from emp where ename = 'BLAKE')
+;
+-- JONES씨와 같은 job을 가지고 있는 사원들
+select * from emp
+where job = (select job from emp where ename = 'JONES');
+
+select * from emp
+where sal in (
+    select max(sal) from emp group by deptno
+);
+
+select *
+from (
+    select * from emp where deptno = 10
+);
+
+select rownum, emp.*
+from emp
+--where rownum = 2;
+order by ename;
+
+select rownum, e.*
+from (
+    select * from emp order by ename
+) e
+;
+
+select job, count(*) from emp
+group by job
+having count(*) >= 3;
+
+select *
+from   (select job, count(*) cnt from emp
+        group by job)
+where cnt >= 3;
+
+with e10 as (
+    select * from emp where deptno = 10
+)
+select * from e10;
+
+-- 262p.
+-- q1
+select job, empno, ename, sal, deptno, dname
+from emp join dept using (deptno)
+where job = (select job from emp where ename = 'ALLEN')
+order by sal desc, ename;
+
+-- q2
+-- 평균 급여 출력
+-- 평균 급여보다 높은 사람들 출력
+select * from emp e, dept d, salgrade s
+where
+    e.deptno = d.deptno
+    and e.sal >= s.losal and e.sal <= s.hisal
+    and sal > (select avg(sal) from emp)
+order by sal desc, empno;
+
+-- q3
+select empno, ename, job, e.deptno, dname, loc
+from emp e
+left outer join dept d on (e.deptno = d.deptno)
+where e.deptno = 10
+and job not in (select job
+                from emp
+                where deptno = 30);
+
+/*
+select empno, ename, job, deptno, dname, loc
+from emp join dept using (deptno)
+where deptno = 10 and not (job in (select job from emp where deptno = 30));
+*/
+
+-- q4
+select empno, ename, sal, grade 
+from emp e
+left outer join salgrade s 
+on(e.sal >= s.losal and e.sal <= s.hisal)
+where sal > (select max(sal) from emp where job='SALESMAN');
+
+-- 12장
+select * from emp;
+desc emp;
+select * from salgrade;
+
+create table emp_ddl (
+    empno number(4),    -- 숫자 네자리
+    ename varchar2(10), -- 10 바이트
+    job varchar2(9),    -- 제한보다 적은 글씨가 적히면 글씨 만큼의 공간만 차지
+    mgr number(4),
+    hiredate date,
+    sal number(7, 2),   -- 2는 소수점 둘째자리까지 기록할 수 있다
+    comm number(7,2),
+    deptno number(2)
+);
+
+select * from emp_ddl;
+desc emp_ddl;
+
+create table dept_ddl
+as select * from dept;
+
+select * from dept_ddl;
+
+create table emp_ddl_30
+as select empno, ename, sal, deptno from emp where deptno = 30;
+
+select * from emp_ddl_30;
+
+select * from emp
+where 1 <> 1;
+
+create table emp_alter
+as select * from emp;
+
+select * from emp_alter;
+
+alter table emp_alter
+add hp varchar2(20);
+
+
+alter table emp_alter
+rename column hp to tel;
+
+alter table emp_alter
+modify empno number(5);
+
+desc emp_alter;
+
+-- 크기가 커지는건 가능(줄어드는건 불가능)
+alter table emp_alter
+modify empno number(4);
+
+alter table emp_alter
+drop column tel;
+
+select * from emp_alter;
+
+rename emp_alter to emp_rename;
+
+select * from emp_rename;
+
+truncate table emp_rename;
+
+drop table emp_rename;
+
+-- 10장
+create table dept_temp
+as select * from dept;
+
+select * from dept_temp;
+
+insert into dept_temp (deptno, dname, loc)
+values (50, 'DATABASE', 'SEOUL');
+
+insert into dept_temp
+values (60, 'network', 'Busan');
+
+-- 테이블명 뒤에 ()를 생략하면 모든 컬럼
+insert into dept_temp
+values ('network', 60, 'Busan');
+
+
+insert into dept_temp
+values (70, '웹', null);
+select * from dept_temp;
+
+-- ''도 null로 보이는데 그래도 null이라고 쓰자
+-- java에서 읽을때 ''는 null로 인식하지 않기 때문에.
+insert into dept_temp
+values (80, 'mobile', '');
+
+-- 컬럼을 생략하면 자동으로 null이 들어간다
+insert into dept_temp(deptno, loc)
+values (90, '인천');
+
+select * from dept_temp where loc is null;
+
+
+
 
