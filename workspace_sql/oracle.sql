@@ -834,6 +834,133 @@ values (90, '인천');
 
 select * from dept_temp where loc is null;
 
+create table emp_temp
+as select * from emp;
+
+select * from emp_temp;
+
+insert into emp_temp (empno, ename, hiredate)
+values (9999, '홍길동', '2001/01/02');
+
+insert into emp_temp (empno, ename, hiredate)
+values (1111, '성춘향', '2001-02-03');
+
+insert into emp_temp (empno, ename, hiredate)
+values (2111, '이순신', to_date('2002-03-04', 'yyyy-mm-dd'));
+
+insert into emp_temp (empno, ename, hiredate)
+values (3111, '심청이', sysdate);
+
+insert into emp_temp
+select * from emp where deptno = 10;
+
+select * from emp_temp;
+
+create table dept_temp2
+as select * from dept;
+
+select * from dept_temp2;
+
+update dept_temp2
+set loc = 'seoul';
+
+rollback;
+
+
+-- update 하기전에 select로 where 조건이 정확한지 확인하고
+-- where를 그대로 복사해서 update에 붙여넣도록 하자
+update dept_temp2
+set loc = 'SEOUL', dname = 'DATAbase'
+where deptno = 40;
+
+select * from dept_temp2
+where deptno = 40;
+
+create table emp_temp2
+as select * from emp;
+
+select * from emp_temp2;
+
+select * from emp_temp2
+where job = 'MANAGER';
+
+delete emp_temp2
+where job = 'MANAGER';
+
+-- emp_temp2에서
+-- 급여가 1000이하인 사원의
+-- 급여를 3% 인상
+-- sal * 1.03
+select 
+    ename, sal, sal*1.03 
+from emp_temp2
+where sal <= 1000;
+
+update emp_temp2
+set sal = sal*1.03
+where sal <= 1000;
+
+delete emp_temp2;
+
+select * from emp_temp2;
+
+rollback;
+
+select * from dict;
+select * from user_tables;
+
+select * from USER_CONSTRAINTS;
+
+-- index 색인
+-- 오름차순, 내림차순 따로 관리
+create index idx_emp_sal
+on emp( sal );
+select * from user_indexes;
+
+drop index idx_emp_sal;
+
+-- 강제 hint
+select /*+ index(idx_emp_sal) */
+* from emp e
+order by empno desc;
+
+-- plan
+-- sql developer에서는 상단 세번째 아이콘 "계획설명"
+
+create index idx_emp_empno_desc
+on emp( empno desc );
+
+select max(empno)+1 from emp_temp2;
+
+insert into emp_temp2 (
+    empno, 
+    ename
+) values ( 
+    (select max(empno)+1 from emp_temp2), 
+    '신입이2'
+);
+select * from emp_temp2;
+
+-- 시퀀스 sequence
+create table tb_user (
+    user_id number,
+    user_name varchar2(30)
+);
+select * from tb_user;
+
+create sequence seq_user;
+
+select seq_user.nextval from dual;
+select seq_user.currval from dual;
+
+insert into tb_user (user_id, user_name)
+values (seq_user.nextval, '유저명1');
+insert into tb_user (user_id, user_name)
+values (seq_user.nextval, '유저명2');
+
+insert into tb_user (user_id, user_name)
+values (seq_user.nextval, '유저명3');
+select * from tb_user;
 
 
 
