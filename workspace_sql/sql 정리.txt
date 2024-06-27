@@ -45,4 +45,29 @@ count 개수 세기
 2. join using (동일한 컬럼명 일때만 가능)
 3. left outer join on(합성 조건)
 
+with
+select문을 미리 만들어서 별칭을 붙이고 테이블처럼 사용한다
+
+서브쿼리
+select안에 또다른 select를 사용할 수 있다
+select의 결과를 활용할 수 있는 곳에서는 아무데나 사용 가능하다
+
+DDL 자료 정의어 - 구조 자체를 조작
+create 만들기
+alter 수정하기
+- add 컬럼+타입 추가
+- rename 컬럼명 수정
+- modify 컬럼 타입 수정
+- drop 컬럼 삭제
+drop 지우기
+rename 테이블명 변경
+truncate 테이블 내용 지우기
+commit이 자동으로 된다
+
+DML 자료 조작어
+(select도 DML임)
+insert 자료 추가(삽입)
+update 자료 수정 !where 주의하자
+delete 자료 삭제 !where 주의하자
+
 

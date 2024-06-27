@@ -71,6 +71,134 @@ public class ForExam {
 			
 			System.out.println(i);
 		}
+		
+		
+		
+		int sum = 0;
+		boolean isTrue = true;
+		for(int i2=1; isTrue; i2++) {
+			isTrue = i2<=100;
+			sum = sum + i2;
+		}
+		System.out.println(sum);
+		
+		
+		int i3=1, i4=2;
+//		int i4;
+		
+		for(int i5=3; i5<=7; i5++) {
+			System.out.println(i5);
+		}
+		
+		// 시작조건
+		// 반복되는거 : 컨트롤+V하고 안바꾸는거
+		// 반복되지 않는 것의 규칙
+		// 종료조건 : 개수가 정해진 경우 for
+		//			  언제 끝날지 잘 모를때 while
+		System.out.println(2);
+		System.out.println(4);
+		System.out.println(4+2);
+		System.out.println(4+2+2);
+		
+		int b = 2;
+
+		System.out.println(b);
+		b = b + 2;
+		
+		System.out.println(b);
+		b = b + 2;
+		
+		if(b <= 10) {
+			System.out.println(b);
+			b = b + 2;
+		}
+		if(b <= 10) {
+			System.out.println(b);
+			b = b + 2;
+		}
+		if(b <= 10) {
+			System.out.println(b);
+			b = b + 2;
+		}
+		if(b <= 10) {
+			System.out.println(b);
+			b = b + 2;
+		}
+		if(b <= 10) {
+			System.out.println(b);
+			b = b + 2;
+		}
+		if(b <= 10) {
+			System.out.println(b);
+			b = b + 2;
+		}
+		if(b <= 10) {
+			System.out.println(b);
+			b = b + 2;
+		}
+		if(b <= 10) {
+			System.out.println(b);
+			b = b + 2;
+		}
+		if(b <= 10) {
+			System.out.println(b);
+			b = b + 2;
+		}
+		if(b <= 10) {
+			System.out.println(b);
+			b = b + 2;
+		}
+		if(b <= 10) {
+			System.out.println(b);
+			b = b + 2;
+		}
+		if(b <= 10) {
+			System.out.println(b);
+			b = b + 2;
+		}
+		if(b <= 10) {
+			System.out.println(b);
+			b = b + 2;
+		}
+		if(b <= 10) {
+			System.out.println(b);
+			b = b + 2;
+		}
+		if(b <= 10) {
+			System.out.println(b);
+			b = b + 2;
+		}
+		if(b <= 10) {
+			System.out.println(b);
+			b = b + 2;
+		}
+		if(b <= 10) {
+			System.out.println(b);
+			b = b + 2;
+		}
+		if(b <= 10) {
+			System.out.println(b);
+			b = b + 2;
+		}
+		if(b <= 10) {
+			System.out.println(b);
+			b = b + 2;
+		}
+		if(b <= 10) {
+			System.out.println(b);
+			b = b + 2;
+		}
+		if(b <= 10) {
+			System.out.println(b);
+			b = b + 2;
+		}
+		
+		
+		
+		for(int i5=2; i5<=10; i5 = i5 + 2) {
+			System.out.println(i5);
+		}
+		
 	}
 
 }
