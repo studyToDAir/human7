@@ -1026,7 +1026,7 @@ create table dept_fk (
     deptno1 number primary key,
     dname varchar2(14)
 );
--- foreign key
+-- foreign key, FK, 외래키, 참조키
 -- 대상이 되는 테이블의 컬럼과 같은 타입으로 지정해야 한다
 -- 컬럼명은 서로 달라도 관계 없다(보통 같게 한다)
 -- 대상이 되는 컬럼은 PK여야 한다
@@ -1036,7 +1036,13 @@ create table emp_fk (
     deptno number references dept_fk(deptno1)
     -- deptno number references dept_fk -- 만약 컬럼 같다면 컬럼명 생략 가능
 );
+create table emp_fk2 (
+    empno number primary key,
+    ename varchar2(10),
+    deptno number,
 
+    foreign key(deptno) references dept_fk(deptno1)
+);
 insert into dept_fk
 values(100, '1강의실');
 
@@ -1051,3 +1057,21 @@ truncate table dept_fk;
 
 delete emp_fk;
 update dept_fk set deptno1 = 101;   
+
+create table table_default(
+    login_id varchar2(20),
+    login_pwd varchar2(20),
+    tel varchar2(20) default '000-0000'
+);
+
+insert into table_default
+values ('id', 'pw', '010-1233-4567');
+insert into table_default (login_id, login_pwd)
+values ('id2', 'pw2');
+select * from table_default;
+
+
+
+
+
+
