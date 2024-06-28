@@ -962,5 +962,92 @@ insert into tb_user (user_id, user_name)
 values (seq_user.nextval, '유저명3');
 select * from tb_user;
 
+create sequence seq_test
+start with 10000    -- 시작 숫자(기본값: 1)
+increment by 100;   -- 증감 숫자(기본값: 1)
 
+-- nextval을 한번도 사용하지 않은 경우 
+-- currval 사용 못함
+select seq_test.currval from dual;
+select seq_test.nextval from dual;
 
+-- primary key, PK, 주요키, 중요키, 기본키
+-- not null + unique 조건
+-- 생성과 동시에 index도 생성해줌
+-- create table에서는 primary key를 딱 하나만 지정 가능
+-- 두개 이상의 컬럼을 primary key 지정 하려면 alter, primary key 사용
+create table table_pk(
+    login_id varchar2(20) primary key,
+    login_pwd varchar2(20) not null,
+    tel varchar2(20)
+);
+select * from user_constraints
+where table_name = 'TABLE_PK3';
+
+select * from user_indexes;
+
+create table table_pk2(
+    login_id varchar2(20) constraint pk_table_pk2 primary key,
+    login_pwd varchar2(20) constraint nn_table_pk2 not null,
+    tel varchar2(20)
+);
+
+insert into table_pk (login_id, login_pwd, tel)
+values (null, null, null);
+
+insert into table_pk (login_id, login_pwd, tel)
+values ('id', null, null);
+
+insert into table_pk (login_id, login_pwd, tel)
+values ('id', 'pw', null);
+insert into table_pk (login_id, login_pwd, tel)
+values ('id', 'pw', null);
+
+insert into table_pk (login_pwd, tel)
+values ('pw', null);
+
+create table table_pk3(
+    login_id varchar2(20),
+    login_pwd varchar2(20),
+    tel varchar2(20),
+    
+    primary key (login_id, login_pwd)
+);
+select * from user_constraints
+where table_name = 'TABLE_PK3';
+
+insert into table_pk3
+values ('id1', 'pw1', null);
+insert into table_pk3
+values ('id1', 'pw2', null);
+select * from table_pk3;
+
+create table dept_fk (
+    deptno1 number primary key,
+    dname varchar2(14)
+);
+-- foreign key
+-- 대상이 되는 테이블의 컬럼과 같은 타입으로 지정해야 한다
+-- 컬럼명은 서로 달라도 관계 없다(보통 같게 한다)
+-- 대상이 되는 컬럼은 PK여야 한다
+create table emp_fk (
+    empno number primary key,
+    ename varchar2(10),
+    deptno number references dept_fk(deptno1)
+    -- deptno number references dept_fk -- 만약 컬럼 같다면 컬럼명 생략 가능
+);
+
+insert into dept_fk
+values(100, '1강의실');
+
+insert into emp_fk values(1, '이름', 101); -- 저쪽에 없으니까 에러
+insert into emp_fk values(1, '이름', 100);
+
+update emp_fk set deptno = 101;
+-- emp_fk에서 100을 참조하고있어서 수정,삭제 불가
+update dept_fk set deptno1 = 101;   
+delete dept_fk;
+truncate table dept_fk;
+
+delete emp_fk;
+update dept_fk set deptno1 = 101;   
