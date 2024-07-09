@@ -5,7 +5,7 @@ public class Account {
 
 	String bankName;
 	long money = 0;
-	boolean isDebug = false;
+	boolean isDebug = true;
 	
 	Account(String bankName){
 		this.bankName = bankName;
@@ -29,7 +29,9 @@ public class Account {
 	 * @return void
 	 */
 	void income(long money) {
-		System.out.println("입금 : 받은돈 : "+ money);
+		if(isDebug) {
+			System.out.println("입금 : 받은돈 : "+ money);
+		}
 		if(money > 0) {
 			this.money += money;
 		}
@@ -45,9 +47,9 @@ public class Account {
 	 * @return void
 	 */
 	void outcome(long money) {
-		System.out.println("출금 : 받은돈 : "+ money);
 
 		if(isDebug) {
+			System.out.println("출금 : 받은돈 : "+ money);
 			System.out.println("money > 0 : "+ (money > 0));
 			System.out.println("this.money >= money : "+ (this.money >= money));
 		}
