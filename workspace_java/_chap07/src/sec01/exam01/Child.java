@@ -6,15 +6,18 @@ public class Child extends Parent{
 	// overshadow
 	String name = "Child의 name";
 	
-	// 기본생성자
+//	// 기본생성자
+//	public Child() {
+//		// 부모 생성자를 호출한는 것
+//		// 맨 첫줄에 있어야만 한다
+//		super();
+//	}
+	
 	public Child() {
-		// 부모 생성자를 호출한는 것
-		// 맨 첫줄에 있어야만 한다
 		super("");
 	}
 	
 //	Child(){
-////		super();
 //		System.out.println("Child 기본 생성자");
 //	}
 	
@@ -33,6 +36,8 @@ public class Child extends Parent{
 	}
 	
 	void printName() {
+		setName("abc");
+		getName();
 		System.out.println("this.name : "+ this.name);
 		System.out.println("super.name : "+ super.name);
 	}
