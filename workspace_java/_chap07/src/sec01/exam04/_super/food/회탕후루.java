@@ -1,39 +1,24 @@
 package sec01.exam04._super.food;
 
-public class Food {
+public class 회탕후루 {
 	
-	int a = 10;
-	
-	Food(){
-		System.out.println("Food 생성자 실행");
-	}
-
-	/*
-	 *  이름name
-		가격price
-		주재료recipe
-		종류type
-	 */
 	String name;
 	int price;
 	String recipe;
 	String type;
 	
-	/*
-	 *  먹는다eat()
-		주문한다order()
-		요리한다cook()
-	 */
-	int eat() {
-		System.out.println(this.name +" 먹는다");
-		return (int)(Math.random()*5)+1;	// 별점
+	회탕후루(){
+		this.name = "회탕후루";
+		this.price = 20000;
+		this.recipe = "회 + 설탕";
+		this.type = "간식";
 	}
 	
-	/**
-	 * 주문 기능
-	 * @param int money 지불하는 금액
-	 * @return int 거스름돈
-	 */
+//	int eat() {
+//		System.out.println(this.name +" 먹는다");
+//		return (int)(Math.random()*5)+1;	// 별점
+//	}
+	
 	int order(int money) {
 		int change = 0;	// 거스름돈
 		
@@ -47,11 +32,6 @@ public class Food {
 		return change;
 	}
 	
-	/**
-	 * 
-	 * @param int master 요리 숙련도
-	 * @return String 조리 결과
-	 */
 	String cook(int master) {
 		if(master > 7) {
 			return "기가막히게 잘됨";
@@ -61,4 +41,9 @@ public class Food {
 			return "나 혼자 먹자";
 		}
 	}
+	
+	void goGarbage() {
+		System.out.println("에잇 버리자");
+	}
+	
 }
