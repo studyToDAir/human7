@@ -22,4 +22,9 @@ public class PaikCoffee extends Cafe {
 			System.out.println("가격은 "+ price +"원 입니다.");
 		}
 	}
+	
+	
+	String sell사라다빵() {
+		return "사라다빵";
+	}
 }
