@@ -1,5 +1,7 @@
 package sec01.exam04._super.food;
 
+import java.util.Scanner;
+
 public class FoodExam {
 
 	public static void main(String[] args) {
@@ -27,6 +29,9 @@ public class FoodExam {
 //		if(rank < 3) {
 //			food2.goGarbage();
 //		}
+		
+		
+
 	}
 	
 }
