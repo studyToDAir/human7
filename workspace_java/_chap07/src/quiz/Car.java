@@ -5,7 +5,7 @@ public class Car {
 	String brand = null;
 	int speed;
 	
-	void drive(){
+	public void drive(){
 	    System.out.println("운전을 시작합니다");
 	}
 	

@@ -7,7 +7,7 @@ public class Martin extends Car {
 	}
 
 	@Override
-	void drive(){
+	public void drive(){
 	    System.out.println("마틴 부릉 부릉 부르릉");
 	}
 	

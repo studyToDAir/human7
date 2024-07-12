@@ -7,7 +7,7 @@ public class Gwagen extends Car {
 	}
 
 	@Override
-	void drive(){
+	public void drive(){
 	    System.out.println("지바겐이 출발한다 드르릉");
 	}
 	
