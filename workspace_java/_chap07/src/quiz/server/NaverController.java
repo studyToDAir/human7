@@ -9,10 +9,9 @@ public class NaverController {
 	NaverController(){
 		this.naverService = new NaverService();
 	}
-	
-	void setNaverService(NaverService naverService){
-		this.naverService = naverService;
-	}
+//	void setNaverService(NaverService naverService){
+//		this.naverService = naverService;
+//	}
 	
 	String doGet(){
 		return naverService.getEmp();

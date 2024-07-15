@@ -3,9 +3,13 @@ package quiz.server;
 public class Naver {
 
 	NaverController naverController;
-	void setNaverController(NaverController naverController) {
-		this.naverController = naverController;
+	
+	Naver(){
+		this.naverController = new NaverController();
 	}
+//	void setNaverController(NaverController naverController) {
+//		this.naverController = naverController;
+//	}
 	
 	String doService(String method) {
 		

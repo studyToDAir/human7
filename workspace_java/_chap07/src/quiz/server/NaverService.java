@@ -8,10 +8,9 @@ public class NaverService {
 	NaverService(){
 		this.naverDAO = new NaverDAO();
 	}
-	
-	void setNaverDAO(NaverDAO naverDAO) {
-		this.naverDAO = naverDAO;
-	}
+//	void setNaverDAO(NaverDAO naverDAO) {
+//		this.naverDAO = naverDAO;
+//	}
 	
 	String getEmp(){
 		System.out.println("서비스의 getEmp 실행");
