@@ -1,5 +1,9 @@
 package sec01.exam01;
 
+class Tv2{
+	
+}
+
 public class Tv implements RemoteControl{
 	int volume;
 
@@ -30,5 +34,5 @@ public class Tv implements RemoteControl{
 		
 		System.out.println("TV 현재 볼륨 : "+ this.volume);
 	}
-
+	
 }
