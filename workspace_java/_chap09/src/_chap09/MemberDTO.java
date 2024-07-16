@@ -1,5 +1,7 @@
 package _chap09;
 
+import java.util.Objects;
+
 public class MemberDTO {
 
 	String name;
@@ -23,4 +25,23 @@ public class MemberDTO {
 		return "MemberDTO [name=" + name + ", age=" + age + "]";
 	}
 	
+	
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(age, name);
+	}
+	
+	
+	// 
+	@Override
+	public boolean equals(Object obj) {
+		MemberDTO m = (MemberDTO)obj;
+		return this.name.equals(m.name) && this.age == m.age;
+	}
+	
 }
+
+
+
+

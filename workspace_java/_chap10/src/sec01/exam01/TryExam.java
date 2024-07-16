@@ -24,6 +24,15 @@ public class TryExam {
 			tt.human(3);
 
 			
+		} catch (HumanException he) {
+			
+			String message = he.getMessage();
+			if("EC05".equals(message)) {
+				System.out.println("5 미만을 입력하셨군요. 확인해주세요");
+			} else if("EC10".equals(message)) {
+				System.out.println("10 초과해서 입력하셨군요. 확인해주세요");
+			}
+			
 		} catch (Exception e) {
 			System.out.println("오류발생");
 			System.out.println(e);

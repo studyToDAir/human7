@@ -16,8 +16,13 @@ public class OrderExam {
 		m1.setName("최민수");
 		m1.setAge(20);
 		
-		m2.setName("박춘보");
-		m2.setAge(22);
+		m2.setName("최민수");
+		m2.setAge(20);
+		
+//		m1 == m2
+		if(m1.equals(m2)) {
+			System.out.println("같습니다");
+		}
 		
 		m3.setName("차수");
 		m3.setAge(21);

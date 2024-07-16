@@ -22,7 +22,7 @@ public class ThrowsTest {
 		throw new NumberFormatException("글씨");
 	}
 	
-	void human(int e) throws HumanException{
+	void human(int e) throws HumanException, Exception{
 		System.out.println("human 실행 : e : "+ e);
 		
 		if(e < 5) {
@@ -34,3 +34,23 @@ public class ThrowsTest {
 		}
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
