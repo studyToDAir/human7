@@ -1,5 +1,7 @@
 package sec01.exam01;
 
+//import java.lang.*;
+
 public class TryExam {
 
 	public static void main(String[] args) {
@@ -12,7 +14,7 @@ public class TryExam {
 //		a[100] = 3;	// ArrayIndexOutOfBoundsException
 
 //			String s2 = "20a";
-			String s2 = "20";
+			java.lang.String s2 = "20";
 			int age = 0;
 
 			age = Integer.parseInt(s2); // NumberFormatException
