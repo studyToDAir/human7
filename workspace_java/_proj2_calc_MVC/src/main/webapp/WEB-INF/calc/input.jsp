@@ -32,6 +32,10 @@
 	<input type="password" name="pw1" value="pw2"><br>
 	<input type="hidden" name="hidden1" value="hidden2"><br>
 	
+	<div name="a" value="a1">
+		<span name="b" value="b1">하이</span>
+	</div>
+	
 	<input type="radio" name="radio1" value="radio2">라디오2<br>
 	<input type="radio" name="radio1" value="radio3">라디오3<br>
 	
@@ -57,5 +61,10 @@
 
 	<button type="submit">SEND-get</button>
 </form>
+
+
+전달 받은 값 : ${param.text }
+
+
 </body>
 </html>
