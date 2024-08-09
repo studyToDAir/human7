@@ -18,7 +18,19 @@
 	${ list1[0]["title"] }
 	<hr>
 	123${null }456
-	
-	
+	<hr>
+	<style>
+		div {
+			border: 1px solid red;
+			padding: 10px;
+			margin: 10px;
+		}
+	</style>
+	<div>
+		제목 : ${ list1[0].title }, 시간 : ${ list1[0].dueDate }
+	</div>
+	<div>
+		제목 : ${ list1[1].title }, 시간 : ${ list1[1].dueDate }
+	</div>
 </body>
 </html>

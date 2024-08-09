@@ -28,7 +28,6 @@ public class TodoService {
 			list.add(dto);
 		}
 		
-		
 		return list;
 		
 	}

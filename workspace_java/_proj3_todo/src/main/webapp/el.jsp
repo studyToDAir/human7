@@ -57,6 +57,12 @@
 	\${ empty "글씨" } : ${ empty "글씨" }<br>
 	\${ empty null } : ${ empty null }<br>
 	\${ empty "" } : ${ empty "" }<br>
+<hr>
+	\${ param.a } : ${ param.a }<br>
+	\${ paramValues.a } : ${ paramValues.a }<br>
+	\${ paramValues.a[0] } : ${ paramValues.a[0] }<br>
+	\${ paramValues.a[1] } : ${ paramValues.a[1] }<br>
+	\${ paramValues.a[100] } : ${ paramValues.a[100] }<br>
 </body>
 </html>
 
