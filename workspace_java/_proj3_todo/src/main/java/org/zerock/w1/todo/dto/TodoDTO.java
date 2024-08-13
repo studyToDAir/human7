@@ -1,16 +1,16 @@
 package org.zerock.w1.todo.dto;
 
-import java.sql.Date;
+import java.time.LocalDate;
 
 public class TodoDTO {
 
-	private int tno;
-	private String title;
-	private Date dueDate;
-	private boolean finished;
+	private int tno;			// 고유 번호 todo number
+	private String title;		// 할 일
+	private LocalDate dueDate;		// 할 시간
+	private boolean finished;	// 했는지 여부
 	
 	public int getTno() {
-		return tno;
+		return this.tno;
 	}
 	public void setTno(int tno) {
 		this.tno = tno;
@@ -21,10 +21,10 @@ public class TodoDTO {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public Date getDueDate() {
+	public LocalDate getDueDate() {
 		return dueDate;
 	}
-	public void setDueDate(Date dueDate) {
+	public void setDueDate(LocalDate dueDate) {
 		this.dueDate = dueDate;
 	}
 	public boolean isFinished() {
