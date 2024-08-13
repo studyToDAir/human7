@@ -1,6 +1,6 @@
 package org.zerock.w1.todo.service;
 
-import java.time.LocalDate;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,13 +23,24 @@ public class TodoService {
 			TodoDTO dto = new TodoDTO();
 			dto.setTno(i);
 			dto.setTitle("todo..."+i);
-			dto.setDueDate(LocalDate.now());
+			dto.setDueDate(new Date(System.currentTimeMillis()));
 			
 			list.add(dto);
 		}
 		
 		return list;
 		
+	}
+	
+	public TodoDTO get(int tno1) {
+		TodoDTO dto1 = new TodoDTO();
+		
+		dto1.setTno(tno1);
+		dto1.setTitle(tno1+"번째 글");
+		dto1.setDueDate(new Date(System.currentTimeMillis()));
+		dto1.setFinished(true);
+		
+		return dto1;
 	}
 	
 }
