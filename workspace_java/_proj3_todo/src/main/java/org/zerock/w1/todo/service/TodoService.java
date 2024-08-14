@@ -54,6 +54,15 @@ public class TodoService {
 		return dto1;
 	}
 	
+	public int remove(int tno) {
+		TodoDAO dao = new TodoDAO();
+		return dao.deleteOne(tno);
+	}
 	
-	
+	public int modify(TodoDTO todoDTO) {
+		// DB에 insert
+		
+		TodoDAO todoDAO = new TodoDAO();
+		return todoDAO.updateOne(todoDTO);
+	}
 }
