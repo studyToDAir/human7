@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.zerock.w1.todo.dto.TodoDTO;
+import org.zerock.w1.todo.service.TodoService;
 
 @WebServlet("/todo/register")
 public class TodoRegisterController extends HttpServlet {
@@ -23,6 +24,9 @@ public class TodoRegisterController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("/todo/register doPost 실행");
+		
+		request.setCharacterEncoding("utf-8");
+		response.setContentType("text/html; charset=utf-8;");
 		
 		String title = request.getParameter("title");
 		String dueDate = request.getParameter("dueDate");
@@ -38,6 +42,17 @@ public class TodoRegisterController extends HttpServlet {
 		}
 		
 		System.out.println(todoDTO);
+		
+		// db 의 insert까지 실행
+		TodoService todoService = new TodoService();
+		int result = todoService.register(todoDTO);
+		System.out.println("insert 결과 : "+ result);
+		
+		// 목록으로 보내기
+//		response.sendRedirect("list");
+//		response.sendRedirect("/_proj3_todo/todo/list");
+		String contextPath = request.getContextPath();
+		response.sendRedirect(contextPath + "/todo/list");
 	}
 
 }

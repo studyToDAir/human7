@@ -1,12 +1,17 @@
 package org.zerock.w1.todo.dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.sql.DataSource;
 
 import org.zerock.w1.todo.dto.TodoDTO;
 
@@ -138,7 +143,43 @@ public class TodoDAO {
 		return todoDTO;
 	}
 	
-	
+	public int insert(TodoDTO dto) {
+		int result = -1;
+		
+		try {
+			
+			// Servers 폴더의 context.xml에서
+			// name이 jdbc/oracle인 resource를 가져와서 DataSource로 저장하기
+			Context ctx = new InitialContext();
+			DataSource dataFactory = (DataSource) ctx.lookup("java:/comp/env/jdbc/oracle");
+			// DB 접속 : 커넥션풀을 사용해서 
+			Connection con = dataFactory.getConnection();
+			
+			// SQL 준비
+			String query =  "INSERT INTO tbl_todo (tno, title, duedate, finished)";
+				   query += "VALUES (seq_todo.NEXTVAL, ?, ?, ?)";
+			
+			PreparedStatement ps = con.prepareStatement(query);
+			ps.setString(1, dto.getTitle());
+			
+			java.sql.Date date = Date.valueOf( dto.getDueDate() );
+			ps.setDate(2, date);
+			
+			String finished = dto.isFinished() ? "Y" : "N";
+			ps.setString(3, finished);
+			
+			// SQL 실행
+			result = ps.executeUpdate();
+			
+			ps.close();
+			con.close();
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
 }
 
 

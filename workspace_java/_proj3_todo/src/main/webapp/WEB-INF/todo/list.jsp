@@ -10,16 +10,16 @@
 <body>
 <h1>List Page</h1>
 	
-	${ list1 }
-	<hr>
-	${ list1[0] }
-	<hr>
-	${ list1[0].title }
-	<hr>
-	${ list1[0]["title"] }
-	<hr>
-	123${null }456
-	<hr>
+<%-- 	${ list1 } --%>
+<!-- 	<hr> -->
+<%-- 	${ list1[0] } --%>
+<!-- 	<hr> -->
+<%-- 	${ list1[0].title } --%>
+<!-- 	<hr> -->
+<%-- 	${ list1[0]["title"] } --%>
+<!-- 	<hr> -->
+<%-- 	123${null }456 --%>
+<!-- 	<hr> -->
 	<style>
 		div {
 			border: 1px solid red;
@@ -27,6 +27,9 @@
 			margin: 10px;
 		}
 	</style>
+	<div style="text-align: right;">
+		<a href="register">글쓰기</a>
+	</div>
 	<c:forEach var="a" items="${list1 }">
 		<div>
 			제목2 : <a href="/_proj3_todo/todo/read?tno=${a.tno }">${ a.title }</a>, 시간 : ${a.dueDate }

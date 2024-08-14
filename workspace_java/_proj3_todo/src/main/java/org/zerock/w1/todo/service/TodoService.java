@@ -9,9 +9,11 @@ import org.zerock.w1.todo.dto.TodoDTO;
 
 public class TodoService {
 
-	public void register(TodoDTO todoDTO) {
+	public int register(TodoDTO todoDTO) {
 		// DB에 insert
-		System.out.println("등록중..."+ todoDTO.toString());
+		
+		TodoDAO todoDAO = new TodoDAO();
+		return todoDAO.insert(todoDTO);
 	}
 
 	public List<TodoDTO> getList(){
@@ -51,5 +53,7 @@ public class TodoService {
 		
 		return dto1;
 	}
+	
+	
 	
 }

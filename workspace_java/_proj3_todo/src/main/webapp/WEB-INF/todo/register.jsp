@@ -7,7 +7,7 @@
 <title>할일 작성 - 할일 관리</title>
 </head>
 <body>
-
+<a href="list">목록으로</a><br>
 <form method="post" action="register">
 
 	title : <input type="text" name="title"><br>
