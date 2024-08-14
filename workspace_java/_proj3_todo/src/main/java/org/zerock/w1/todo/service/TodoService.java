@@ -38,9 +38,10 @@ public class TodoService {
 	}
 	
 	public TodoDTO get(int tno1) {
-		TodoDTO dto1 = new TodoDTO();
 		
 		TodoDAO dao = new TodoDAO();
+		
+		TodoDTO dto1 = new TodoDTO();
 		dto1 = dao.selectOne(tno1);
 		
 //		dto1.setTno(tno1);

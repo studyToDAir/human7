@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%-- <%= ((TodoDTO)request.getAttribute("dto")).getTno() %> --%>
 dto.tno : ${dto.tno }<br>
 dto.title : ${dto.title}<br>
 dto.dueDate : ${dto.dueDate}<br>
