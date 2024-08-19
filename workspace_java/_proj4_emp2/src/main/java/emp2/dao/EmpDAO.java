@@ -100,11 +100,16 @@ public class EmpDAO {
 			// SQL 준비
 			String query = " INSERT INTO emp2 (empno, ename, sal, deptno, hiredate)";
 			       query +=" VALUES (?, ?, ?, ?, sysdate)";
-			PreparedStatement ps = con.prepareStatement(query);
+//			PreparedStatement ps = con.prepareStatement(query);
+			// 원래 실행되는걸 LoggableStatement가 가로채서
+			PreparedStatement ps = new LoggableStatement(con, query);
 			ps.setInt(1, dto.getEmpno());
 			ps.setString(2, dto.getEname());
 			ps.setInt(3, dto.getSal());
 			ps.setInt(4, dto.getDeptno());
+			
+			// 실제 실행되는 sql을 출력해볼 수 있다
+			System.out.println( ( (LoggableStatement)ps ).getQueryString() );
 			
 			// SQL 실행
 			result = ps.executeUpdate();
