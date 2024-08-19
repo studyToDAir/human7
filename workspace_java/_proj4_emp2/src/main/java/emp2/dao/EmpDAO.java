@@ -77,6 +77,8 @@ public class EmpDAO {
 				list.add(empDTO);
 			}
 			
+			ps.close();
+			con.close();
 			
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -84,6 +86,37 @@ public class EmpDAO {
 		}
 		
 		return list;
+	}
+	
+	public int insertEmp(EmpDTO dto) {
+		int result = -1;
+		
+		// DB 접속
+		try {
+			Context ctx = new InitialContext();
+			DataSource dataSource = (DataSource) ctx.lookup("java:/comp/env/jdbc/oracle");
+			Connection con = dataSource.getConnection();
+
+			// SQL 준비
+			String query = " INSERT INTO emp2 (empno, ename, sal, deptno, hiredate)";
+			       query +=" VALUES (?, ?, ?, ?, sysdate)";
+			PreparedStatement ps = con.prepareStatement(query);
+			ps.setInt(1, dto.getEmpno());
+			ps.setString(2, dto.getEname());
+			ps.setInt(3, dto.getSal());
+			ps.setInt(4, dto.getDeptno());
+			
+			// SQL 실행
+			result = ps.executeUpdate();
+			
+			ps.close();
+			con.close();	// 커넥션풀에 접속정보 반환
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return result;
 	}
 	
 }
