@@ -1,7 +1,7 @@
 package emp2.controller;
 
 import java.io.IOException;
-import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import emp2.service.EmpPageService;
-import emp2.service.EmpService;
 
 @WebServlet("/emp/page")
 public class EmpPageController extends HttpServlet {
@@ -31,9 +30,11 @@ public class EmpPageController extends HttpServlet {
 		
 
 		EmpPageService empPageService = new EmpPageService();
-		List list = empPageService.getEmpPage(countPerPage, page);
+		Map map = empPageService.getEmpPage(countPerPage, page);
 
-		request.setAttribute("list", list);
+		request.setAttribute("map", map);
+		request.setAttribute("countPerPage", countPerPage);
+		request.setAttribute("page", page);
 
 		request.getRequestDispatcher("/WEB-INF/views/empPageList.jsp").forward(request, response);
 	}

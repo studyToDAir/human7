@@ -71,4 +71,37 @@ public class EmpPageDAO {
 		return list;
 	}
 	
+	public int totalEmpPage() {
+		int result = -1;
+		
+		try {
+			// DB 접속
+			Context ctx = new InitialContext();
+			DataSource dataSource = (DataSource) ctx.lookup("java:/comp/env/jdbc/oracle");
+			Connection con = dataSource.getConnection();
+
+			// SQL 준비
+			String 	query =  " select count(*) cnt from emp2 ";
+            
+            PreparedStatement ps = new LoggableStatement(con, query);
+			
+			System.out.println( ( (LoggableStatement)ps ).getQueryString() );
+			
+			// SQL 실행 및 결과 확보
+			ResultSet rs = ps.executeQuery();
+			while( rs.next() ) {
+				result = rs.getInt("cnt");
+			}
+			
+			rs.close();
+			ps.close();
+			con.close();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+	
+	
 }
