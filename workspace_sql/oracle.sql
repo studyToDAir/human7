@@ -1106,11 +1106,63 @@ order by sort_empno_desc; -- 정렬 별칭을 활용
 select
     rownum, empno, ename
 from emp
+where rownum < 5
 order by empno desc;
 
+-- sql 실행 순서
+/* 5 */ select deptno as eno
+/* 1 */ from emp
+/* 2 */ where empno = 7788
+/* 3 */ group by deptno
+/* 4 */ having deptno in (10, 20)
+/* 6 */ order by eno
+
+
+/* 5 */ select deptno as eno
+/* 1 */ from emp
+/* 2 */ where eno = 10
+/* 3 */ group by deptno
+/* 4 */ having deptno in (10, 20)
+/* 6 */ order by eno;
+
+select * 
+from (
+    select deptno as eno
+    from emp
+)
+where eno = 10;
+
+
+select 
+    rownum, empno, ename
+from emp
+order by ename;
 
 
 
+select rownum rnum, empno, ename
+from (
+    select empno, ename
+    from emp
+    order by ename
+)
+where rownum >= 4 and rownum <= 6;
 
 
+select *
+from (
+    select rownum rnum, empno, ename
+    from (
+        select empno, ename
+        from emp2
+        order by ename
+    )
+)
+where rnum >= 4 and rnum <= 6;
+-- 한번에 3개씩 보여주는데 2번째 페이지
 
+insert into emp2
+select * from emp;
+
+select count(*) from emp2;
+commit;
