@@ -14,7 +14,14 @@ public class EmpDTO {
 	private int deptno;
 	
 	private int rnum;
+	private int lv;
 	
+	public int getLv() {
+		return lv;
+	}
+	public void setLv(int lv) {
+		this.lv = lv;
+	}
 	public int getRnum() {
 		return rnum;
 	}

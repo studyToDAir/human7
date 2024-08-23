@@ -31,7 +31,10 @@
 			<tr>
 				<td>${emp.rnum }</td>
 				<td>${emp.empno }</td>
-				<td>${emp.ename }</td>
+				<td style="padding-left: ${emp.lv * 10}px;">
+					<c:if test="${emp.lv ne 1}">ㄴ</c:if>
+					${emp.ename }
+				</td>
 				<td>${emp.job }</td>
 				<td>${emp.hireDate }</td>
 			</tr>
