@@ -124,4 +124,41 @@ public class EmpDAO {
 		return result;
 	}
 	
+	public EmpDTO selectLogin(EmpDTO empDTO) {
+		EmpDTO resultDTO = null;
+		try {
+			
+			Context ctx = new InitialContext();
+			DataSource dataSource = (DataSource) ctx.lookup("java:/comp/env/jdbc/oracle");
+			Connection con = dataSource.getConnection();
+
+			String query = " select * from emp3 ";
+				   query +=" where ename = ? and empno = ? ";
+				   
+//			PreparedStatement ps = con.prepareStatement(query);
+			PreparedStatement ps = new LoggableStatement(con, query);
+			ps.setString(1, empDTO.getEname());
+			ps.setInt(2, empDTO.getEmpno());
+			System.out.println( ( (LoggableStatement)ps ).getQueryString() );
+
+			ResultSet rs = ps.executeQuery();
+			while( rs.next() ) {
+				resultDTO = new EmpDTO();
+				
+				resultDTO.setEmpno( rs.getInt("empno") );
+				resultDTO.setEname( rs.getString("ename") );
+				resultDTO.setSal( rs.getInt("sal") );
+			}
+			
+			rs.close();
+			ps.close();
+			con.close();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return resultDTO;
+	}
+	
 }
