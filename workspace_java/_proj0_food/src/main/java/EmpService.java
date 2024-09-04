@@ -9,4 +9,10 @@ public class EmpService {
 		return list;
 	}
 	
+	int modifyEmp0(String ename, int empno){
+		EmpDAO empDAO = new EmpDAO();
+		int result = empDAO.updateEmp0(ename, empno);
+		return result;
+	}
+	
 }

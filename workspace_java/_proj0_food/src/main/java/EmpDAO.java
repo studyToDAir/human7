@@ -85,7 +85,6 @@ public class EmpDAO {
 			// 그 외 : executeUpdate(), 리턴 : int
 			result = ps.executeUpdate();
 			
-			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -45,6 +45,13 @@ public class EmpController extends HttpServlet {
 
 		String ename = request.getParameter("ename");
 		System.out.println("ename : "+ ename);
+		
+		EmpService empService = new EmpService();
+		int no = Integer.parseInt(empno);
+		int result = empService.modifyEmp0(ename, no);
+		System.out.println("수정 결과 : "+ result);
+		
+		response.sendRedirect("emp2");
 	}
 
 }
