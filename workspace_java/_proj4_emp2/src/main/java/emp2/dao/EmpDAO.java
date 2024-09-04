@@ -128,10 +128,12 @@ public class EmpDAO {
 		EmpDTO resultDTO = null;
 		try {
 			
+			// DB 접속
 			Context ctx = new InitialContext();
 			DataSource dataSource = (DataSource) ctx.lookup("java:/comp/env/jdbc/oracle");
 			Connection con = dataSource.getConnection();
 
+			// SQL 준비
 			String query = " select * from emp3 ";
 				   query +=" where ename = ? and empno = ? ";
 				   

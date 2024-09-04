@@ -1166,3 +1166,21 @@ select * from emp;
 
 select count(*) from emp2;
 commit;
+
+create table emp0
+as select * from emp;
+
+select * from emp0;
+
+
+
+
+
+
+
+
+
+
+
+
+
