@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.emp">
+
+	<select id="selectAllEmp" resultType="emp.EmpDTO">
+		select * from emp
+	</select>
+	
+	<!-- java.util.HashMap : hashmap -->
+	<!-- java.util.Map : map -->
+	<!-- java.util.List : list -->
+	<!-- java.lang.String : string -->
+	<!-- java.lang.Integer : int -->
+<!-- 	<select id="selectAllEmpMap" resultType="java.util.HashMap"> -->
+	<select id="selectAllEmpMap" resultType="map">
+		select * from emp
+	</select>
+
+	<select id="selectOneEmp" resultType="emp.EmpDTO">
+		select
+			*
+		  from emp
+		where empno = 7788
+	</select>
+
+	<select id="selectTotalEmp" resultType="int">
+		select
+			count(*)
+		from 
+			emp
+	</select>
+	
+	<select id="selectEnameEmp" resultType="string">
+		select
+			ename
+		from 
+		  	emp
+		where 
+			empno = 7788
+	</select>
+	
+</mapper>
