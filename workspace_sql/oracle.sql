@@ -1172,7 +1172,11 @@ as select * from emp;
 
 select * from emp0;
 
+update emp0
+set ename = 'Scott1', sal = 3500
+where empno = 7788;
 
+commit;
 
 
 

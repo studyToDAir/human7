@@ -37,6 +37,17 @@ public class EmpServlet extends HttpServlet {
 		
 		String ename = empDAO.selectEnameEmp();
 		System.out.println("ename : "+ ename);
+		
+		EmpDTO dto = new EmpDTO();
+		dto.setEmpno(7788);
+		dto.setEname("ScoTt5");
+		dto.setSal(3210);
+		int updateResult = empDAO.updateEmp(dto);
+		System.out.println("업데이트 결과 : "+ updateResult);
+		
+		empDTO = empDAO.selectEmpByEname("KING");
+		System.out.println(empDTO);
+		
 	}
 
 }

@@ -5,7 +5,7 @@
 <mapper namespace="mapper.emp">
 
 	<select id="selectAllEmp" resultType="emp.EmpDTO">
-		select * from emp
+		select * from emp0
 	</select>
 	
 	<!-- java.util.HashMap : hashmap -->
@@ -15,13 +15,13 @@
 	<!-- java.lang.Integer : int -->
 <!-- 	<select id="selectAllEmpMap" resultType="java.util.HashMap"> -->
 	<select id="selectAllEmpMap" resultType="map">
-		select * from emp
+		select * from emp0
 	</select>
 
 	<select id="selectOneEmp" resultType="emp.EmpDTO">
 		select
 			*
-		  from emp
+		  from emp0
 		where empno = 7788
 	</select>
 
@@ -29,16 +29,40 @@
 		select
 			count(*)
 		from 
-			emp
+			emp0
 	</select>
 	
 	<select id="selectEnameEmp" resultType="string">
 		select
 			ename
 		from 
-		  	emp
+		  	emp0
 		where 
 			empno = 7788
 	</select>
 	
+	<update id="updateEmp" parameterType="emp.EmpDTO">
+		UPDATE 
+			emp0
+		SET 
+			ename = #{ename},
+			sal = #{sal}
+		WHERE
+			empno = #{empno}
+	</update>
+	
+	<!--
+		parameterType 전달인자 받기(전달인자 없다면 생략 가능)
+		
+		#{ename}처럼 마음대로 변수명을 지정했는데 안될때
+		#{_parameter}를 사용 
+	 -->
+	<select id="selectEmpByEname" resultType="emp.EmpDTO" parameterType="string">
+		select
+			*
+		from 
+		  	emp0
+		where 
+			ename = #{_parameter}
+	</select>
 </mapper>

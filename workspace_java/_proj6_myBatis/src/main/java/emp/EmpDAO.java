@@ -132,4 +132,52 @@ public class EmpDAO {
 		return ename;
 	}
 	
+	public int updateEmp(EmpDTO empDTO){
+		int result = -1;
+		
+		// SqlMapConfig.xml을 읽어옴
+		sqlMapper = getInstance();
+		if(sqlMapper != null) {
+			// DB 접속
+			// 자동 커밋 : sqlMapper.openSession()
+			// 수동 커밋 : sqlMapper.openSession(false)
+			SqlSession sqlSession = sqlMapper.openSession(false);
+			
+			try {
+				result = sqlSession.update("mapper.emp.updateEmp", empDTO);
+				sqlSession.commit();
+			} catch (Exception e) {
+				sqlSession.rollback();
+				e.printStackTrace();
+			}
+			
+		} else {
+			System.out.println("DB 접속 실패");
+		}
+		
+		return result;
+	}
+	
+	
+	public EmpDTO selectEmpByEname(String ename){
+		EmpDTO empDTO = null;
+		
+		// SqlMapConfig.xml을 읽어옴
+		sqlMapper = getInstance();
+		if(sqlMapper != null) {
+			// DB 접속
+			SqlSession sqlSession = sqlMapper.openSession();
+			
+			try {
+				empDTO = (EmpDTO) sqlSession.selectOne("mapper.emp.selectEmpByEname", ename);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+		} else {
+			System.out.println("DB 접속 실패");
+		}
+		
+		return empDTO;
+	}
 }
