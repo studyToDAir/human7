@@ -6,7 +6,6 @@
 
 <!-- tag(또는 node)의 순서에 주의 -->
 
-
 	<!-- 전달인자로 null 줄 수 있음 -->
     <settings>
         <setting name="jdbcTypeForNull" value="NULL" />
@@ -30,6 +29,7 @@
 	
 	<mappers>
 		<mapper resource="mybatis/mappers/emp.xml" />
+		<mapper resource="mybatis/mappers/emp_param.xml" />
 	</mappers>
 	
 </configuration>
