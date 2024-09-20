@@ -22,8 +22,22 @@ public class Emp0Servlet extends HttpServlet {
 		EmpDAO empDAO = new EmpDAO();
 		
 		if(cmd == null) {
-			List<EmpDTO> empList = empDAO.selectEmp();
+//			List<EmpDTO> empList = empDAO.selectEmp();
+			
+			EmpDTO empDTO = new EmpDTO();
+			
+			String keyword = request.getParameter("keyword");
+			String searchType = request.getParameter("searchType");
+			String[] checks = request.getParameterValues("check");
+			
+			empDTO.setKeyword(keyword);
+			empDTO.setSearchType(searchType);
+			empDTO.setChecks(checks);
+			
+			List<EmpDTO> empList = empDAO.selectEmpList(empDTO);
 			request.setAttribute("empList", empList);
+			request.setAttribute("keyword", keyword);
+			request.setAttribute("searchType", searchType);
 			
 			request.getRequestDispatcher("/WEB-INF/views/emp.jsp").forward(request, response);
 

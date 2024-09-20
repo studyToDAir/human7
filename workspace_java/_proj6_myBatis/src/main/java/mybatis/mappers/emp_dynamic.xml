@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.emp.dynamic">
+
+	<select 
+		id="selectEmpList" 
+		resultType="emp.crud.EmpDTO"
+		parameterType="emp.crud.EmpDTO">
+	
+		select
+			*
+		from
+			emp0
+		<!-- 
+			if가 거짓일때 where만 남으면 오류니까
+			항상 참인 1=1을 적어 놓기도 한다
+		 -->
+<!-- 		where 1 = 1 -->
+<!-- 			<if test=" keyword != null and keyword != '' "> -->
+<!-- 				and ename like '%' || #{keyword} || '%' -->
+<!-- 			</if> -->
+		<!-- 
+			<where>는
+			* 내용이 없으면 where 자체를 지워줌
+			* 내용이 있으면 where 문을 생성해줌
+			* where 바로 다음에 and나 or는 지워줌
+			**		where and a = b를 where a = b로 만듬
+		 -->
+		<where>
+			<if test=" keyword != null and keyword != '' ">
+				and lower(ename) like '%' || lower(#{keyword}) || '%'
+			</if>
+		</where>
+		
+	</select>
+
+	<!--
+		select 결과 컬럼명을 column에 적고
+		내 DTO의 필명을 property에 적으면
+		연결된다
+		
+		 autoMapping : 	true[기본값] : 나머지는 원래대로 동작(적지 않아도 공식에 따라 setter동작)
+		 				false : 적지 않은 컬럼은 반영되지 않음
+	 -->
+	<resultMap id="empResult" type="emp.crud.EmpDTO" autoMapping="false">
+		<result property="empno" column="no" />
+		<result property="ename" column="ename" />
+		<result property="sal" column="sal" />
+		<result property="job" column="job" />
+		<result property="hireDate" column="hiredate" />
+	</resultMap>
+
+<!-- 	<select  -->
+<!-- 		id="selectEmpList2"  -->
+<!-- 		resultType="emp.crud.EmpDTO" -->
+<!-- 		parameterType="emp.crud.EmpDTO"> -->
+		<select 
+			id="selectEmpList2" 
+			resultMap="empResult"
+			parameterType="empDTO">
+		select
+			empno as no, ename, sal, job, hiredate
+		from
+			emp0
+		<where>
+			<if test="searchType != null and searchType != '' and keyword != null and keyword != ''">
+<!-- 				<if test=" searchType == 1 "> -->
+<!-- 					and lower(ename) like '%' || lower(#{keyword}) || '%' -->
+<!-- 				</if> -->
+<!-- 				<if test=" searchType == 2 "> -->
+<!-- 					and lower(job) like '%' || lower(#{keyword}) || '%' -->
+<!-- 				</if> -->
+				
+				<!-- otherwise 사용 가능 -->
+				<choose>
+					<when test=" searchType == 1 ">
+						AND LOWER(ename) LIKE '%' || LOWER(#{keyword}) || '%'
+					</when>
+					<when test=" searchType == 2 ">
+						AND LOWER(job) LIKE '%' || LOWER(#{keyword}) || '%'
+					</when>
+					<when test=" searchType == 3 ">
+						AND 
+						(
+							LOWER(ename) LIKE '%' || LOWER(#{keyword}) || '%'
+							OR 
+							LOWER(job) LIKE '%' || LOWER(#{keyword}) || '%'
+						)
+					</when>
+					<when test=" searchType == 4 ">
+						AND sal  <![CDATA[ <= ]]>  #{keyword}
+					</when>
+				</choose>
+			</if>
+			
+			<if test="checks != null">
+				and empno in /*(1,2,3,4)*/
+				<!--
+					item : foreach안에서 사용할 변수
+					collection : 반복되는 것
+						dto나 map 안에 있으면 필드명이나 key를 이용해 꺼내옴
+						parameterType에 배열이 전달되었다면 "array"
+										list가 전달되었다면 "list"
+				 -->
+				<foreach 
+					item="item" collection="checks"
+					open="("
+					separator=","
+					close=")"
+					>
+					#{item}
+				</foreach>
+			</if>
+			
+		</where>
+		
+		
+		
+	</select>
+</mapper>

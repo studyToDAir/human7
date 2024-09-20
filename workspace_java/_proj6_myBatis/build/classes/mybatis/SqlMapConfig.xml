@@ -12,8 +12,9 @@
     </settings>
 
 	<!-- mapper에서 사용할 타입이 길어서 짧게 별칭 지정 -->
-<!-- 	<typeAliases> -->
-<!-- 	</typeAliases> -->
+	<typeAliases>
+		<typeAlias type="emp.crud.EmpDTO" alias="empDTO" />
+	</typeAliases>
 
 	<environments default="development">
 		<environment id="development">
@@ -30,6 +31,7 @@
 	<mappers>
 		<mapper resource="mybatis/mappers/emp.xml" />
 		<mapper resource="mybatis/mappers/emp_param.xml" />
+		<mapper resource="mybatis/mappers/emp_dynamic.xml" />
 	</mappers>
 	
 </configuration>

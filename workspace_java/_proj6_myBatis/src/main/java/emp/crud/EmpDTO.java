@@ -16,6 +16,10 @@ public class EmpDTO {
 	private int rnum;
 	private int lv;
 	
+	private String keyword;
+	private String searchType;
+	private String[] checks;
+	
 	public int getLv() {
 		return lv;
 	}
@@ -78,10 +82,30 @@ public class EmpDTO {
 		this.deptno = deptno;
 	}
 	
+	public String getKeyword() {
+		return keyword;
+	}
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
+	
 	@Override
 	public String toString() {
 		return "EmpDTO [empno=" + empno + ", ename=" + ename + ", job=" + job + ", mgr=" + mgr + ", hireDate="
-				+ hireDate + ", sal=" + sal + ", comm=" + comm + ", deptno=" + deptno + "]";
+				+ hireDate + ", sal=" + sal + ", comm=" + comm + ", deptno=" + deptno + ", rnum=" + rnum + ", lv=" + lv
+				+ ", keyword=" + keyword + "]";
+	}
+	public String getSearchType() {
+		return searchType;
+	}
+	public void setSearchType(String searchType) {
+		this.searchType = searchType;
+	}
+	public String[] getChecks() {
+		return checks;
+	}
+	public void setChecks(String[] checks) {
+		this.checks = checks;
 	}
 	
 }

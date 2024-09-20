@@ -134,4 +134,21 @@ public class EmpDAO {
 		
 		return result;
 	}
+	
+	public List<EmpDTO> selectEmpList(EmpDTO empDTO){
+		List<EmpDTO> empList = null;
+		
+		sqlMapper = getInstance();
+		if(sqlMapper != null) {
+			SqlSession sqlSession = sqlMapper.openSession();
+			
+//			empList = sqlSession.selectList("mapper.emp.dynamic.selectEmpList", empDTO);
+			empList = sqlSession.selectList("mapper.emp.dynamic.selectEmpList2", empDTO);
+			System.out.println("empList.size : " + empList.size());
+		} else {
+			System.out.println("DB 접속 실패");
+		}
+		
+		return empList;
+	}
 }
