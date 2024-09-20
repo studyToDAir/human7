@@ -114,4 +114,24 @@ public class EmpDAO {
 		
 		return result;
 	}
+	public int deleteEmp(EmpDTO empDTO){
+		int result = -1;
+		
+		sqlMapper = getInstance();
+		
+		if(sqlMapper != null) {
+			SqlSession sqlSession = sqlMapper.openSession(true);
+			
+			try {
+				result = sqlSession.insert("mapper.emp.param.deleteEmp", empDTO);
+			} catch (Exception e) {
+				sqlSession.rollback();
+			}
+			
+		} else {
+			System.out.println("DB 접속 실패");
+		}
+		
+		return result;
+	}
 }

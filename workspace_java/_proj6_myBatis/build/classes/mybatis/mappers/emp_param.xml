@@ -36,5 +36,12 @@
 		WHERE
 			empno = #{empno}
 	</update>
+	
+	<delete id="deleteEmp" parameterType="emp.crud.EmpDTO">
+		DELETE FROM
+			emp0
+		WHERE
+			empno = #{empno}
+	</delete>
 
 </mapper>

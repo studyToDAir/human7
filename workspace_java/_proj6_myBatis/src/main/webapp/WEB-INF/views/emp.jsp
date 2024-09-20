@@ -28,6 +28,7 @@
 						<th>ename</th>
 						<th>sal</th>
 						<th>hireDate</th>
+						<th>삭제</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -38,6 +39,13 @@
 							<td>${dto.sal }</td>
 							<td>
 								<fmt:formatDate value="${dto.hireDate }" pattern="yyyy년 MM월 dd일 hh시 mm분 ss초" />
+							</td>
+							<td>
+								<form method="post" action="emp0">
+									<input type="hidden" name="cmd" value="delete">
+									<input type="hidden" name="empno" value="${dto.empno }">
+									<input type="submit" value="삭제">
+								</form>
 							</td>
 						</tr>
 					</c:forEach>

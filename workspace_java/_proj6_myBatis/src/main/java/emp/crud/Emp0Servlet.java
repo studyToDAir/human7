@@ -84,7 +84,11 @@ public class Emp0Servlet extends HttpServlet {
 		
 		try {
 			int empno = Integer.parseInt(strEmpno);
-			Date hireDate = Date.valueOf(strHireDate);
+			
+			Date hireDate = null;
+			if(strHireDate != null) {
+				hireDate = Date.valueOf(strHireDate);
+			}
 			
 			EmpDTO empDTO = new EmpDTO();
 			empDTO.setEmpno(empno);
@@ -103,6 +107,10 @@ public class Emp0Servlet extends HttpServlet {
 				// 업데이트
 				int result = empDAO.updateEmp(empDTO);
 				System.out.println("회원 가입 결과 : "+ result);
+			} else if( "delete".equals(cmd) ) {
+				// 삭제
+				int result = empDAO.deleteEmp(empDTO);
+				System.out.println("회원 삭제 결과 : "+ result);
 			}
 			
 			response.sendRedirect("emp0");
