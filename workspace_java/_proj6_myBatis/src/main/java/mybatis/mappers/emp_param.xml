@@ -15,5 +15,26 @@
 			#{hireDate}
 		)
 	</insert>
+	
+	<select id="selectEmpOne" resultType="emp.crud.EmpDTO" parameterType="int">
+	
+		SELECT
+			*
+		FROM
+			emp0
+		WHERE
+			empno = #{_parameter}
+
+	</select>
+
+	<update id="updateEmp" parameterType="emp.crud.EmpDTO">
+		UPDATE 
+			emp0 
+		SET 
+			ename = #{ename},
+			hireDate = #{hireDate}
+		WHERE
+			empno = #{empno}
+	</update>
 
 </mapper>

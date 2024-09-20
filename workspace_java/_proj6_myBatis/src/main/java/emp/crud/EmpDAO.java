@@ -49,7 +49,6 @@ public class EmpDAO {
 		return empList;
 	}
 	
-	
 	public int insertEmp(EmpDTO empDTO){
 		int result = -1;
 		
@@ -74,4 +73,45 @@ public class EmpDAO {
 		return result;
 	}
 	
+	public EmpDTO selectEmpOne(int empno){
+		EmpDTO empDTO = null;
+		
+		sqlMapper = getInstance();
+		
+		if(sqlMapper != null) {
+			SqlSession sqlSession = sqlMapper.openSession(true);
+			
+			try {
+				empDTO = sqlSession.selectOne("mapper.emp.param.selectEmpOne", empno);
+			} catch (Exception e) {
+				sqlSession.rollback();
+			}
+			
+		} else {
+			System.out.println("DB 접속 실패");
+		}
+		
+		return empDTO;
+	}
+	
+	public int updateEmp(EmpDTO empDTO){
+		int result = -1;
+		
+		sqlMapper = getInstance();
+		
+		if(sqlMapper != null) {
+			SqlSession sqlSession = sqlMapper.openSession(true);
+			
+			try {
+				result = sqlSession.insert("mapper.emp.param.updateEmp", empDTO);
+			} catch (Exception e) {
+				sqlSession.rollback();
+			}
+			
+		} else {
+			System.out.println("DB 접속 실패");
+		}
+		
+		return result;
+	}
 }

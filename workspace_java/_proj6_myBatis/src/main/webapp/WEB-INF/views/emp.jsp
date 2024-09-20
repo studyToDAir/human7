@@ -34,7 +34,7 @@
 					<c:forEach var="dto" items="${empList }">
 						<tr>
 							<td>${dto.empno }</td>
-							<td>${dto.ename }</td>
+							<td><a href="emp0?cmd=detail&empno=${dto.empno }">${dto.ename }</a></td>
 							<td>${dto.sal }</td>
 							<td>
 								<fmt:formatDate value="${dto.hireDate }" pattern="yyyy년 MM월 dd일 hh시 mm분 ss초" />

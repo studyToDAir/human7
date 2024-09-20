@@ -19,9 +19,9 @@ public class Emp0Servlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String cmd = request.getParameter("cmd");
+		EmpDAO empDAO = new EmpDAO();
 		
 		if(cmd == null) {
-			EmpDAO empDAO = new EmpDAO();
 			List<EmpDTO> empList = empDAO.selectEmp();
 			request.setAttribute("empList", empList);
 			
@@ -30,7 +30,50 @@ public class Emp0Servlet extends HttpServlet {
 		} else if( "join".equals(cmd) ) {
 
 			request.getRequestDispatcher("/WEB-INF/views/empJoin.jsp").forward(request, response);
+		
+		} else if( "detail".equals(cmd) ) {
 			
+			// pk인 empno 확보
+			String strEmpno = request.getParameter("empno");
+			
+			try {
+				int empno = Integer.parseInt(strEmpno);
+				
+				// 특정 회원 정보 조회
+				EmpDTO empDTO = empDAO.selectEmpOne(empno);
+				
+				// 정보를 request에 담아서
+				request.setAttribute("empDTO", empDTO);
+				request.setAttribute("cmd", "detail");
+				
+				// 상세 정보 페이지로 이동
+				request.getRequestDispatcher("/WEB-INF/views/empJoin.jsp").forward(request, response);
+				
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		} else if( "edit".equals(cmd) ) {
+
+			// pk인 empno 확보
+			String strEmpno = request.getParameter("empno");
+			
+			try {
+				int empno = Integer.parseInt(strEmpno);
+				
+				// 특정 회원 정보 조회
+				EmpDTO empDTO = empDAO.selectEmpOne(empno);
+				
+				// 정보를 request에 담아서
+				request.setAttribute("empDTO", empDTO);
+				request.setAttribute("cmd", cmd);
+				
+				// 상세 정보 페이지로 이동
+				request.getRequestDispatcher("/WEB-INF/views/empJoin.jsp").forward(request, response);
+				
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 	}
 
@@ -51,8 +94,16 @@ public class Emp0Servlet extends HttpServlet {
 			// insert 실행
 			
 			EmpDAO empDAO = new EmpDAO();
-			int result = empDAO.insertEmp(empDTO);
-			System.out.println("회원 가입 결과 : "+ result);
+			
+			String cmd = request.getParameter("cmd");
+			if(cmd == null) {
+				int result = empDAO.insertEmp(empDTO);
+				System.out.println("회원 가입 결과 : "+ result);
+			} else if( "edit".equals(cmd) ) {
+				// 업데이트
+				int result = empDAO.updateEmp(empDTO);
+				System.out.println("회원 가입 결과 : "+ result);
+			}
 			
 			response.sendRedirect("emp0");
 			
