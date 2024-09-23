@@ -29,15 +29,19 @@ public class Emp0Servlet extends HttpServlet {
 			String keyword = request.getParameter("keyword");
 			String searchType = request.getParameter("searchType");
 			String[] checks = request.getParameterValues("check");
+			String orderType = request.getParameter("orderType");
+			System.out.println(orderType);
 			
 			empDTO.setKeyword(keyword);
 			empDTO.setSearchType(searchType);
 			empDTO.setChecks(checks);
+			empDTO.setOrderType(orderType);
 			
 			List<EmpDTO> empList = empDAO.selectEmpList(empDTO);
 			request.setAttribute("empList", empList);
 			request.setAttribute("keyword", keyword);
 			request.setAttribute("searchType", searchType);
+			request.setAttribute("orderType", orderType);
 			
 			request.getRequestDispatcher("/WEB-INF/views/emp.jsp").forward(request, response);
 

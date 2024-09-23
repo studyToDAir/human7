@@ -19,6 +19,7 @@ public class EmpDTO {
 	private String keyword;
 	private String searchType;
 	private String[] checks;
+	private String orderType;
 	
 	public int getLv() {
 		return lv;
@@ -106,6 +107,12 @@ public class EmpDTO {
 	}
 	public void setChecks(String[] checks) {
 		this.checks = checks;
+	}
+	public String getOrderType() {
+		return orderType;
+	}
+	public void setOrderType(String orderType) {
+		this.orderType = orderType;
 	}
 	
 }

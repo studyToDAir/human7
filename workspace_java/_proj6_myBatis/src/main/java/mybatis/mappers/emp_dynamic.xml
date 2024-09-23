@@ -115,8 +115,29 @@
 			</if>
 			
 		</where>
-		
-		
+		<if test="orderType != null and orderType != ''">
+<!-- 			<if test="orderType == 'desc' "> -->
+<!-- 				order by empno desc -->
+<!-- 			</if> -->
+<!-- 			<if test="orderType == 'asc' "> -->
+<!-- 				order by empno asc -->
+<!-- 			</if> -->
+
+
+<!-- 			order by empno -->
+<!-- 			<if test="orderType == 'desc' "> -->
+<!-- 				desc -->
+<!-- 			</if> -->
+
+			<!--
+				#{} : 문자인 경우 ''붙여주고 숫자인 경우 그냥 사용
+					예:	abc > 'abc', 123 > 123
+				${} : 무조건 그냥 사용 
+					예:	abc > abc, 123 > 123
+			 -->
+			order by empno ${orderType}
+
+		</if>
 		
 	</select>
 </mapper>
