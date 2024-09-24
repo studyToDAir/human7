@@ -136,7 +136,6 @@
 					예:	abc > abc, 123 > 123
 			 -->
 			order by empno ${orderType}
-
 		</if>
 		
 	</select>

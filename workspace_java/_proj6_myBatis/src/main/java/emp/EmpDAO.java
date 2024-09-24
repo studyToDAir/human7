@@ -10,6 +10,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 public class EmpDAO {
+	public EmpDAO() {}
 
 	private  SqlSessionFactory sqlMapper = null;
 	
