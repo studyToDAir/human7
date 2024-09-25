@@ -107,6 +107,7 @@ public class LoginController {
 //			@ModelAttribute("dto") MemberDTO dto2
 			
 			// request에 앞글자만 소문자로 바꾼 "memberDTO"라는 key로 넣어 줌
+//			@ModelAttribute("memberDTO")
 			MemberDTO dto2
 	) {
 //		String userID = req.getParameter("userID");
@@ -131,6 +132,8 @@ public class LoginController {
 	public String login5(
 			String userID,
 			MemberDTO dto,
+			
+			HttpServletRequest req,
 			Model model
 	) {
 		System.out.println("login5 실행");
