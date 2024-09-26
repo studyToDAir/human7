@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import kr.or.human.emp.dto.EmpDTO;
 
-@Repository
+//@Repository
 public class EmpDAOImpl implements EmpDAO {
 
 	@Autowired

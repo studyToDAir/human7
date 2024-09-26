@@ -32,8 +32,8 @@
     
     
 	<!-- Application Loggers -->
-	<logger name="kr.or.human">
-		<level value="info" />
+	<logger name="kr.or.human.emp">
+		<level value="warn" />
 		<appender-ref ref="daily" />
 		<appender-ref ref="rolling" />
 	</logger>
