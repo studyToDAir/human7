@@ -43,4 +43,21 @@
 		<constructor-arg index="0" ref="sqlSessionFactory"></constructor-arg>
 	</bean>
 
+	<!--  new SqlSession( new SqlSessionFactory( new Log4JDBC( new DataSource())) ) -->
 </beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
