@@ -35,7 +35,8 @@
 			const xhr = new XMLHttpRequest();
 			
 // 			const url = "ajax";
-			const url = "ajax/string";
+// 			const url = "ajax/list";
+			const url = "human/test2";
 			const data = {
 				"ename" : "이름",
 				sal : 3200,
@@ -55,6 +56,16 @@
 			
 			xhr.onload = function(){
 				console.log( xhr.responseText )
+				
+				try{
+					let result = JSON.parse(xhr.responseText)
+					console.log(result)
+					
+					console.log( result.ename )
+					console.log( result["ename"] )
+				}catch(e){
+					console.log("json아님")
+				}
 			}
 		})
 		
