@@ -45,7 +45,7 @@
 						<th>job</th>
 						<th>sal</th>
 						<th>hireDate</th>
-<!-- 						<th>삭제</th> -->
+						<th>삭제</th>
 					</tr>
 				</thead>
 				<tbody id="list">
@@ -61,14 +61,14 @@
 <script>
 
 	window.addEventListener("load", function(){
-		
-		const url = "listEmp";
+		let url = "listEmp";
 		
 		const xhr = new XMLHttpRequest();
 		xhr.open("get", url);
 		xhr.send();
 		
 		xhr.onload = function(){
+			
 			console.log(xhr.responseText)
 			
 			try{
@@ -77,7 +77,6 @@
 				let html = "";
 				for(let i=0; i<empList.length; i++){
 // 					console.log(empList[i].ename)
-
 
 // 					html += '<tr>';
 // 					html += '	<td>';
@@ -92,25 +91,61 @@
 // 					html += '	</td>';
 // 					html += '</tr>';
 				
+				const hiredate = new Date(empList[i].hireDate)
+				
+				const y = hiredate.getFullYear()
+				let m = hiredate.getMonth() + 1
+				if(m < 10){
+					m = "0" + m
+				}
+				const d = hiredate.getDate()
 				
 				html += `
-					<tr>
-						<td>
-							<input type="checkbox" name="check" value="${dto.empno }">
-						</td>
-						<td>\${empList[i].empno}</td>
-						<td><a href="emp0?cmd=detail&empno=${dto.empno }">\${empList[i].ename }</a></td>
-						<td>${dto.job }</td>
-						<td>${dto.sal }</td>
-						<td>
-							<fmt:formatDate value="${dto.hireDate }" pattern="yyyy년 MM월 dd일 hh시 mm분 ss초" />
-						</td>
-					</tr>
-				`;
+						<tr>
+							<td>
+								<input type="checkbox" name="check" value="\${empList[i].empno }">
+							</td>
+							<td>\${empList[i].empno}</td>
+							<td><a href="emp0?cmd=detail&empno=\${empList[i].empno }">\${empList[i].ename }</a></td>
+							<td>\${empList[i].job}</td>
+							<td>\${empList[i].sal}</td>
+							<td>
+								\${y}년 \${m}월 \${d}일
+							</td>
+							<td>
+								<button type="button" data-empno="\${empList[i].empno }" class="btnDel" id="btn_\${empList[i].empno }">삭제</button>
+							</td>
+						</tr>
+					`;
 				
 				}
 				
 				document.querySelector("#list").innerHTML = html;
+				
+				const delBtnList = document.querySelectorAll("[id^=btn_]")
+// 				const delBtnList = document.querySelectorAll(".btnDel")
+				for(let btn of delBtnList){
+					btn.addEventListener("click", function(event){
+// 						console.log(this)
+						console.log(event.target)
+						
+						const id = event.target.getAttribute("id")
+						// btn_7788 : substring, split...
+						const empno = event.target.getAttribute("data-empno")
+						console.log("empno", empno)
+						
+						url = "deleteEmp"
+						const xhr2 = new XMLHttpRequest();
+						xhr2.open("delete", url);
+						xhr2.send();
+						
+						xhr.onload = function(){
+							
+							console.log(xhr.responseText)
+						}
+					})
+				}
+				
 				
 			}catch(e){
 				console.log("ERROR : url :", url, e);

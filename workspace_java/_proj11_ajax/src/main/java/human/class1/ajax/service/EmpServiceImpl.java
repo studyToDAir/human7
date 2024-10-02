@@ -23,4 +23,11 @@ public class EmpServiceImpl implements EmpService{
 		return list;
 	}
 
+	@Override
+	public int deleteEmp(EmpDTO dto) {
+		
+		int result = empDAO.deleteEmp(dto);
+		
+		return result;
+	}
 }
