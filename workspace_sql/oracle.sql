@@ -1170,7 +1170,8 @@ commit;
 create table emp0
 as select * from emp;
 
-select * from emp0;
+select * from emp0
+where empno = 7788;
 
 update emp0
 set ename = 'Scott1', sal = 3500
