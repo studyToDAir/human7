@@ -3,6 +3,7 @@ package kr.or.human.emp.dao;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.springframework.beans.factory.annotation.Qualifier;
 
 import kr.or.human.emp.dto.EmpDTO;
 
