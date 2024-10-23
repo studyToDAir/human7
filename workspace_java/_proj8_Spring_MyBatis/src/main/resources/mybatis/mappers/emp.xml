@@ -10,41 +10,77 @@
 
 	<insert id="insertEmp" parameterType="empDTO">
 		INSERT INTO emp0 (
-			empno, 
-			ename, 
-			hiredate
+		empno,
+		ename,
+		hiredate
 		) VALUES (
-			#{empno}, 
-			#{ename}, 
-			#{hireDate}
+		#{empno},
+		#{ename},
+		#{hireDate}
 		)
 	</insert>
-	
-	<select id="selectEmpOne" resultType="empDTO" parameterType="int">
-	
+
+	<select id="selectEmpOne" resultType="empDTO"
+		parameterType="int">
+
 		SELECT
-			*
+		*
 		FROM
-			emp0
+		emp0
 		WHERE
-			empno = #{_parameter}
+		empno = #{_parameter}
 
 	</select>
 
 	<update id="updateEmp" parameterType="empDTO">
-		UPDATE 
-			emp0 
-		SET 
-			ename = #{ename},
-			hireDate = #{hireDate}
+		UPDATE
+		emp0
+		SET
+		ename = #{ename},
+		hireDate = #{hireDate}
 		WHERE
-			empno = #{empno}
+		empno = #{empno}
 	</update>
-	
+
 	<delete id="deleteEmp" parameterType="empDTO">
 		DELETE FROM
-			emp0
+		emp0
 		WHERE
-			empno = #{empno}
+		empno = #{empno}
 	</delete>
+
+
+	<select id="getSeq" resultType="int">
+		select seq_emp.nextval from dual
+	</select>
+
+	<insert id="insertEmp2" parameterType="empDTO">
+		<selectKey keyProperty="empno" resultType="int" order="BEFORE">
+			select seq_emp.nextval from dual
+		</selectKey>
+		INSERT INTO emp0 (
+		empno,
+		ename,
+		hiredate
+		) VALUES (
+		#{empno},
+		#{ename},
+		#{hireDate}
+		)
+	</insert>
+	<insert id="insertEmp3" 
+		parameterType="empDTO" 
+		useGeneratedKeys="true" 
+		keyProperty="empno">
+		
+		INSERT INTO emp0 (
+		empno,
+		ename,
+		hiredate
+		) VALUES (
+		seq_emp.nextval,
+		#{ename},
+		#{hireDate}
+		)
+	</insert>
 </mapper>

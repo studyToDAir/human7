@@ -31,6 +31,18 @@ public class EmpDAOImpl implements EmpDAO {
 
 		return result;
 	}
+	public int insertEmp2(EmpDTO empDTO) {
+		int result = -1;
+		
+		try {
+			result = sqlSession.insert("mapper.emp.insertEmp2", empDTO);
+			System.out.println(empDTO.getEmpno());
+		} catch (Exception e) {
+			sqlSession.rollback();
+		}
+		
+		return result;
+	}
 
 	public EmpDTO selectEmpOne(int empno) {
 		EmpDTO empDTO = null;
