@@ -64,4 +64,9 @@ print( min(a) )
 print( max(a) )
 print( sum(a) )
 
+# 구구단을 출력하는 코드입니다.
+for i in range(1, 10):  # 1부터 9까지 반복합니다.
+    for j in range(1, 10):  # 1부터 9까지 반복합니다.
+        print(f"{i} * {j} = {i * j}")  # 구구단의 결과를 출력합니다.
+    print()  # 각 단의 결과 사이에 빈 줄을 추가합니다.
 
